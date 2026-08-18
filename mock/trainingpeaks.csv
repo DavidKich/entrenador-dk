@@ -1,0 +1,29 @@
+date,title,workout_type,planned_distance_km,planned_duration_min,planned_tss,notes
+2026-07-27,Descanso,Rest,,,,Descanso total
+2026-07-28,Rodaje facil,Run,8,45,55,Ritmo comodo zona 2
+2026-07-29,Series en pista,Run,10,55,78,6x800m a ritmo de umbral con recuperacion trote
+2026-07-30,Rodaje de recuperacion,Run,6,35,40,Muy suave
+2026-07-31,Fuerza tren inferior + core,Strength,,50,45,Sesion de fuerza por la manana
+2026-08-01,Rodaje largo,Run,18,105,120,Ritmo aerobico practicar geles cada 45min
+2026-08-02,Facil / descanso activo,Run,6,35,35,Trote muy suave o descanso si hay fatiga
+2026-08-03,Descanso,Rest,,,,Descanso total
+2026-08-04,Rodaje facil + fuerza noche,Run,8,45,55,Rodaje en la manana fuerza opcional en la noche esta semana
+2026-08-05,Tempo run,Run,11,58,82,20min a ritmo umbral dentro del rodaje
+2026-08-06,Rodaje de recuperacion,Run,6,35,40,
+2026-08-07,Fuerza tren inferior + core,Strength,,50,45,
+2026-08-08,Rodaje largo,Run,20,118,130,Practicar fueling 60g carbo por hora
+2026-08-09,Facil,Run,7,40,38,
+2026-08-10,Descanso,Rest,,,,Descanso total
+2026-08-11,Rodaje facil,Run,8,45,55,
+2026-08-12,Intervalos,Run,11,58,85,8x1000m a ritmo 10k
+2026-08-13,Rodaje de recuperacion,Run,6,35,40,
+2026-08-14,Fuerza tren inferior + core,Strength,,50,45,
+2026-08-15,Rodaje largo,Run,22,128,138,Practicar fueling y bebida objetivo de la carrera
+2026-08-16,Facil,Run,7,40,38,
+2026-08-17,Descanso,Rest,,,,Descanso total
+2026-08-18,Rodaje facil,Run,8,45,55,
+2026-08-19,Umbral,Run,12,60,88,25min a ritmo umbral
+2026-08-20,Rodaje de recuperacion,Run,6,35,40,
+2026-08-21,Fuerza tren inferior + core,Strength,,50,45,
+2026-08-22,Rodaje largo,Run,24,138,145,Ultimo rodaje largo antes de reducir volumen
+2026-08-23,Facil,Run,7,40,38,
