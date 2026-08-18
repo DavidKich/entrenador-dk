@@ -37,13 +37,13 @@ SESSION_COLORS = {
     "other": "#8a6bd6",
 }
 RECOVERY_LABELS = {
-    "contrast": "Contrast therapy (sauna + cold plunge)",
+    "contrast": "Contrast",
     "sauna": "Sauna",
-    "sauna_o_contrast": "Sauna o contrast therapy",
-    "sauna_hoy_cold_mañana": "Sauna hoy / cold plunge mañana",
+    "sauna_o_contrast": "Sauna/Contrast",
+    "sauna_hoy_cold_mañana": "Sauna hoy",
     "cold_plunge": "Cold plunge",
-    "ninguna": "Sin protocolo hoy",
-    "consulta_medica": "Consultar a un profesional",
+    "ninguna": "Sin protocolo",
+    "consulta_medica": "Consultar medico",
 }
 SEMAFORO_LABELS = {
     "en_linea": ("En linea", "#3fbf78"),
@@ -73,54 +73,61 @@ h2{font-size:.85rem; text-transform:uppercase; letter-spacing:.04em; color:var(-
 .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:10px;}
 
 /* 3.1 resumen de semana */
-.summary-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:8px;}
-.stat{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:8px 6px; text-align:center;}
-.stat .value{font-size:1.25rem; font-weight:700; line-height:1.1;}
+.summary-grid{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:8px;}
+.stat{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:8px 6px; text-align:center; min-width:0;}
+.stat .value{font-size:1.25rem; font-weight:700; line-height:1.1; overflow-wrap:break-word;}
 .stat .label{font-size:.62rem; color:var(--muted); text-transform:uppercase; letter-spacing:.03em; margin-top:2px;}
 .badge{display:inline-block; padding:2px 8px; border-radius:999px; font-size:.68rem; font-weight:600; color:#fff;}
-@media(max-width:520px){ .summary-grid{grid-template-columns:repeat(2,1fr);} }
+@media(max-width:520px){ .summary-grid{grid-template-columns:repeat(2, minmax(0,1fr));} }
 
 /* 3.2 selector de vista */
-.view-tabs{display:flex; gap:6px; margin-bottom:8px; flex-wrap:wrap;}
+.view-tabs{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:6px; margin-bottom:8px;}
 .view-tabs button{
-  flex:1; min-width:70px; padding:7px 4px; border-radius:10px; border:1px solid var(--border);
-  background:var(--card); color:var(--text); font-size:.75rem; cursor:pointer;
+  min-width:0; padding:7px 2px; border-radius:10px; border:1px solid var(--border);
+  background:var(--card); color:var(--text); font-size:.72rem; cursor:pointer;
 }
 .view-tabs button.active{background:var(--accent); color:#fff; border-color:var(--accent);}
 .custom-range{display:none; gap:6px; margin-bottom:8px; align-items:center; flex-wrap:wrap;}
 .custom-range.active{display:flex;}
-.custom-range input{padding:5px 6px; border-radius:8px; border:1px solid var(--border); background:var(--card); color:var(--text); font-size:.78rem;}
-.nav-row{display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;}
-.nav-row button{background:var(--card); border:1px solid var(--border); color:var(--text); border-radius:8px; padding:4px 10px; cursor:pointer; font-size:.85rem;}
-.nav-row .range-label{font-size:.78rem; color:var(--muted); font-weight:600;}
+.custom-range input{padding:5px 6px; border-radius:8px; border:1px solid var(--border); background:var(--card); color:var(--text); font-size:.78rem; max-width:46%;}
+.nav-row{display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; gap:6px;}
+.nav-row button{background:var(--card); border:1px solid var(--border); color:var(--text); border-radius:8px; padding:4px 10px; cursor:pointer; font-size:.85rem; flex-shrink:0;}
+.nav-row .range-label{font-size:.78rem; color:var(--muted); font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0;}
 
-.cal-grid{display:grid; grid-template-columns:repeat(7,1fr); gap:5px;}
-.cal-grid.single{grid-template-columns:1fr;}
+.cal-grid{display:grid; grid-template-columns:repeat(7, minmax(0,1fr)); gap:4px; width:100%;}
+.cal-grid.single{grid-template-columns:minmax(0,1fr);}
 .dow{font-size:.6rem; color:var(--muted); text-align:center; text-transform:uppercase;}
 .day-cell{
-  background:var(--card); border:1px solid var(--border); border-radius:10px; padding:5px 4px;
-  cursor:pointer; min-height:56px; position:relative;
+  background:var(--card); border:1px solid var(--border); border-radius:10px; padding:4px 3px;
+  cursor:pointer; min-height:56px; position:relative; min-width:0;
 }
 .day-cell.today{border-color:var(--accent); border-width:2px;}
 .day-cell.outside{opacity:.35;}
-.day-cell .dnum{font-size:.72rem; font-weight:700; display:flex; justify-content:space-between; align-items:center;}
-.day-cell .check{color:#3fbf78; font-weight:700;}
-.day-cell .stype-dot{width:7px; height:7px; border-radius:50%; display:inline-block; margin-right:3px;}
+.day-cell .dnum{font-size:.72rem; font-weight:700; display:flex; justify-content:space-between; align-items:center; gap:2px;}
+.day-cell .check{color:#3fbf78; font-weight:700; flex-shrink:0;}
+.day-cell .stype-dot{width:7px; height:7px; border-radius:50%; display:inline-block; margin-right:3px; flex-shrink:0;}
 .day-cell .stype-label{font-size:.6rem; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; display:block;}
-.day-cell .strava-mini{font-size:.58rem; color:var(--muted); margin-top:2px;}
+.day-cell .strava-mini{font-size:.58rem; color:var(--muted); margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 
 .chip{
-  display:inline-block; margin-top:3px; font-size:.58rem; padding:1px 6px; border-radius:999px;
+  display:block; max-width:100%; margin-top:3px; padding:1px 6px; border-radius:999px;
   background:rgba(91,127,255,.15); color:var(--accent); position:relative; cursor:help; z-index:1;
+  box-sizing:border-box;
 }
 .chip.warn{background:rgba(224,90,90,.18); color:#e05a5a;}
+.chip .chip-label{display:block; font-size:.58rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 .chip .tooltip{
   display:none; position:absolute; z-index:20; bottom:130%; left:50%; transform:translateX(-50%);
-  width:220px; background:#20232b; color:#f2f3f6; font-size:.68rem; line-height:1.35;
+  width:max(160px, min(220px, 70vw)); background:#20232b; color:#f2f3f6; font-size:.68rem; line-height:1.35;
   padding:8px 9px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,.35); text-align:left;
+  white-space:normal;
 }
 .chip .tooltip .safety{display:block; margin-top:6px; padding-top:6px; border-top:1px solid rgba(255,255,255,.15); color:#c9cdd6; font-size:.62rem;}
 .chip:hover .tooltip, .chip:focus .tooltip{display:block;}
+@media(max-width:480px){
+  .day-cell .stype-label, .day-cell .strava-mini, .chip .chip-label{font-size:.54rem;}
+  .cal-grid{gap:3px;}
+}
 
 .day-detail{margin-top:8px; padding-top:8px; border-top:1px dashed var(--border);}
 .day-detail h3{margin:0 0 4px; font-size:.8rem;}
@@ -252,7 +259,8 @@ function recoveryChip(sug){
   const isWarn = sug.recommendation === 'consulta_medica';
   const label = RECOVERY_LABELS[sug.recommendation] || sug.recommendation;
   const timing = sug.timing ? (sug.timing==='manana'?'AM':'PM') : '';
-  return `<span class="chip ${isWarn?'warn':''}" tabindex="0">${label}${timing?' · '+timing:''}
+  return `<span class="chip ${isWarn?'warn':''}" tabindex="0">
+    <span class="chip-label">${label}${timing?' · '+timing:''}</span>
     <span class="tooltip">${sug.detail||''}<span class="safety">${sug.safety_note||''}</span></span>
   </span>`;
 }
