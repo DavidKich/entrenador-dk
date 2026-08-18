@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-18T12:20:10",
+  "generated_at": "2026-08-18T13:10:53",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -375,7 +375,7 @@
       "hrv_7d_avg": 58.5,
       "fatigue_flag": false,
       "recovery_suggestion": {
-        "recommendation": "sauna_hoy_cold_mañana",
+        "recommendation": "sauna_hoy",
         "timing": "manana",
         "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
@@ -603,7 +603,7 @@
       "hrv_7d_avg": 59.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
-        "recommendation": "sauna_hoy_cold_mañana",
+        "recommendation": "sauna_hoy",
         "timing": "manana",
         "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
@@ -766,7 +766,7 @@
       "hrv_7d_avg": 58.3,
       "fatigue_flag": false,
       "recovery_suggestion": {
-        "recommendation": "sauna_hoy_cold_mañana",
+        "recommendation": "sauna_hoy",
         "timing": "manana",
         "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
@@ -1189,7 +1189,7 @@
       "hrv_7d_avg": 55.3,
       "fatigue_flag": false,
       "recovery_suggestion": {
-        "recommendation": "sauna_hoy_cold_mañana",
+        "recommendation": "sauna_hoy",
         "timing": "manana",
         "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
@@ -1535,7 +1535,7 @@
       "hrv_7d_avg": 59.2,
       "fatigue_flag": false,
       "recovery_suggestion": {
-        "recommendation": "sauna_hoy_cold_mañana",
+        "recommendation": "sauna_hoy",
         "timing": "manana",
         "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."

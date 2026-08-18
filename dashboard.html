@@ -3,396 +3,489 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Entrenador Virtual — Maraton</title>
+<title>Entrenador · Maraton</title>
 <style>
 :root{
-  --bg:#f5f6f8; --card:#ffffff; --text:#1c1f26; --muted:#6b7280;
-  --border:#e5e7eb; --accent:#5b7fff; --radius:14px;
-}
-@media (prefers-color-scheme: dark){
-  :root{ --bg:#14161c; --card:#1c1f27; --text:#eef0f4; --muted:#9aa1ae; --border:#2b2f3a; }
+  --bg:#0A0B0D; --card:#13151A; --text:#F2F3F5; --border:rgba(255,255,255,.06);
 }
 *{box-sizing:border-box;}
-html,body{margin:0;padding:0;}
-body{
-  background:var(--bg); color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  font-size:15px; line-height:1.4; padding:10px; max-width:900px; margin:0 auto;
-  overflow-x:hidden;
-}
-h1{font-size:1.05rem; margin:.2rem 0 .6rem; display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:.4rem;}
-h1 small{color:var(--muted); font-weight:400; font-size:.7rem;}
-h2{font-size:.85rem; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin:1.1rem 0 .4rem;}
-.card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:10px;}
-
-/* 3.1 resumen de semana */
-.summary-grid{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:8px;}
-.stat{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:8px 6px; text-align:center; min-width:0;}
-.stat .value{font-size:1.25rem; font-weight:700; line-height:1.1; overflow-wrap:break-word;}
-.stat .label{font-size:.62rem; color:var(--muted); text-transform:uppercase; letter-spacing:.03em; margin-top:2px;}
-.badge{display:inline-block; padding:2px 8px; border-radius:999px; font-size:.68rem; font-weight:600; color:#fff;}
-@media(max-width:520px){ .summary-grid{grid-template-columns:repeat(2, minmax(0,1fr));} }
-
-/* 3.2 selector de vista */
-.view-tabs{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:6px; margin-bottom:8px;}
-.view-tabs button{
-  min-width:0; padding:7px 2px; border-radius:10px; border:1px solid var(--border);
-  background:var(--card); color:var(--text); font-size:.72rem; cursor:pointer;
-}
-.view-tabs button.active{background:var(--accent); color:#fff; border-color:var(--accent);}
-.custom-range{display:none; gap:6px; margin-bottom:8px; align-items:center; flex-wrap:wrap;}
-.custom-range.active{display:flex;}
-.custom-range input{padding:5px 6px; border-radius:8px; border:1px solid var(--border); background:var(--card); color:var(--text); font-size:.78rem; max-width:46%;}
-.nav-row{display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; gap:6px;}
-.nav-row button{background:var(--card); border:1px solid var(--border); color:var(--text); border-radius:8px; padding:4px 10px; cursor:pointer; font-size:.85rem; flex-shrink:0;}
-.nav-row .range-label{font-size:.78rem; color:var(--muted); font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0;}
-
-.cal-grid{display:grid; grid-template-columns:repeat(7, minmax(0,1fr)); gap:4px; width:100%;}
-.cal-grid.single{grid-template-columns:minmax(0,1fr);}
-.dow{font-size:.6rem; color:var(--muted); text-align:center; text-transform:uppercase;}
-.day-cell{
-  background:var(--card); border:1px solid var(--border); border-radius:10px; padding:4px 3px;
-  cursor:pointer; min-height:56px; position:relative; min-width:0;
-}
-.day-cell.today{border-color:var(--accent); border-width:2px;}
-.day-cell.outside{opacity:.35;}
-.day-cell .dnum{font-size:.72rem; font-weight:700; display:flex; justify-content:space-between; align-items:center; gap:2px;}
-.day-cell .check{color:#3fbf78; font-weight:700; flex-shrink:0;}
-.day-cell .stype-dot{width:7px; height:7px; border-radius:50%; display:inline-block; margin-right:3px; flex-shrink:0;}
-.day-cell .stype-label{font-size:.6rem; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; display:block;}
-.day-cell .strava-mini{font-size:.58rem; color:var(--muted); margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-
-.chip{
-  display:block; max-width:100%; margin-top:3px; padding:1px 6px; border-radius:999px;
-  background:rgba(91,127,255,.15); color:var(--accent); position:relative; cursor:help; z-index:1;
-  box-sizing:border-box;
-}
-.chip.warn{background:rgba(224,90,90,.18); color:#e05a5a;}
-.chip .chip-label{display:block; font-size:.58rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-.chip .tooltip{
-  display:none; position:absolute; z-index:20; bottom:130%; left:50%; transform:translateX(-50%);
-  width:max(160px, min(220px, 70vw)); background:#20232b; color:#f2f3f6; font-size:.68rem; line-height:1.35;
-  padding:8px 9px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,.35); text-align:left;
-  white-space:normal;
-}
-.chip .tooltip .safety{display:block; margin-top:6px; padding-top:6px; border-top:1px solid rgba(255,255,255,.15); color:#c9cdd6; font-size:.62rem;}
-.chip:hover .tooltip, .chip:focus .tooltip{display:block;}
-@media(max-width:480px){
-  .day-cell .stype-label, .day-cell .strava-mini, .chip .chip-label{font-size:.54rem;}
-  .cal-grid{gap:3px;}
-}
-
-.day-detail{margin-top:8px; padding-top:8px; border-top:1px dashed var(--border);}
-.day-detail h3{margin:0 0 4px; font-size:.8rem;}
-.log-entry{margin-bottom:6px; font-size:.78rem;}
-.log-entry .cp{font-weight:700; margin-right:4px;}
-.log-entry .txt{color:var(--muted); white-space:pre-wrap;}
-.empty-note{color:var(--muted); font-size:.78rem; font-style:italic;}
-
-/* 3.4 grafica de carga */
-.chart-wrap{overflow-x:auto;}
-svg text{font-family:inherit;}
-
-/* 3.5 tabla */
-table{width:100%; border-collapse:collapse; font-size:.75rem;}
-th,td{padding:5px 6px; text-align:left; border-bottom:1px solid var(--border); white-space:nowrap;}
-th{color:var(--muted); font-weight:600; font-size:.65rem; text-transform:uppercase;}
-.table-wrap{overflow-x:auto;}
-
-footer{color:var(--muted); font-size:.65rem; text-align:center; margin:1.2rem 0 .4rem;}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body{font-family:Archivo,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-variant-numeric:tabular-nums;font-size:15px;}
+a{color:#8FB4FF;text-decoration:none;}
+a:hover{color:#B9CEFF;}
+input[type=date]{color-scheme:dark;}
+.wrap{max-width:580px;margin:0 auto;padding:20px 16px 56px;display:flex;flex-direction:column;gap:26px;}
+.cal-cell{transition:opacity .15s;}
 </style>
 </head>
 <body>
-
-<h1>🏃 Entrenador Virtual <small>generado 2026-08-18T12:20:10</small></h1>
-
-<section id="summary" class="summary-grid"></section>
-
-<h2>Calendario</h2>
-<div class="view-tabs" id="viewTabs">
-  <button data-view="day">Dia</button>
-  <button data-view="week">Semana</button>
-  <button data-view="month">Mes</button>
-  <button data-view="custom">Personalizado</button>
-</div>
-<div class="custom-range" id="customRange">
-  <input type="date" id="customStart">
-  <span>a</span>
-  <input type="date" id="customEnd">
-</div>
-<div class="nav-row" id="navRow">
-  <button id="prevBtn">‹</button>
-  <span class="range-label" id="rangeLabel"></span>
-  <button id="nextBtn">›</button>
-</div>
-<div class="card">
-  <div id="calendar"></div>
-  <div id="dayDetail" class="day-detail" style="display:none;"></div>
-</div>
-
-<h2>Carga semanal (esfuerzo Strava)</h2>
-<div class="card chart-wrap"><div id="chart"></div></div>
-
-<h2>Sesiones recientes</h2>
-<div class="card table-wrap">
-  <table id="sessionsTable">
-    <thead>
-      <tr><th>Fecha</th><th>Tipo</th><th>Dist</th><th>Ritmo</th><th>Esfuerzo</th><th>PRs</th><th>Kudos</th></tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-</div>
-
-<footer>entrenador-dk · dashboard estatico, se actualiza en cada checkpoint</footer>
-
+<div class="wrap" id="app"></div>
 <script>
-const DATA = {"generated_at": "2026-08-18T12:20:10", "race_date": "2026-09-27", "goal_time": "3:40:00", "sleep_goal_hours": [7, 8], "week_summary": {"days_to_race": 40, "semaforo": "atrasado", "planned_km": 57.0, "actual_km": 8.1, "avg_sleep_hours": 7.35, "sleep_goal": [7, 8], "week_start": "2026-08-17"}, "weeks": [{"week_start": "2026-07-27", "week_end": "2026-08-02", "planned_km": 48.0, "actual_km": 48.8, "total_relative_effort": 327.0, "avg_sleep_hours": 7.41, "days": ["2026-07-27", "2026-07-28", "2026-07-29", "2026-07-30", "2026-07-31", "2026-08-01", "2026-08-02"]}, {"week_start": "2026-08-03", "week_end": "2026-08-09", "planned_km": 52.0, "actual_km": 46.6, "total_relative_effort": 309.0, "avg_sleep_hours": 7.36, "days": ["2026-08-03", "2026-08-04", "2026-08-05", "2026-08-06", "2026-08-07", "2026-08-08", "2026-08-09"]}, {"week_start": "2026-08-10", "week_end": "2026-08-16", "planned_km": 54.0, "actual_km": 54.4, "total_relative_effort": 355.0, "avg_sleep_hours": 7.19, "days": ["2026-08-10", "2026-08-11", "2026-08-12", "2026-08-13", "2026-08-14", "2026-08-15", "2026-08-16"]}, {"week_start": "2026-08-17", "week_end": "2026-08-23", "planned_km": 57.0, "actual_km": 8.1, "total_relative_effort": 46.0, "avg_sleep_hours": 7.35, "days": ["2026-08-17", "2026-08-18", "2026-08-19", "2026-08-20", "2026-08-21", "2026-08-22", "2026-08-23"]}], "days": {"2026-07-27": {"date": "2026-07-27", "days_to_race": 62, "plan": {"title": "Descanso", "workout_type": "Rest", "planned_distance_km": null, "planned_duration_min": null, "planned_tss": null, "notes": "Descanso total"}, "activities": [], "primary_activity": null, "completed": false, "session_type": "rest", "garmin": {"sleep_hours": 7.5, "sleep_score": 78.0, "hrv": 60.0, "body_battery": 82.0, "stress_avg": 28.0, "symptoms": ""}, "hrv_7d_avg": null, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-07-28": {"date": "2026-07-28", "days_to_race": 61, "plan": {"title": "Rodaje facil", "workout_type": "Run", "planned_distance_km": 8.0, "planned_duration_min": 45.0, "planned_tss": 55.0, "notes": "Ritmo comodo zona 2"}, "activities": [{"id": 1001, "name": "Rodaje facil manana", "description": "Zona 2, sensaciones buenas", "sport_type": "Run", "start_date_local": "2026-07-28T07:05:00", "distance_km": 8.1, "moving_time_min": 46.0, "elapsed_time_min": 47.0, "pace_min_per_km": 5.68, "avg_speed_mps": 2.93, "relative_effort": 45.0, "kudos": 12, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1001, "name": "Rodaje facil manana", "description": "Zona 2, sensaciones buenas", "sport_type": "Run", "start_date_local": "2026-07-28T07:05:00", "distance_km": 8.1, "moving_time_min": 46.0, "elapsed_time_min": 47.0, "pace_min_per_km": 5.68, "avg_speed_mps": 2.93, "relative_effort": 45.0, "kudos": 12, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "easy", "garmin": {"sleep_hours": 7.2, "sleep_score": 75.0, "hrv": 58.0, "body_battery": 75.0, "stress_avg": 30.0, "symptoms": ""}, "hrv_7d_avg": 60.0, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-07-29": {"date": "2026-07-29", "days_to_race": 60, "plan": {"title": "Series en pista", "workout_type": "Run", "planned_distance_km": 10.0, "planned_duration_min": 55.0, "planned_tss": 78.0, "notes": "6x800m a ritmo de umbral con recuperacion trote"}, "activities": [{"id": 1002, "name": "Series 6x800m", "description": "Umbral, buen control de ritmo", "sport_type": "Run", "start_date_local": "2026-07-29T07:00:00", "distance_km": 10.2, "moving_time_min": 55.0, "elapsed_time_min": 57.0, "pace_min_per_km": 5.39, "avg_speed_mps": 3.09, "relative_effort": 72.0, "kudos": 18, "pr_count": 1, "achievement_count": 1}], "primary_activity": {"id": 1002, "name": "Series 6x800m", "description": "Umbral, buen control de ritmo", "sport_type": "Run", "start_date_local": "2026-07-29T07:00:00", "distance_km": 10.2, "moving_time_min": 55.0, "elapsed_time_min": 57.0, "pace_min_per_km": 5.39, "avg_speed_mps": 3.09, "relative_effort": 72.0, "kudos": 18, "pr_count": 1, "achievement_count": 1}, "completed": true, "session_type": "quality", "garmin": {"sleep_hours": 6.8, "sleep_score": 70.0, "hrv": 55.0, "body_battery": 68.0, "stress_avg": 35.0, "symptoms": ""}, "hrv_7d_avg": 59.0, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "contrast", "timing": "manana", "detail": "Sesion de calidad/larga: contrast therapy (sauna 10-20 min + cold plunge 1-5 min, 2-4 ciclos terminando en frio) o cold plunge solo ayudan a acelerar la recuperacion antes de la siguiente sesion importante.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-07-30": {"date": "2026-07-30", "days_to_race": 59, "plan": {"title": "Rodaje de recuperacion", "workout_type": "Run", "planned_distance_km": 6.0, "planned_duration_min": 35.0, "planned_tss": 40.0, "notes": "Muy suave"}, "activities": [{"id": 1003, "name": "Recuperacion suave", "description": "", "sport_type": "Run", "start_date_local": "2026-07-30T07:10:00", "distance_km": 6.0, "moving_time_min": 36.0, "elapsed_time_min": 36.7, "pace_min_per_km": 6.0, "avg_speed_mps": 2.78, "relative_effort": 32.0, "kudos": 8, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1003, "name": "Recuperacion suave", "description": "", "sport_type": "Run", "start_date_local": "2026-07-30T07:10:00", "distance_km": 6.0, "moving_time_min": 36.0, "elapsed_time_min": 36.7, "pace_min_per_km": 6.0, "avg_speed_mps": 2.78, "relative_effort": 32.0, "kudos": 8, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "easy", "garmin": {"sleep_hours": 7.6, "sleep_score": 80.0, "hrv": 61.0, "body_battery": 80.0, "stress_avg": 26.0, "symptoms": ""}, "hrv_7d_avg": 57.7, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-07-31": {"date": "2026-07-31", "days_to_race": 58, "plan": {"title": "Fuerza tren inferior + core", "workout_type": "Strength", "planned_distance_km": null, "planned_duration_min": 50.0, "planned_tss": 45.0, "notes": "Sesion de fuerza por la manana"}, "activities": [{"id": 1004, "name": "Fuerza tren inferior + core", "description": "Sentadilla, peso muerto rumano, core", "sport_type": "WeightTraining", "start_date_local": "2026-07-31T07:30:00", "distance_km": 0.0, "moving_time_min": 50.0, "elapsed_time_min": 50.0, "pace_min_per_km": null, "avg_speed_mps": 0.0, "relative_effort": 38.0, "kudos": 6, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1004, "name": "Fuerza tren inferior + core", "description": "Sentadilla, peso muerto rumano, core", "sport_type": "WeightTraining", "start_date_local": "2026-07-31T07:30:00", "distance_km": 0.0, "moving_time_min": 50.0, "elapsed_time_min": 50.0, "pace_min_per_km": null, "avg_speed_mps": 0.0, "relative_effort": 38.0, "kudos": 6, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "strength", "garmin": {"sleep_hours": 7.0, "sleep_score": 74.0, "hrv": 57.0, "body_battery": 70.0, "stress_avg": 32.0, "symptoms": ""}, "hrv_7d_avg": 58.5, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_hoy_cold_mañana", "timing": "manana", "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-01": {"date": "2026-08-01", "days_to_race": 57, "plan": {"title": "Rodaje largo", "workout_type": "Run", "planned_distance_km": 18.0, "planned_duration_min": 105.0, "planned_tss": 120.0, "notes": "Ritmo aerobico practicar geles cada 45min"}, "activities": [{"id": 1005, "name": "Rodaje largo 18km", "description": "Geles cada 45min, buena sensacion", "sport_type": "Run", "start_date_local": "2026-08-01T06:45:00", "distance_km": 18.3, "moving_time_min": 106.0, "elapsed_time_min": 108.0, "pace_min_per_km": 5.79, "avg_speed_mps": 2.88, "relative_effort": 110.0, "kudos": 30, "pr_count": 1, "achievement_count": 1}], "primary_activity": {"id": 1005, "name": "Rodaje largo 18km", "description": "Geles cada 45min, buena sensacion", "sport_type": "Run", "start_date_local": "2026-08-01T06:45:00", "distance_km": 18.3, "moving_time_min": 106.0, "elapsed_time_min": 108.0, "pace_min_per_km": 5.79, "avg_speed_mps": 2.88, "relative_effort": 110.0, "kudos": 30, "pr_count": 1, "achievement_count": 1}, "completed": true, "session_type": "long_run", "garmin": {"sleep_hours": 7.8, "sleep_score": 82.0, "hrv": 59.0, "body_battery": 78.0, "stress_avg": 27.0, "symptoms": ""}, "hrv_7d_avg": 58.2, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "ninguna", "timing": null, "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — sin necesidad de mas hoy.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-02": {"date": "2026-08-02", "days_to_race": 56, "plan": {"title": "Facil / descanso activo", "workout_type": "Run", "planned_distance_km": 6.0, "planned_duration_min": 35.0, "planned_tss": 35.0, "notes": "Trote muy suave o descanso si hay fatiga"}, "activities": [{"id": 1006, "name": "Trote domingo", "description": "", "sport_type": "Run", "start_date_local": "2026-08-02T08:00:00", "distance_km": 6.2, "moving_time_min": 37.0, "elapsed_time_min": 37.7, "pace_min_per_km": 5.97, "avg_speed_mps": 2.79, "relative_effort": 30.0, "kudos": 9, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1006, "name": "Trote domingo", "description": "", "sport_type": "Run", "start_date_local": "2026-08-02T08:00:00", "distance_km": 6.2, "moving_time_min": 37.0, "elapsed_time_min": 37.7, "pace_min_per_km": 5.97, "avg_speed_mps": 2.79, "relative_effort": 30.0, "kudos": 9, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "easy", "garmin": {"sleep_hours": 8.0, "sleep_score": 85.0, "hrv": 63.0, "body_battery": 85.0, "stress_avg": 22.0, "symptoms": ""}, "hrv_7d_avg": 58.3, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "ninguna", "timing": null, "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — dia libre de protocolo.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-03": {"date": "2026-08-03", "days_to_race": 55, "plan": {"title": "Descanso", "workout_type": "Rest", "planned_distance_km": null, "planned_duration_min": null, "planned_tss": null, "notes": "Descanso total"}, "activities": [], "primary_activity": null, "completed": false, "session_type": "rest", "garmin": {"sleep_hours": 7.4, "sleep_score": 77.0, "hrv": 60.0, "body_battery": 80.0, "stress_avg": 28.0, "symptoms": ""}, "hrv_7d_avg": 59.0, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-04": {"date": "2026-08-04", "days_to_race": 54, "plan": {"title": "Rodaje facil + fuerza noche", "workout_type": "Run", "planned_distance_km": 8.0, "planned_duration_min": 45.0, "planned_tss": 55.0, "notes": "Rodaje en la manana fuerza opcional en la noche esta semana"}, "activities": [{"id": 1007, "name": "Rodaje facil manana", "description": "", "sport_type": "Run", "start_date_local": "2026-08-04T07:05:00", "distance_km": 8.05, "moving_time_min": 45.0, "elapsed_time_min": 46.0, "pace_min_per_km": 5.59, "avg_speed_mps": 2.98, "relative_effort": 44.0, "kudos": 11, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1007, "name": "Rodaje facil manana", "description": "", "sport_type": "Run", "start_date_local": "2026-08-04T07:05:00", "distance_km": 8.05, "moving_time_min": 45.0, "elapsed_time_min": 46.0, "pace_min_per_km": 5.59, "avg_speed_mps": 2.98, "relative_effort": 44.0, "kudos": 11, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "strength", "garmin": {"sleep_hours": 7.1, "sleep_score": 73.0, "hrv": 56.0, "body_battery": 72.0, "stress_avg": 33.0, "symptoms": ""}, "hrv_7d_avg": 59.0, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_hoy_cold_mañana", "timing": "manana", "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-05": {"date": "2026-08-05", "days_to_race": 53, "plan": {"title": "Tempo run", "workout_type": "Run", "planned_distance_km": 11.0, "planned_duration_min": 58.0, "planned_tss": 82.0, "notes": "20min a ritmo umbral dentro del rodaje"}, "activities": [{"id": 1008, "name": "Tempo run", "description": "20min a ritmo umbral", "sport_type": "Run", "start_date_local": "2026-08-05T07:00:00", "distance_km": 11.1, "moving_time_min": 58.0, "elapsed_time_min": 59.3, "pace_min_per_km": 5.23, "avg_speed_mps": 3.19, "relative_effort": 76.0, "kudos": 20, "pr_count": 1, "achievement_count": 1}], "primary_activity": {"id": 1008, "name": "Tempo run", "description": "20min a ritmo umbral", "sport_type": "Run", "start_date_local": "2026-08-05T07:00:00", "distance_km": 11.1, "moving_time_min": 58.0, "elapsed_time_min": 59.3, "pace_min_per_km": 5.23, "avg_speed_mps": 3.19, "relative_effort": 76.0, "kudos": 20, "pr_count": 1, "achievement_count": 1}, "completed": true, "session_type": "quality", "garmin": {"sleep_hours": 6.9, "sleep_score": 71.0, "hrv": 54.0, "body_battery": 65.0, "stress_avg": 37.0, "symptoms": ""}, "hrv_7d_avg": 58.7, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "contrast", "timing": "manana", "detail": "Sesion de calidad/larga: contrast therapy (sauna 10-20 min + cold plunge 1-5 min, 2-4 ciclos terminando en frio) o cold plunge solo ayudan a acelerar la recuperacion antes de la siguiente sesion importante.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-06": {"date": "2026-08-06", "days_to_race": 52, "plan": {"title": "Rodaje de recuperacion", "workout_type": "Run", "planned_distance_km": 6.0, "planned_duration_min": 35.0, "planned_tss": 40.0, "notes": ""}, "activities": [], "primary_activity": null, "completed": false, "session_type": "easy", "garmin": {"sleep_hours": 7.5, "sleep_score": 79.0, "hrv": 59.0, "body_battery": 77.0, "stress_avg": 29.0, "symptoms": ""}, "hrv_7d_avg": 58.6, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-07": {"date": "2026-08-07", "days_to_race": 51, "plan": {"title": "Fuerza tren inferior + core", "workout_type": "Strength", "planned_distance_km": null, "planned_duration_min": 50.0, "planned_tss": 45.0, "notes": ""}, "activities": [{"id": 1009, "name": "Fuerza tren inferior + core", "description": "", "sport_type": "WeightTraining", "start_date_local": "2026-08-07T07:30:00", "distance_km": 0.0, "moving_time_min": 50.0, "elapsed_time_min": 50.0, "pace_min_per_km": null, "avg_speed_mps": 0.0, "relative_effort": 37.0, "kudos": 5, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1009, "name": "Fuerza tren inferior + core", "description": "", "sport_type": "WeightTraining", "start_date_local": "2026-08-07T07:30:00", "distance_km": 0.0, "moving_time_min": 50.0, "elapsed_time_min": 50.0, "pace_min_per_km": null, "avg_speed_mps": 0.0, "relative_effort": 37.0, "kudos": 5, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "strength", "garmin": {"sleep_hours": 7.0, "sleep_score": 74.0, "hrv": 57.0, "body_battery": 70.0, "stress_avg": 31.0, "symptoms": ""}, "hrv_7d_avg": 58.3, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_hoy_cold_mañana", "timing": "manana", "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-08": {"date": "2026-08-08", "days_to_race": 50, "plan": {"title": "Rodaje largo", "workout_type": "Run", "planned_distance_km": 20.0, "planned_duration_min": 118.0, "planned_tss": 130.0, "notes": "Practicar fueling 60g carbo por hora"}, "activities": [{"id": 1010, "name": "Rodaje largo 20km", "description": "Fueling 60g carbo/hora, buena tolerancia", "sport_type": "Run", "start_date_local": "2026-08-08T06:40:00", "distance_km": 20.4, "moving_time_min": 118.0, "elapsed_time_min": 120.0, "pace_min_per_km": 5.78, "avg_speed_mps": 2.88, "relative_effort": 118.0, "kudos": 34, "pr_count": 2, "achievement_count": 2}], "primary_activity": {"id": 1010, "name": "Rodaje largo 20km", "description": "Fueling 60g carbo/hora, buena tolerancia", "sport_type": "Run", "start_date_local": "2026-08-08T06:40:00", "distance_km": 20.4, "moving_time_min": 118.0, "elapsed_time_min": 120.0, "pace_min_per_km": 5.78, "avg_speed_mps": 2.88, "relative_effort": 118.0, "kudos": 34, "pr_count": 2, "achievement_count": 2}, "completed": true, "session_type": "long_run", "garmin": {"sleep_hours": 7.7, "sleep_score": 81.0, "hrv": 58.0, "body_battery": 74.0, "stress_avg": 30.0, "symptoms": ""}, "hrv_7d_avg": 58.3, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "ninguna", "timing": null, "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — sin necesidad de mas hoy.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-09": {"date": "2026-08-09", "days_to_race": 49, "plan": {"title": "Facil", "workout_type": "Run", "planned_distance_km": 7.0, "planned_duration_min": 40.0, "planned_tss": 38.0, "notes": ""}, "activities": [{"id": 1011, "name": "Trote domingo", "description": "", "sport_type": "Run", "start_date_local": "2026-08-09T08:00:00", "distance_km": 7.1, "moving_time_min": 41.0, "elapsed_time_min": 41.7, "pace_min_per_km": 5.77, "avg_speed_mps": 2.89, "relative_effort": 34.0, "kudos": 10, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1011, "name": "Trote domingo", "description": "", "sport_type": "Run", "start_date_local": "2026-08-09T08:00:00", "distance_km": 7.1, "moving_time_min": 41.0, "elapsed_time_min": 41.7, "pace_min_per_km": 5.77, "avg_speed_mps": 2.89, "relative_effort": 34.0, "kudos": 10, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "easy", "garmin": {"sleep_hours": 7.9, "sleep_score": 84.0, "hrv": 62.0, "body_battery": 83.0, "stress_avg": 24.0, "symptoms": ""}, "hrv_7d_avg": 58.1, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "ninguna", "timing": null, "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — dia libre de protocolo.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-10": {"date": "2026-08-10", "days_to_race": 48, "plan": {"title": "Descanso", "workout_type": "Rest", "planned_distance_km": null, "planned_duration_min": null, "planned_tss": null, "notes": "Descanso total"}, "activities": [], "primary_activity": null, "completed": false, "session_type": "rest", "garmin": {"sleep_hours": 7.3, "sleep_score": 76.0, "hrv": 59.0, "body_battery": 79.0, "stress_avg": 28.0, "symptoms": ""}, "hrv_7d_avg": 58.0, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-11": {"date": "2026-08-11", "days_to_race": 47, "plan": {"title": "Rodaje facil", "workout_type": "Run", "planned_distance_km": 8.0, "planned_duration_min": 45.0, "planned_tss": 55.0, "notes": ""}, "activities": [{"id": 1012, "name": "Rodaje facil manana", "description": "", "sport_type": "Run", "start_date_local": "2026-08-11T07:05:00", "distance_km": 8.0, "moving_time_min": 45.0, "elapsed_time_min": 46.0, "pace_min_per_km": 5.62, "avg_speed_mps": 2.96, "relative_effort": 43.0, "kudos": 12, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1012, "name": "Rodaje facil manana", "description": "", "sport_type": "Run", "start_date_local": "2026-08-11T07:05:00", "distance_km": 8.0, "moving_time_min": 45.0, "elapsed_time_min": 46.0, "pace_min_per_km": 5.62, "avg_speed_mps": 2.96, "relative_effort": 43.0, "kudos": 12, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "easy", "garmin": {"sleep_hours": 7.0, "sleep_score": 73.0, "hrv": 56.0, "body_battery": 71.0, "stress_avg": 33.0, "symptoms": ""}, "hrv_7d_avg": 57.9, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-12": {"date": "2026-08-12", "days_to_race": 46, "plan": {"title": "Intervalos", "workout_type": "Run", "planned_distance_km": 11.0, "planned_duration_min": 58.0, "planned_tss": 85.0, "notes": "8x1000m a ritmo 10k"}, "activities": [{"id": 1013, "name": "Intervalos 8x1000m", "description": "Un poco mas cansado de lo normal pero complete la sesion", "sport_type": "Run", "start_date_local": "2026-08-12T07:00:00", "distance_km": 11.0, "moving_time_min": 58.0, "elapsed_time_min": 60.0, "pace_min_per_km": 5.27, "avg_speed_mps": 3.16, "relative_effort": 80.0, "kudos": 15, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1013, "name": "Intervalos 8x1000m", "description": "Un poco mas cansado de lo normal pero complete la sesion", "sport_type": "Run", "start_date_local": "2026-08-12T07:00:00", "distance_km": 11.0, "moving_time_min": 58.0, "elapsed_time_min": 60.0, "pace_min_per_km": 5.27, "avg_speed_mps": 3.16, "relative_effort": 80.0, "kudos": 15, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "quality", "garmin": {"sleep_hours": 6.7, "sleep_score": 68.0, "hrv": 53.0, "body_battery": 62.0, "stress_avg": 39.0, "symptoms": "mareo leve y me senti mas cansado de lo normal"}, "hrv_7d_avg": 57.9, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "consulta_medica", "timing": null, "detail": "Reportaste: \"mareo leve y me senti mas cansado de lo normal\". No se sugiere sauna ni cold plunge hoy — consulta a un profesional antes de continuar con el protocolo.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-13": {"date": "2026-08-13", "days_to_race": 45, "plan": {"title": "Rodaje de recuperacion", "workout_type": "Run", "planned_distance_km": 6.0, "planned_duration_min": 35.0, "planned_tss": 40.0, "notes": ""}, "activities": [{"id": 1014, "name": "Recuperacion suave", "description": "", "sport_type": "Run", "start_date_local": "2026-08-13T07:10:00", "distance_km": 5.9, "moving_time_min": 37.0, "elapsed_time_min": 37.7, "pace_min_per_km": 6.27, "avg_speed_mps": 2.66, "relative_effort": 35.0, "kudos": 7, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1014, "name": "Recuperacion suave", "description": "", "sport_type": "Run", "start_date_local": "2026-08-13T07:10:00", "distance_km": 5.9, "moving_time_min": 37.0, "elapsed_time_min": 37.7, "pace_min_per_km": 6.27, "avg_speed_mps": 2.66, "relative_effort": 35.0, "kudos": 7, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "easy", "garmin": {"sleep_hours": 6.2, "sleep_score": 55.0, "hrv": 42.0, "body_battery": 28.0, "stress_avg": 55.0, "symptoms": ""}, "hrv_7d_avg": 57.7, "fatigue_flag": true, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-14": {"date": "2026-08-14", "days_to_race": 44, "plan": {"title": "Fuerza tren inferior + core", "workout_type": "Strength", "planned_distance_km": null, "planned_duration_min": 50.0, "planned_tss": 45.0, "notes": ""}, "activities": [{"id": 1015, "name": "Fuerza tren inferior + core", "description": "", "sport_type": "WeightTraining", "start_date_local": "2026-08-14T07:30:00", "distance_km": 0.0, "moving_time_min": 50.0, "elapsed_time_min": 50.0, "pace_min_per_km": null, "avg_speed_mps": 0.0, "relative_effort": 36.0, "kudos": 6, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1015, "name": "Fuerza tren inferior + core", "description": "", "sport_type": "WeightTraining", "start_date_local": "2026-08-14T07:30:00", "distance_km": 0.0, "moving_time_min": 50.0, "elapsed_time_min": 50.0, "pace_min_per_km": null, "avg_speed_mps": 0.0, "relative_effort": 36.0, "kudos": 6, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "strength", "garmin": {"sleep_hours": 7.4, "sleep_score": 78.0, "hrv": 57.0, "body_battery": 74.0, "stress_avg": 30.0, "symptoms": ""}, "hrv_7d_avg": 55.3, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_hoy_cold_mañana", "timing": "manana", "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-15": {"date": "2026-08-15", "days_to_race": 43, "plan": {"title": "Rodaje largo", "workout_type": "Run", "planned_distance_km": 22.0, "planned_duration_min": 128.0, "planned_tss": 138.0, "notes": "Practicar fueling y bebida objetivo de la carrera"}, "activities": [{"id": 1016, "name": "Rodaje largo 22km", "description": "Practicando bebida objetivo de carrera", "sport_type": "Run", "start_date_local": "2026-08-15T06:35:00", "distance_km": 22.5, "moving_time_min": 131.0, "elapsed_time_min": 133.0, "pace_min_per_km": 5.82, "avg_speed_mps": 2.86, "relative_effort": 128.0, "kudos": 38, "pr_count": 1, "achievement_count": 1}], "primary_activity": {"id": 1016, "name": "Rodaje largo 22km", "description": "Practicando bebida objetivo de carrera", "sport_type": "Run", "start_date_local": "2026-08-15T06:35:00", "distance_km": 22.5, "moving_time_min": 131.0, "elapsed_time_min": 133.0, "pace_min_per_km": 5.82, "avg_speed_mps": 2.86, "relative_effort": 128.0, "kudos": 38, "pr_count": 1, "achievement_count": 1}, "completed": true, "session_type": "long_run", "garmin": {"sleep_hours": 7.6, "sleep_score": 80.0, "hrv": 58.0, "body_battery": 76.0, "stress_avg": 29.0, "symptoms": ""}, "hrv_7d_avg": 55.3, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "ninguna", "timing": null, "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — sin necesidad de mas hoy.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": [{"checkpoint": "Mañana", "text": "Plan de hoy: rodaje largo de 22km. Dormiste 7.6h, dentro de tu meta de 7-8h. HRV y Body Battery normales, sin senales de fatiga marcada. Antes de salir: lleva agua + electrolitos y los geles que vas a usar en la carrera — es buen dia para seguir practicando la estrategia de fueling (60-70g carbo/hora). Creatina 5g hoy, cuando te acomode."}, {"checkpoint": "Mediodía", "text": "Terminaste el rodaje largo — 22.5km, ritmo y zonas dentro de lo planeado, buena tolerancia al gel. Para la comida principal, prioriza carbohidrato alto hoy (dia de calidad/larga): arroz o pasta + pollo o pescado + verduras, y un batido de proteina si no te da tiempo de comer algo solido en los primeros 30-45min."}, {"checkpoint": "Noche", "text": "Carga de la semana va en linea con el plan. Para hoy, sauna o contrast therapy por la manana ya te tocaba — si no la hiciste, valdria la pena manana en vez de tarde para no quitarte horas de sueno. Duerme entre 10:30 y 11:00pm para llegar a tu meta de sueno."}]}, "2026-08-16": {"date": "2026-08-16", "days_to_race": 42, "plan": {"title": "Facil", "workout_type": "Run", "planned_distance_km": 7.0, "planned_duration_min": 40.0, "planned_tss": 38.0, "notes": ""}, "activities": [{"id": 1017, "name": "Trote domingo", "description": "", "sport_type": "Run", "start_date_local": "2026-08-16T08:00:00", "distance_km": 7.05, "moving_time_min": 41.0, "elapsed_time_min": 41.7, "pace_min_per_km": 5.82, "avg_speed_mps": 2.87, "relative_effort": 33.0, "kudos": 9, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1017, "name": "Trote domingo", "description": "", "sport_type": "Run", "start_date_local": "2026-08-16T08:00:00", "distance_km": 7.05, "moving_time_min": 41.0, "elapsed_time_min": 41.7, "pace_min_per_km": 5.82, "avg_speed_mps": 2.87, "relative_effort": 33.0, "kudos": 9, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "easy", "garmin": {"sleep_hours": 8.1, "sleep_score": 86.0, "hrv": 63.0, "body_battery": 85.0, "stress_avg": 21.0, "symptoms": ""}, "hrv_7d_avg": 55.3, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "ninguna", "timing": null, "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — dia libre de protocolo.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": [{"checkpoint": "Mañana", "text": "Hoy toca facil, 7km. Dormiste bien (8.1h). Sin senales de fatiga. Recuerda que ayer fue tu rodaje largo — hoy es dia de recuperacion activa, no busques ritmo."}, {"checkpoint": "Noche", "text": "Semana cerrada: cumpliste el plan de kilometraje. Sauna sola hoy en la noche es una buena opcion para relajar antes de dormir (1-3h antes de acostarte). Manana entra semana nueva — descanso total el lunes."}]}, "2026-08-17": {"date": "2026-08-17", "days_to_race": 41, "plan": {"title": "Descanso", "workout_type": "Rest", "planned_distance_km": null, "planned_duration_min": null, "planned_tss": null, "notes": "Descanso total"}, "activities": [], "primary_activity": null, "completed": false, "session_type": "rest", "garmin": {"sleep_hours": 7.5, "sleep_score": 79.0, "hrv": 60.0, "body_battery": 81.0, "stress_avg": 27.0, "symptoms": ""}, "hrv_7d_avg": 55.4, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": [{"checkpoint": "Mañana", "text": "Descanso total hoy segun el plan. Aprovecha para hidratarte bien y dormir a tu hora. Nada de sauna/cold plunge forzado si no te late — es opcional en dia de descanso."}, {"checkpoint": "Noche", "text": "Buen descanso hoy. Manana toca rodaje facil de 8km — nada especial que preparar, solo tu desayuno habitual antes de salir."}]}, "2026-08-18": {"date": "2026-08-18", "days_to_race": 40, "plan": {"title": "Rodaje facil", "workout_type": "Run", "planned_distance_km": 8.0, "planned_duration_min": 45.0, "planned_tss": 55.0, "notes": ""}, "activities": [{"id": 1018, "name": "Rodaje facil manana", "description": "", "sport_type": "Run", "start_date_local": "2026-08-18T07:05:00", "distance_km": 8.1, "moving_time_min": 46.0, "elapsed_time_min": 47.0, "pace_min_per_km": 5.68, "avg_speed_mps": 2.93, "relative_effort": 46.0, "kudos": 14, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1018, "name": "Rodaje facil manana", "description": "", "sport_type": "Run", "start_date_local": "2026-08-18T07:05:00", "distance_km": 8.1, "moving_time_min": 46.0, "elapsed_time_min": 47.0, "pace_min_per_km": 5.68, "avg_speed_mps": 2.93, "relative_effort": 46.0, "kudos": 14, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "easy", "garmin": {"sleep_hours": 7.2, "sleep_score": 75.0, "hrv": 58.0, "body_battery": 76.0, "stress_avg": 30.0, "symptoms": ""}, "hrv_7d_avg": 55.6, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": [{"checkpoint": "Mañana", "text": "Plan de hoy: rodaje facil de 8km. Dormiste 7.2h, dentro de meta. HRV y Body Battery normales. ¿Como te sientes fisicamente hoy? Avisame si algo duele o se siente distinto a lo normal antes de salir."}, {"checkpoint": "Mediodía", "text": "Rodaje completado, 8.1km, sensaciones buenas segun Strava. Vas en linea con el plan de la semana. Para la comida, porcion moderada de carbohidrato (dia facil, no hace falta cargar tanto) + proteina — algo tipo ensalada con pollo o pescado y arroz o tortilla."}]}, "2026-08-19": {"date": "2026-08-19", "days_to_race": 39, "plan": {"title": "Umbral", "workout_type": "Run", "planned_distance_km": 12.0, "planned_duration_min": 60.0, "planned_tss": 88.0, "notes": "25min a ritmo umbral"}, "activities": [], "primary_activity": null, "completed": false, "session_type": "quality", "garmin": null, "hrv_7d_avg": 55.9, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "contrast", "timing": "manana", "detail": "Sesion de calidad/larga: contrast therapy (sauna 10-20 min + cold plunge 1-5 min, 2-4 ciclos terminando en frio) o cold plunge solo ayudan a acelerar la recuperacion antes de la siguiente sesion importante.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-20": {"date": "2026-08-20", "days_to_race": 38, "plan": {"title": "Rodaje de recuperacion", "workout_type": "Run", "planned_distance_km": 6.0, "planned_duration_min": 35.0, "planned_tss": 40.0, "notes": ""}, "activities": [], "primary_activity": null, "completed": false, "session_type": "easy", "garmin": null, "hrv_7d_avg": 56.3, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-21": {"date": "2026-08-21", "days_to_race": 37, "plan": {"title": "Fuerza tren inferior + core", "workout_type": "Strength", "planned_distance_km": null, "planned_duration_min": 50.0, "planned_tss": 45.0, "notes": ""}, "activities": [], "primary_activity": null, "completed": false, "session_type": "strength", "garmin": null, "hrv_7d_avg": 59.2, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_hoy_cold_mañana", "timing": "manana", "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-22": {"date": "2026-08-22", "days_to_race": 36, "plan": {"title": "Rodaje largo", "workout_type": "Run", "planned_distance_km": 24.0, "planned_duration_min": 138.0, "planned_tss": 145.0, "notes": "Ultimo rodaje largo antes de reducir volumen"}, "activities": [], "primary_activity": null, "completed": false, "session_type": "long_run", "garmin": null, "hrv_7d_avg": 59.8, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "ninguna", "timing": null, "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — sin necesidad de mas hoy.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-23": {"date": "2026-08-23", "days_to_race": 35, "plan": {"title": "Facil", "workout_type": "Run", "planned_distance_km": 7.0, "planned_duration_min": 40.0, "planned_tss": 38.0, "notes": ""}, "activities": [], "primary_activity": null, "completed": false, "session_type": "easy", "garmin": null, "hrv_7d_avg": 60.3, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "ninguna", "timing": null, "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — dia libre de protocolo.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}}, "recent_sessions": [{"date": "2026-08-18", "session_type": "easy", "name": "Rodaje facil manana", "sport_type": "Run", "distance_km": 8.1, "pace_min_per_km": 5.68, "relative_effort": 46.0, "pr_count": 0, "kudos": 14, "achievement_count": 0}, {"date": "2026-08-16", "session_type": "easy", "name": "Trote domingo", "sport_type": "Run", "distance_km": 7.05, "pace_min_per_km": 5.82, "relative_effort": 33.0, "pr_count": 0, "kudos": 9, "achievement_count": 0}, {"date": "2026-08-15", "session_type": "long_run", "name": "Rodaje largo 22km", "sport_type": "Run", "distance_km": 22.5, "pace_min_per_km": 5.82, "relative_effort": 128.0, "pr_count": 1, "kudos": 38, "achievement_count": 1}, {"date": "2026-08-14", "session_type": "strength", "name": "Fuerza tren inferior + core", "sport_type": "WeightTraining", "distance_km": 0.0, "pace_min_per_km": null, "relative_effort": 36.0, "pr_count": 0, "kudos": 6, "achievement_count": 0}, {"date": "2026-08-13", "session_type": "easy", "name": "Recuperacion suave", "sport_type": "Run", "distance_km": 5.9, "pace_min_per_km": 6.27, "relative_effort": 35.0, "pr_count": 0, "kudos": 7, "achievement_count": 0}, {"date": "2026-08-12", "session_type": "quality", "name": "Intervalos 8x1000m", "sport_type": "Run", "distance_km": 11.0, "pace_min_per_km": 5.27, "relative_effort": 80.0, "pr_count": 0, "kudos": 15, "achievement_count": 0}, {"date": "2026-08-11", "session_type": "easy", "name": "Rodaje facil manana", "sport_type": "Run", "distance_km": 8.0, "pace_min_per_km": 5.62, "relative_effort": 43.0, "pr_count": 0, "kudos": 12, "achievement_count": 0}, {"date": "2026-08-09", "session_type": "easy", "name": "Trote domingo", "sport_type": "Run", "distance_km": 7.1, "pace_min_per_km": 5.77, "relative_effort": 34.0, "pr_count": 0, "kudos": 10, "achievement_count": 0}, {"date": "2026-08-08", "session_type": "long_run", "name": "Rodaje largo 20km", "sport_type": "Run", "distance_km": 20.4, "pace_min_per_km": 5.78, "relative_effort": 118.0, "pr_count": 2, "kudos": 34, "achievement_count": 2}, {"date": "2026-08-07", "session_type": "strength", "name": "Fuerza tren inferior + core", "sport_type": "WeightTraining", "distance_km": 0.0, "pace_min_per_km": null, "relative_effort": 37.0, "pr_count": 0, "kudos": 5, "achievement_count": 0}, {"date": "2026-08-05", "session_type": "quality", "name": "Tempo run", "sport_type": "Run", "distance_km": 11.1, "pace_min_per_km": 5.23, "relative_effort": 76.0, "pr_count": 1, "kudos": 20, "achievement_count": 1}, {"date": "2026-08-04", "session_type": "strength", "name": "Rodaje facil manana", "sport_type": "Run", "distance_km": 8.05, "pace_min_per_km": 5.59, "relative_effort": 44.0, "pr_count": 0, "kudos": 11, "achievement_count": 0}, {"date": "2026-08-02", "session_type": "easy", "name": "Trote domingo", "sport_type": "Run", "distance_km": 6.2, "pace_min_per_km": 5.97, "relative_effort": 30.0, "pr_count": 0, "kudos": 9, "achievement_count": 0}, {"date": "2026-08-01", "session_type": "long_run", "name": "Rodaje largo 18km", "sport_type": "Run", "distance_km": 18.3, "pace_min_per_km": 5.79, "relative_effort": 110.0, "pr_count": 1, "kudos": 30, "achievement_count": 1}, {"date": "2026-07-31", "session_type": "strength", "name": "Fuerza tren inferior + core", "sport_type": "WeightTraining", "distance_km": 0.0, "pace_min_per_km": null, "relative_effort": 38.0, "pr_count": 0, "kudos": 6, "achievement_count": 0}, {"date": "2026-07-30", "session_type": "easy", "name": "Recuperacion suave", "sport_type": "Run", "distance_km": 6.0, "pace_min_per_km": 6.0, "relative_effort": 32.0, "pr_count": 0, "kudos": 8, "achievement_count": 0}, {"date": "2026-07-29", "session_type": "quality", "name": "Series 6x800m", "sport_type": "Run", "distance_km": 10.2, "pace_min_per_km": 5.39, "relative_effort": 72.0, "pr_count": 1, "kudos": 18, "achievement_count": 1}, {"date": "2026-07-28", "session_type": "easy", "name": "Rodaje facil manana", "sport_type": "Run", "distance_km": 8.1, "pace_min_per_km": 5.68, "relative_effort": 45.0, "pr_count": 0, "kudos": 12, "achievement_count": 0}]};
-const SESSION_LABELS = {"long_run": "Rodaje largo", "quality": "Calidad", "easy": "Facil", "strength": "Fuerza", "rest": "Descanso", "other": "Otro"};
-const SESSION_COLORS = {"long_run": "#5b7fff", "quality": "#ff5b5b", "easy": "#3fbf78", "strength": "#c98a3c", "rest": "#9b9b9b", "other": "#8a6bd6"};
-const RECOVERY_LABELS = {"contrast": "Contrast", "sauna": "Sauna", "sauna_o_contrast": "Sauna/Contrast", "sauna_hoy_cold_mañana": "Sauna hoy", "cold_plunge": "Cold plunge", "ninguna": "Sin protocolo", "consulta_medica": "Consultar medico"};
-const SEMAFORO_LABELS = {"en_linea": ["En linea", "#3fbf78"], "atrasado": ["Atrasado", "#e0a63f"], "adelantado": ["Adelantado", "#5b7fff"]};
+const DATA = {"generated_at": "2026-08-18T13:10:53", "race_date": "2026-09-27", "goal_time": "3:40:00", "sleep_goal_hours": [7, 8], "week_summary": {"days_to_race": 40, "semaforo": "atrasado", "planned_km": 57.0, "actual_km": 8.1, "avg_sleep_hours": 7.35, "sleep_goal": [7, 8], "week_start": "2026-08-17"}, "weeks": [{"week_start": "2026-07-27", "week_end": "2026-08-02", "planned_km": 48.0, "actual_km": 48.8, "total_relative_effort": 327.0, "avg_sleep_hours": 7.41, "days": ["2026-07-27", "2026-07-28", "2026-07-29", "2026-07-30", "2026-07-31", "2026-08-01", "2026-08-02"]}, {"week_start": "2026-08-03", "week_end": "2026-08-09", "planned_km": 52.0, "actual_km": 46.6, "total_relative_effort": 309.0, "avg_sleep_hours": 7.36, "days": ["2026-08-03", "2026-08-04", "2026-08-05", "2026-08-06", "2026-08-07", "2026-08-08", "2026-08-09"]}, {"week_start": "2026-08-10", "week_end": "2026-08-16", "planned_km": 54.0, "actual_km": 54.4, "total_relative_effort": 355.0, "avg_sleep_hours": 7.19, "days": ["2026-08-10", "2026-08-11", "2026-08-12", "2026-08-13", "2026-08-14", "2026-08-15", "2026-08-16"]}, {"week_start": "2026-08-17", "week_end": "2026-08-23", "planned_km": 57.0, "actual_km": 8.1, "total_relative_effort": 46.0, "avg_sleep_hours": 7.35, "days": ["2026-08-17", "2026-08-18", "2026-08-19", "2026-08-20", "2026-08-21", "2026-08-22", "2026-08-23"]}], "days": {"2026-07-27": {"date": "2026-07-27", "days_to_race": 62, "plan": {"title": "Descanso", "workout_type": "Rest", "planned_distance_km": null, "planned_duration_min": null, "planned_tss": null, "notes": "Descanso total"}, "activities": [], "primary_activity": null, "completed": false, "session_type": "rest", "garmin": {"sleep_hours": 7.5, "sleep_score": 78.0, "hrv": 60.0, "body_battery": 82.0, "stress_avg": 28.0, "symptoms": ""}, "hrv_7d_avg": null, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-07-28": {"date": "2026-07-28", "days_to_race": 61, "plan": {"title": "Rodaje facil", "workout_type": "Run", "planned_distance_km": 8.0, "planned_duration_min": 45.0, "planned_tss": 55.0, "notes": "Ritmo comodo zona 2"}, "activities": [{"id": 1001, "name": "Rodaje facil manana", "description": "Zona 2, sensaciones buenas", "sport_type": "Run", "start_date_local": "2026-07-28T07:05:00", "distance_km": 8.1, "moving_time_min": 46.0, "elapsed_time_min": 47.0, "pace_min_per_km": 5.68, "avg_speed_mps": 2.93, "relative_effort": 45.0, "kudos": 12, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1001, "name": "Rodaje facil manana", "description": "Zona 2, sensaciones buenas", "sport_type": "Run", "start_date_local": "2026-07-28T07:05:00", "distance_km": 8.1, "moving_time_min": 46.0, "elapsed_time_min": 47.0, "pace_min_per_km": 5.68, "avg_speed_mps": 2.93, "relative_effort": 45.0, "kudos": 12, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "easy", "garmin": {"sleep_hours": 7.2, "sleep_score": 75.0, "hrv": 58.0, "body_battery": 75.0, "stress_avg": 30.0, "symptoms": ""}, "hrv_7d_avg": 60.0, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-07-29": {"date": "2026-07-29", "days_to_race": 60, "plan": {"title": "Series en pista", "workout_type": "Run", "planned_distance_km": 10.0, "planned_duration_min": 55.0, "planned_tss": 78.0, "notes": "6x800m a ritmo de umbral con recuperacion trote"}, "activities": [{"id": 1002, "name": "Series 6x800m", "description": "Umbral, buen control de ritmo", "sport_type": "Run", "start_date_local": "2026-07-29T07:00:00", "distance_km": 10.2, "moving_time_min": 55.0, "elapsed_time_min": 57.0, "pace_min_per_km": 5.39, "avg_speed_mps": 3.09, "relative_effort": 72.0, "kudos": 18, "pr_count": 1, "achievement_count": 1}], "primary_activity": {"id": 1002, "name": "Series 6x800m", "description": "Umbral, buen control de ritmo", "sport_type": "Run", "start_date_local": "2026-07-29T07:00:00", "distance_km": 10.2, "moving_time_min": 55.0, "elapsed_time_min": 57.0, "pace_min_per_km": 5.39, "avg_speed_mps": 3.09, "relative_effort": 72.0, "kudos": 18, "pr_count": 1, "achievement_count": 1}, "completed": true, "session_type": "quality", "garmin": {"sleep_hours": 6.8, "sleep_score": 70.0, "hrv": 55.0, "body_battery": 68.0, "stress_avg": 35.0, "symptoms": ""}, "hrv_7d_avg": 59.0, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "contrast", "timing": "manana", "detail": "Sesion de calidad/larga: contrast therapy (sauna 10-20 min + cold plunge 1-5 min, 2-4 ciclos terminando en frio) o cold plunge solo ayudan a acelerar la recuperacion antes de la siguiente sesion importante.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-07-30": {"date": "2026-07-30", "days_to_race": 59, "plan": {"title": "Rodaje de recuperacion", "workout_type": "Run", "planned_distance_km": 6.0, "planned_duration_min": 35.0, "planned_tss": 40.0, "notes": "Muy suave"}, "activities": [{"id": 1003, "name": "Recuperacion suave", "description": "", "sport_type": "Run", "start_date_local": "2026-07-30T07:10:00", "distance_km": 6.0, "moving_time_min": 36.0, "elapsed_time_min": 36.7, "pace_min_per_km": 6.0, "avg_speed_mps": 2.78, "relative_effort": 32.0, "kudos": 8, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1003, "name": "Recuperacion suave", "description": "", "sport_type": "Run", "start_date_local": "2026-07-30T07:10:00", "distance_km": 6.0, "moving_time_min": 36.0, "elapsed_time_min": 36.7, "pace_min_per_km": 6.0, "avg_speed_mps": 2.78, "relative_effort": 32.0, "kudos": 8, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "easy", "garmin": {"sleep_hours": 7.6, "sleep_score": 80.0, "hrv": 61.0, "body_battery": 80.0, "stress_avg": 26.0, "symptoms": ""}, "hrv_7d_avg": 57.7, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-07-31": {"date": "2026-07-31", "days_to_race": 58, "plan": {"title": "Fuerza tren inferior + core", "workout_type": "Strength", "planned_distance_km": null, "planned_duration_min": 50.0, "planned_tss": 45.0, "notes": "Sesion de fuerza por la manana"}, "activities": [{"id": 1004, "name": "Fuerza tren inferior + core", "description": "Sentadilla, peso muerto rumano, core", "sport_type": "WeightTraining", "start_date_local": "2026-07-31T07:30:00", "distance_km": 0.0, "moving_time_min": 50.0, "elapsed_time_min": 50.0, "pace_min_per_km": null, "avg_speed_mps": 0.0, "relative_effort": 38.0, "kudos": 6, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1004, "name": "Fuerza tren inferior + core", "description": "Sentadilla, peso muerto rumano, core", "sport_type": "WeightTraining", "start_date_local": "2026-07-31T07:30:00", "distance_km": 0.0, "moving_time_min": 50.0, "elapsed_time_min": 50.0, "pace_min_per_km": null, "avg_speed_mps": 0.0, "relative_effort": 38.0, "kudos": 6, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "strength", "garmin": {"sleep_hours": 7.0, "sleep_score": 74.0, "hrv": 57.0, "body_battery": 70.0, "stress_avg": 32.0, "symptoms": ""}, "hrv_7d_avg": 58.5, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_hoy", "timing": "manana", "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-01": {"date": "2026-08-01", "days_to_race": 57, "plan": {"title": "Rodaje largo", "workout_type": "Run", "planned_distance_km": 18.0, "planned_duration_min": 105.0, "planned_tss": 120.0, "notes": "Ritmo aerobico practicar geles cada 45min"}, "activities": [{"id": 1005, "name": "Rodaje largo 18km", "description": "Geles cada 45min, buena sensacion", "sport_type": "Run", "start_date_local": "2026-08-01T06:45:00", "distance_km": 18.3, "moving_time_min": 106.0, "elapsed_time_min": 108.0, "pace_min_per_km": 5.79, "avg_speed_mps": 2.88, "relative_effort": 110.0, "kudos": 30, "pr_count": 1, "achievement_count": 1}], "primary_activity": {"id": 1005, "name": "Rodaje largo 18km", "description": "Geles cada 45min, buena sensacion", "sport_type": "Run", "start_date_local": "2026-08-01T06:45:00", "distance_km": 18.3, "moving_time_min": 106.0, "elapsed_time_min": 108.0, "pace_min_per_km": 5.79, "avg_speed_mps": 2.88, "relative_effort": 110.0, "kudos": 30, "pr_count": 1, "achievement_count": 1}, "completed": true, "session_type": "long_run", "garmin": {"sleep_hours": 7.8, "sleep_score": 82.0, "hrv": 59.0, "body_battery": 78.0, "stress_avg": 27.0, "symptoms": ""}, "hrv_7d_avg": 58.2, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "ninguna", "timing": null, "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — sin necesidad de mas hoy.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-02": {"date": "2026-08-02", "days_to_race": 56, "plan": {"title": "Facil / descanso activo", "workout_type": "Run", "planned_distance_km": 6.0, "planned_duration_min": 35.0, "planned_tss": 35.0, "notes": "Trote muy suave o descanso si hay fatiga"}, "activities": [{"id": 1006, "name": "Trote domingo", "description": "", "sport_type": "Run", "start_date_local": "2026-08-02T08:00:00", "distance_km": 6.2, "moving_time_min": 37.0, "elapsed_time_min": 37.7, "pace_min_per_km": 5.97, "avg_speed_mps": 2.79, "relative_effort": 30.0, "kudos": 9, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1006, "name": "Trote domingo", "description": "", "sport_type": "Run", "start_date_local": "2026-08-02T08:00:00", "distance_km": 6.2, "moving_time_min": 37.0, "elapsed_time_min": 37.7, "pace_min_per_km": 5.97, "avg_speed_mps": 2.79, "relative_effort": 30.0, "kudos": 9, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "easy", "garmin": {"sleep_hours": 8.0, "sleep_score": 85.0, "hrv": 63.0, "body_battery": 85.0, "stress_avg": 22.0, "symptoms": ""}, "hrv_7d_avg": 58.3, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "ninguna", "timing": null, "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — dia libre de protocolo.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-03": {"date": "2026-08-03", "days_to_race": 55, "plan": {"title": "Descanso", "workout_type": "Rest", "planned_distance_km": null, "planned_duration_min": null, "planned_tss": null, "notes": "Descanso total"}, "activities": [], "primary_activity": null, "completed": false, "session_type": "rest", "garmin": {"sleep_hours": 7.4, "sleep_score": 77.0, "hrv": 60.0, "body_battery": 80.0, "stress_avg": 28.0, "symptoms": ""}, "hrv_7d_avg": 59.0, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-04": {"date": "2026-08-04", "days_to_race": 54, "plan": {"title": "Rodaje facil + fuerza noche", "workout_type": "Run", "planned_distance_km": 8.0, "planned_duration_min": 45.0, "planned_tss": 55.0, "notes": "Rodaje en la manana fuerza opcional en la noche esta semana"}, "activities": [{"id": 1007, "name": "Rodaje facil manana", "description": "", "sport_type": "Run", "start_date_local": "2026-08-04T07:05:00", "distance_km": 8.05, "moving_time_min": 45.0, "elapsed_time_min": 46.0, "pace_min_per_km": 5.59, "avg_speed_mps": 2.98, "relative_effort": 44.0, "kudos": 11, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1007, "name": "Rodaje facil manana", "description": "", "sport_type": "Run", "start_date_local": "2026-08-04T07:05:00", "distance_km": 8.05, "moving_time_min": 45.0, "elapsed_time_min": 46.0, "pace_min_per_km": 5.59, "avg_speed_mps": 2.98, "relative_effort": 44.0, "kudos": 11, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "strength", "garmin": {"sleep_hours": 7.1, "sleep_score": 73.0, "hrv": 56.0, "body_battery": 72.0, "stress_avg": 33.0, "symptoms": ""}, "hrv_7d_avg": 59.0, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_hoy", "timing": "manana", "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-05": {"date": "2026-08-05", "days_to_race": 53, "plan": {"title": "Tempo run", "workout_type": "Run", "planned_distance_km": 11.0, "planned_duration_min": 58.0, "planned_tss": 82.0, "notes": "20min a ritmo umbral dentro del rodaje"}, "activities": [{"id": 1008, "name": "Tempo run", "description": "20min a ritmo umbral", "sport_type": "Run", "start_date_local": "2026-08-05T07:00:00", "distance_km": 11.1, "moving_time_min": 58.0, "elapsed_time_min": 59.3, "pace_min_per_km": 5.23, "avg_speed_mps": 3.19, "relative_effort": 76.0, "kudos": 20, "pr_count": 1, "achievement_count": 1}], "primary_activity": {"id": 1008, "name": "Tempo run", "description": "20min a ritmo umbral", "sport_type": "Run", "start_date_local": "2026-08-05T07:00:00", "distance_km": 11.1, "moving_time_min": 58.0, "elapsed_time_min": 59.3, "pace_min_per_km": 5.23, "avg_speed_mps": 3.19, "relative_effort": 76.0, "kudos": 20, "pr_count": 1, "achievement_count": 1}, "completed": true, "session_type": "quality", "garmin": {"sleep_hours": 6.9, "sleep_score": 71.0, "hrv": 54.0, "body_battery": 65.0, "stress_avg": 37.0, "symptoms": ""}, "hrv_7d_avg": 58.7, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "contrast", "timing": "manana", "detail": "Sesion de calidad/larga: contrast therapy (sauna 10-20 min + cold plunge 1-5 min, 2-4 ciclos terminando en frio) o cold plunge solo ayudan a acelerar la recuperacion antes de la siguiente sesion importante.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-06": {"date": "2026-08-06", "days_to_race": 52, "plan": {"title": "Rodaje de recuperacion", "workout_type": "Run", "planned_distance_km": 6.0, "planned_duration_min": 35.0, "planned_tss": 40.0, "notes": ""}, "activities": [], "primary_activity": null, "completed": false, "session_type": "easy", "garmin": {"sleep_hours": 7.5, "sleep_score": 79.0, "hrv": 59.0, "body_battery": 77.0, "stress_avg": 29.0, "symptoms": ""}, "hrv_7d_avg": 58.6, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-07": {"date": "2026-08-07", "days_to_race": 51, "plan": {"title": "Fuerza tren inferior + core", "workout_type": "Strength", "planned_distance_km": null, "planned_duration_min": 50.0, "planned_tss": 45.0, "notes": ""}, "activities": [{"id": 1009, "name": "Fuerza tren inferior + core", "description": "", "sport_type": "WeightTraining", "start_date_local": "2026-08-07T07:30:00", "distance_km": 0.0, "moving_time_min": 50.0, "elapsed_time_min": 50.0, "pace_min_per_km": null, "avg_speed_mps": 0.0, "relative_effort": 37.0, "kudos": 5, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1009, "name": "Fuerza tren inferior + core", "description": "", "sport_type": "WeightTraining", "start_date_local": "2026-08-07T07:30:00", "distance_km": 0.0, "moving_time_min": 50.0, "elapsed_time_min": 50.0, "pace_min_per_km": null, "avg_speed_mps": 0.0, "relative_effort": 37.0, "kudos": 5, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "strength", "garmin": {"sleep_hours": 7.0, "sleep_score": 74.0, "hrv": 57.0, "body_battery": 70.0, "stress_avg": 31.0, "symptoms": ""}, "hrv_7d_avg": 58.3, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_hoy", "timing": "manana", "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-08": {"date": "2026-08-08", "days_to_race": 50, "plan": {"title": "Rodaje largo", "workout_type": "Run", "planned_distance_km": 20.0, "planned_duration_min": 118.0, "planned_tss": 130.0, "notes": "Practicar fueling 60g carbo por hora"}, "activities": [{"id": 1010, "name": "Rodaje largo 20km", "description": "Fueling 60g carbo/hora, buena tolerancia", "sport_type": "Run", "start_date_local": "2026-08-08T06:40:00", "distance_km": 20.4, "moving_time_min": 118.0, "elapsed_time_min": 120.0, "pace_min_per_km": 5.78, "avg_speed_mps": 2.88, "relative_effort": 118.0, "kudos": 34, "pr_count": 2, "achievement_count": 2}], "primary_activity": {"id": 1010, "name": "Rodaje largo 20km", "description": "Fueling 60g carbo/hora, buena tolerancia", "sport_type": "Run", "start_date_local": "2026-08-08T06:40:00", "distance_km": 20.4, "moving_time_min": 118.0, "elapsed_time_min": 120.0, "pace_min_per_km": 5.78, "avg_speed_mps": 2.88, "relative_effort": 118.0, "kudos": 34, "pr_count": 2, "achievement_count": 2}, "completed": true, "session_type": "long_run", "garmin": {"sleep_hours": 7.7, "sleep_score": 81.0, "hrv": 58.0, "body_battery": 74.0, "stress_avg": 30.0, "symptoms": ""}, "hrv_7d_avg": 58.3, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "ninguna", "timing": null, "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — sin necesidad de mas hoy.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-09": {"date": "2026-08-09", "days_to_race": 49, "plan": {"title": "Facil", "workout_type": "Run", "planned_distance_km": 7.0, "planned_duration_min": 40.0, "planned_tss": 38.0, "notes": ""}, "activities": [{"id": 1011, "name": "Trote domingo", "description": "", "sport_type": "Run", "start_date_local": "2026-08-09T08:00:00", "distance_km": 7.1, "moving_time_min": 41.0, "elapsed_time_min": 41.7, "pace_min_per_km": 5.77, "avg_speed_mps": 2.89, "relative_effort": 34.0, "kudos": 10, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1011, "name": "Trote domingo", "description": "", "sport_type": "Run", "start_date_local": "2026-08-09T08:00:00", "distance_km": 7.1, "moving_time_min": 41.0, "elapsed_time_min": 41.7, "pace_min_per_km": 5.77, "avg_speed_mps": 2.89, "relative_effort": 34.0, "kudos": 10, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "easy", "garmin": {"sleep_hours": 7.9, "sleep_score": 84.0, "hrv": 62.0, "body_battery": 83.0, "stress_avg": 24.0, "symptoms": ""}, "hrv_7d_avg": 58.1, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "ninguna", "timing": null, "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — dia libre de protocolo.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-10": {"date": "2026-08-10", "days_to_race": 48, "plan": {"title": "Descanso", "workout_type": "Rest", "planned_distance_km": null, "planned_duration_min": null, "planned_tss": null, "notes": "Descanso total"}, "activities": [], "primary_activity": null, "completed": false, "session_type": "rest", "garmin": {"sleep_hours": 7.3, "sleep_score": 76.0, "hrv": 59.0, "body_battery": 79.0, "stress_avg": 28.0, "symptoms": ""}, "hrv_7d_avg": 58.0, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-11": {"date": "2026-08-11", "days_to_race": 47, "plan": {"title": "Rodaje facil", "workout_type": "Run", "planned_distance_km": 8.0, "planned_duration_min": 45.0, "planned_tss": 55.0, "notes": ""}, "activities": [{"id": 1012, "name": "Rodaje facil manana", "description": "", "sport_type": "Run", "start_date_local": "2026-08-11T07:05:00", "distance_km": 8.0, "moving_time_min": 45.0, "elapsed_time_min": 46.0, "pace_min_per_km": 5.62, "avg_speed_mps": 2.96, "relative_effort": 43.0, "kudos": 12, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1012, "name": "Rodaje facil manana", "description": "", "sport_type": "Run", "start_date_local": "2026-08-11T07:05:00", "distance_km": 8.0, "moving_time_min": 45.0, "elapsed_time_min": 46.0, "pace_min_per_km": 5.62, "avg_speed_mps": 2.96, "relative_effort": 43.0, "kudos": 12, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "easy", "garmin": {"sleep_hours": 7.0, "sleep_score": 73.0, "hrv": 56.0, "body_battery": 71.0, "stress_avg": 33.0, "symptoms": ""}, "hrv_7d_avg": 57.9, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-12": {"date": "2026-08-12", "days_to_race": 46, "plan": {"title": "Intervalos", "workout_type": "Run", "planned_distance_km": 11.0, "planned_duration_min": 58.0, "planned_tss": 85.0, "notes": "8x1000m a ritmo 10k"}, "activities": [{"id": 1013, "name": "Intervalos 8x1000m", "description": "Un poco mas cansado de lo normal pero complete la sesion", "sport_type": "Run", "start_date_local": "2026-08-12T07:00:00", "distance_km": 11.0, "moving_time_min": 58.0, "elapsed_time_min": 60.0, "pace_min_per_km": 5.27, "avg_speed_mps": 3.16, "relative_effort": 80.0, "kudos": 15, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1013, "name": "Intervalos 8x1000m", "description": "Un poco mas cansado de lo normal pero complete la sesion", "sport_type": "Run", "start_date_local": "2026-08-12T07:00:00", "distance_km": 11.0, "moving_time_min": 58.0, "elapsed_time_min": 60.0, "pace_min_per_km": 5.27, "avg_speed_mps": 3.16, "relative_effort": 80.0, "kudos": 15, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "quality", "garmin": {"sleep_hours": 6.7, "sleep_score": 68.0, "hrv": 53.0, "body_battery": 62.0, "stress_avg": 39.0, "symptoms": "mareo leve y me senti mas cansado de lo normal"}, "hrv_7d_avg": 57.9, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "consulta_medica", "timing": null, "detail": "Reportaste: \"mareo leve y me senti mas cansado de lo normal\". No se sugiere sauna ni cold plunge hoy — consulta a un profesional antes de continuar con el protocolo.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-13": {"date": "2026-08-13", "days_to_race": 45, "plan": {"title": "Rodaje de recuperacion", "workout_type": "Run", "planned_distance_km": 6.0, "planned_duration_min": 35.0, "planned_tss": 40.0, "notes": ""}, "activities": [{"id": 1014, "name": "Recuperacion suave", "description": "", "sport_type": "Run", "start_date_local": "2026-08-13T07:10:00", "distance_km": 5.9, "moving_time_min": 37.0, "elapsed_time_min": 37.7, "pace_min_per_km": 6.27, "avg_speed_mps": 2.66, "relative_effort": 35.0, "kudos": 7, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1014, "name": "Recuperacion suave", "description": "", "sport_type": "Run", "start_date_local": "2026-08-13T07:10:00", "distance_km": 5.9, "moving_time_min": 37.0, "elapsed_time_min": 37.7, "pace_min_per_km": 6.27, "avg_speed_mps": 2.66, "relative_effort": 35.0, "kudos": 7, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "easy", "garmin": {"sleep_hours": 6.2, "sleep_score": 55.0, "hrv": 42.0, "body_battery": 28.0, "stress_avg": 55.0, "symptoms": ""}, "hrv_7d_avg": 57.7, "fatigue_flag": true, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-14": {"date": "2026-08-14", "days_to_race": 44, "plan": {"title": "Fuerza tren inferior + core", "workout_type": "Strength", "planned_distance_km": null, "planned_duration_min": 50.0, "planned_tss": 45.0, "notes": ""}, "activities": [{"id": 1015, "name": "Fuerza tren inferior + core", "description": "", "sport_type": "WeightTraining", "start_date_local": "2026-08-14T07:30:00", "distance_km": 0.0, "moving_time_min": 50.0, "elapsed_time_min": 50.0, "pace_min_per_km": null, "avg_speed_mps": 0.0, "relative_effort": 36.0, "kudos": 6, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1015, "name": "Fuerza tren inferior + core", "description": "", "sport_type": "WeightTraining", "start_date_local": "2026-08-14T07:30:00", "distance_km": 0.0, "moving_time_min": 50.0, "elapsed_time_min": 50.0, "pace_min_per_km": null, "avg_speed_mps": 0.0, "relative_effort": 36.0, "kudos": 6, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "strength", "garmin": {"sleep_hours": 7.4, "sleep_score": 78.0, "hrv": 57.0, "body_battery": 74.0, "stress_avg": 30.0, "symptoms": ""}, "hrv_7d_avg": 55.3, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_hoy", "timing": "manana", "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-15": {"date": "2026-08-15", "days_to_race": 43, "plan": {"title": "Rodaje largo", "workout_type": "Run", "planned_distance_km": 22.0, "planned_duration_min": 128.0, "planned_tss": 138.0, "notes": "Practicar fueling y bebida objetivo de la carrera"}, "activities": [{"id": 1016, "name": "Rodaje largo 22km", "description": "Practicando bebida objetivo de carrera", "sport_type": "Run", "start_date_local": "2026-08-15T06:35:00", "distance_km": 22.5, "moving_time_min": 131.0, "elapsed_time_min": 133.0, "pace_min_per_km": 5.82, "avg_speed_mps": 2.86, "relative_effort": 128.0, "kudos": 38, "pr_count": 1, "achievement_count": 1}], "primary_activity": {"id": 1016, "name": "Rodaje largo 22km", "description": "Practicando bebida objetivo de carrera", "sport_type": "Run", "start_date_local": "2026-08-15T06:35:00", "distance_km": 22.5, "moving_time_min": 131.0, "elapsed_time_min": 133.0, "pace_min_per_km": 5.82, "avg_speed_mps": 2.86, "relative_effort": 128.0, "kudos": 38, "pr_count": 1, "achievement_count": 1}, "completed": true, "session_type": "long_run", "garmin": {"sleep_hours": 7.6, "sleep_score": 80.0, "hrv": 58.0, "body_battery": 76.0, "stress_avg": 29.0, "symptoms": ""}, "hrv_7d_avg": 55.3, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "ninguna", "timing": null, "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — sin necesidad de mas hoy.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": [{"checkpoint": "Mañana", "text": "Plan de hoy: rodaje largo de 22km. Dormiste 7.6h, dentro de tu meta de 7-8h. HRV y Body Battery normales, sin senales de fatiga marcada. Antes de salir: lleva agua + electrolitos y los geles que vas a usar en la carrera — es buen dia para seguir practicando la estrategia de fueling (60-70g carbo/hora). Creatina 5g hoy, cuando te acomode."}, {"checkpoint": "Mediodía", "text": "Terminaste el rodaje largo — 22.5km, ritmo y zonas dentro de lo planeado, buena tolerancia al gel. Para la comida principal, prioriza carbohidrato alto hoy (dia de calidad/larga): arroz o pasta + pollo o pescado + verduras, y un batido de proteina si no te da tiempo de comer algo solido en los primeros 30-45min."}, {"checkpoint": "Noche", "text": "Carga de la semana va en linea con el plan. Para hoy, sauna o contrast therapy por la manana ya te tocaba — si no la hiciste, valdria la pena manana en vez de tarde para no quitarte horas de sueno. Duerme entre 10:30 y 11:00pm para llegar a tu meta de sueno."}]}, "2026-08-16": {"date": "2026-08-16", "days_to_race": 42, "plan": {"title": "Facil", "workout_type": "Run", "planned_distance_km": 7.0, "planned_duration_min": 40.0, "planned_tss": 38.0, "notes": ""}, "activities": [{"id": 1017, "name": "Trote domingo", "description": "", "sport_type": "Run", "start_date_local": "2026-08-16T08:00:00", "distance_km": 7.05, "moving_time_min": 41.0, "elapsed_time_min": 41.7, "pace_min_per_km": 5.82, "avg_speed_mps": 2.87, "relative_effort": 33.0, "kudos": 9, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1017, "name": "Trote domingo", "description": "", "sport_type": "Run", "start_date_local": "2026-08-16T08:00:00", "distance_km": 7.05, "moving_time_min": 41.0, "elapsed_time_min": 41.7, "pace_min_per_km": 5.82, "avg_speed_mps": 2.87, "relative_effort": 33.0, "kudos": 9, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "easy", "garmin": {"sleep_hours": 8.1, "sleep_score": 86.0, "hrv": 63.0, "body_battery": 85.0, "stress_avg": 21.0, "symptoms": ""}, "hrv_7d_avg": 55.3, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "ninguna", "timing": null, "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — dia libre de protocolo.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": [{"checkpoint": "Mañana", "text": "Hoy toca facil, 7km. Dormiste bien (8.1h). Sin senales de fatiga. Recuerda que ayer fue tu rodaje largo — hoy es dia de recuperacion activa, no busques ritmo."}, {"checkpoint": "Noche", "text": "Semana cerrada: cumpliste el plan de kilometraje. Sauna sola hoy en la noche es una buena opcion para relajar antes de dormir (1-3h antes de acostarte). Manana entra semana nueva — descanso total el lunes."}]}, "2026-08-17": {"date": "2026-08-17", "days_to_race": 41, "plan": {"title": "Descanso", "workout_type": "Rest", "planned_distance_km": null, "planned_duration_min": null, "planned_tss": null, "notes": "Descanso total"}, "activities": [], "primary_activity": null, "completed": false, "session_type": "rest", "garmin": {"sleep_hours": 7.5, "sleep_score": 79.0, "hrv": 60.0, "body_battery": 81.0, "stress_avg": 27.0, "symptoms": ""}, "hrv_7d_avg": 55.4, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": [{"checkpoint": "Mañana", "text": "Descanso total hoy segun el plan. Aprovecha para hidratarte bien y dormir a tu hora. Nada de sauna/cold plunge forzado si no te late — es opcional en dia de descanso."}, {"checkpoint": "Noche", "text": "Buen descanso hoy. Manana toca rodaje facil de 8km — nada especial que preparar, solo tu desayuno habitual antes de salir."}]}, "2026-08-18": {"date": "2026-08-18", "days_to_race": 40, "plan": {"title": "Rodaje facil", "workout_type": "Run", "planned_distance_km": 8.0, "planned_duration_min": 45.0, "planned_tss": 55.0, "notes": ""}, "activities": [{"id": 1018, "name": "Rodaje facil manana", "description": "", "sport_type": "Run", "start_date_local": "2026-08-18T07:05:00", "distance_km": 8.1, "moving_time_min": 46.0, "elapsed_time_min": 47.0, "pace_min_per_km": 5.68, "avg_speed_mps": 2.93, "relative_effort": 46.0, "kudos": 14, "pr_count": 0, "achievement_count": 0}], "primary_activity": {"id": 1018, "name": "Rodaje facil manana", "description": "", "sport_type": "Run", "start_date_local": "2026-08-18T07:05:00", "distance_km": 8.1, "moving_time_min": 46.0, "elapsed_time_min": 47.0, "pace_min_per_km": 5.68, "avg_speed_mps": 2.93, "relative_effort": 46.0, "kudos": 14, "pr_count": 0, "achievement_count": 0}, "completed": true, "session_type": "easy", "garmin": {"sleep_hours": 7.2, "sleep_score": 75.0, "hrv": 58.0, "body_battery": 76.0, "stress_avg": 30.0, "symptoms": ""}, "hrv_7d_avg": 55.6, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": [{"checkpoint": "Mañana", "text": "Plan de hoy: rodaje facil de 8km. Dormiste 7.2h, dentro de meta. HRV y Body Battery normales. ¿Como te sientes fisicamente hoy? Avisame si algo duele o se siente distinto a lo normal antes de salir."}, {"checkpoint": "Mediodía", "text": "Rodaje completado, 8.1km, sensaciones buenas segun Strava. Vas en linea con el plan de la semana. Para la comida, porcion moderada de carbohidrato (dia facil, no hace falta cargar tanto) + proteina — algo tipo ensalada con pollo o pescado y arroz o tortilla."}]}, "2026-08-19": {"date": "2026-08-19", "days_to_race": 39, "plan": {"title": "Umbral", "workout_type": "Run", "planned_distance_km": 12.0, "planned_duration_min": 60.0, "planned_tss": 88.0, "notes": "25min a ritmo umbral"}, "activities": [], "primary_activity": null, "completed": false, "session_type": "quality", "garmin": null, "hrv_7d_avg": 55.9, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "contrast", "timing": "manana", "detail": "Sesion de calidad/larga: contrast therapy (sauna 10-20 min + cold plunge 1-5 min, 2-4 ciclos terminando en frio) o cold plunge solo ayudan a acelerar la recuperacion antes de la siguiente sesion importante.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-20": {"date": "2026-08-20", "days_to_race": 38, "plan": {"title": "Rodaje de recuperacion", "workout_type": "Run", "planned_distance_km": 6.0, "planned_duration_min": 35.0, "planned_tss": 40.0, "notes": ""}, "activities": [], "primary_activity": null, "completed": false, "session_type": "easy", "garmin": null, "hrv_7d_avg": 56.3, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_o_contrast", "timing": "manana", "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-21": {"date": "2026-08-21", "days_to_race": 37, "plan": {"title": "Fuerza tren inferior + core", "workout_type": "Strength", "planned_distance_km": null, "planned_duration_min": 50.0, "planned_tss": 45.0, "notes": ""}, "activities": [], "primary_activity": null, "completed": false, "session_type": "strength", "garmin": null, "hrv_7d_avg": 59.2, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "sauna_hoy", "timing": "manana", "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-22": {"date": "2026-08-22", "days_to_race": 36, "plan": {"title": "Rodaje largo", "workout_type": "Run", "planned_distance_km": 24.0, "planned_duration_min": 138.0, "planned_tss": 145.0, "notes": "Ultimo rodaje largo antes de reducir volumen"}, "activities": [], "primary_activity": null, "completed": false, "session_type": "long_run", "garmin": null, "hrv_7d_avg": 59.8, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "ninguna", "timing": null, "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — sin necesidad de mas hoy.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}, "2026-08-23": {"date": "2026-08-23", "days_to_race": 35, "plan": {"title": "Facil", "workout_type": "Run", "planned_distance_km": 7.0, "planned_duration_min": 40.0, "planned_tss": 38.0, "notes": ""}, "activities": [], "primary_activity": null, "completed": false, "session_type": "easy", "garmin": null, "hrv_7d_avg": 60.3, "fatigue_flag": false, "recovery_suggestion": {"recommendation": "ninguna", "timing": null, "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — dia libre de protocolo.", "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."}, "recommendations_log": []}}, "recent_sessions": [{"date": "2026-08-18", "session_type": "easy", "name": "Rodaje facil manana", "sport_type": "Run", "distance_km": 8.1, "pace_min_per_km": 5.68, "relative_effort": 46.0, "pr_count": 0, "kudos": 14, "achievement_count": 0}, {"date": "2026-08-16", "session_type": "easy", "name": "Trote domingo", "sport_type": "Run", "distance_km": 7.05, "pace_min_per_km": 5.82, "relative_effort": 33.0, "pr_count": 0, "kudos": 9, "achievement_count": 0}, {"date": "2026-08-15", "session_type": "long_run", "name": "Rodaje largo 22km", "sport_type": "Run", "distance_km": 22.5, "pace_min_per_km": 5.82, "relative_effort": 128.0, "pr_count": 1, "kudos": 38, "achievement_count": 1}, {"date": "2026-08-14", "session_type": "strength", "name": "Fuerza tren inferior + core", "sport_type": "WeightTraining", "distance_km": 0.0, "pace_min_per_km": null, "relative_effort": 36.0, "pr_count": 0, "kudos": 6, "achievement_count": 0}, {"date": "2026-08-13", "session_type": "easy", "name": "Recuperacion suave", "sport_type": "Run", "distance_km": 5.9, "pace_min_per_km": 6.27, "relative_effort": 35.0, "pr_count": 0, "kudos": 7, "achievement_count": 0}, {"date": "2026-08-12", "session_type": "quality", "name": "Intervalos 8x1000m", "sport_type": "Run", "distance_km": 11.0, "pace_min_per_km": 5.27, "relative_effort": 80.0, "pr_count": 0, "kudos": 15, "achievement_count": 0}, {"date": "2026-08-11", "session_type": "easy", "name": "Rodaje facil manana", "sport_type": "Run", "distance_km": 8.0, "pace_min_per_km": 5.62, "relative_effort": 43.0, "pr_count": 0, "kudos": 12, "achievement_count": 0}, {"date": "2026-08-09", "session_type": "easy", "name": "Trote domingo", "sport_type": "Run", "distance_km": 7.1, "pace_min_per_km": 5.77, "relative_effort": 34.0, "pr_count": 0, "kudos": 10, "achievement_count": 0}, {"date": "2026-08-08", "session_type": "long_run", "name": "Rodaje largo 20km", "sport_type": "Run", "distance_km": 20.4, "pace_min_per_km": 5.78, "relative_effort": 118.0, "pr_count": 2, "kudos": 34, "achievement_count": 2}, {"date": "2026-08-07", "session_type": "strength", "name": "Fuerza tren inferior + core", "sport_type": "WeightTraining", "distance_km": 0.0, "pace_min_per_km": null, "relative_effort": 37.0, "pr_count": 0, "kudos": 5, "achievement_count": 0}, {"date": "2026-08-05", "session_type": "quality", "name": "Tempo run", "sport_type": "Run", "distance_km": 11.1, "pace_min_per_km": 5.23, "relative_effort": 76.0, "pr_count": 1, "kudos": 20, "achievement_count": 1}, {"date": "2026-08-04", "session_type": "strength", "name": "Rodaje facil manana", "sport_type": "Run", "distance_km": 8.05, "pace_min_per_km": 5.59, "relative_effort": 44.0, "pr_count": 0, "kudos": 11, "achievement_count": 0}, {"date": "2026-08-02", "session_type": "easy", "name": "Trote domingo", "sport_type": "Run", "distance_km": 6.2, "pace_min_per_km": 5.97, "relative_effort": 30.0, "pr_count": 0, "kudos": 9, "achievement_count": 0}, {"date": "2026-08-01", "session_type": "long_run", "name": "Rodaje largo 18km", "sport_type": "Run", "distance_km": 18.3, "pace_min_per_km": 5.79, "relative_effort": 110.0, "pr_count": 1, "kudos": 30, "achievement_count": 1}, {"date": "2026-07-31", "session_type": "strength", "name": "Fuerza tren inferior + core", "sport_type": "WeightTraining", "distance_km": 0.0, "pace_min_per_km": null, "relative_effort": 38.0, "pr_count": 0, "kudos": 6, "achievement_count": 0}, {"date": "2026-07-30", "session_type": "easy", "name": "Recuperacion suave", "sport_type": "Run", "distance_km": 6.0, "pace_min_per_km": 6.0, "relative_effort": 32.0, "pr_count": 0, "kudos": 8, "achievement_count": 0}, {"date": "2026-07-29", "session_type": "quality", "name": "Series 6x800m", "sport_type": "Run", "distance_km": 10.2, "pace_min_per_km": 5.39, "relative_effort": 72.0, "pr_count": 1, "kudos": 18, "achievement_count": 1}, {"date": "2026-07-28", "session_type": "easy", "name": "Rodaje facil manana", "sport_type": "Run", "distance_km": 8.1, "pace_min_per_km": 5.68, "relative_effort": 45.0, "pr_count": 0, "kudos": 12, "achievement_count": 0}]};
+
+const FSANS = "Archivo,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
+const FMONO = "'IBM Plex Mono',ui-monospace,Consolas,'Liberation Mono',monospace";
+
+const TYPE = {
+  long_run: ['Rodaje largo', '#8FB4FF'],
+  quality: ['Calidad', '#FF8A8A'],
+  easy: ['Facil', '#7FE7C4'],
+  strength: ['Fuerza', '#F0B24A'],
+  rest: ['Descanso', '#6B7280'],
+  other: ['Otro', '#8A8F98'],
+};
+const REC_META = {
+  contrast: ['Contrast therapy', '#8FB4FF'],
+  sauna_o_contrast: ['Sauna o contrast · AM', '#7FE7C4'],
+  sauna_hoy: ['Sauna hoy · frio manana', '#F0B24A'],
+  sauna: ['Sauna', '#7FE7C4'],
+  ninguna: ['Sin protocolo', '#6B7280'],
+  consulta_medica: ['Consultar medico', '#FF8A8A'],
+};
+const SEM_META = {
+  en_linea: ['En linea', '#7FE7C4'],
+  atrasado: ['Atrasado', '#F0B24A'],
+  adelantado: ['Adelantado', '#8FB4FF'],
+};
+const MONTHS = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+const SAFETY = 'Orientacion general de recuperacion deportiva, no consejo medico.';
 
 function pad(n){ return String(n).padStart(2,'0'); }
 function toISO(d){ return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); }
-function fromISO(s){ const [y,m,d]=s.split('-').map(Number); return new Date(y,m-1,d); }
-function addDays(d,n){ const r=new Date(d); r.setDate(r.getDate()+n); return r; }
-function startOfWeek(d){ const r=new Date(d); const wd=(r.getDay()+6)%7; return addDays(r,-wd); }
-function startOfMonth(d){ return new Date(d.getFullYear(), d.getMonth(), 1); }
+function fromISO(s){ const p = s.split('-').map(Number); return new Date(p[0], p[1]-1, p[2]); }
+function addDays(d,n){ const r = new Date(d); r.setDate(r.getDate()+n); return r; }
+function startOfWeek(d){ const r = new Date(d); return addDays(r, -((r.getDay()+6)%7)); }
+function shortDate(iso){ if(!iso) return ''; const d = fromISO(iso); return d.getDate()+' '+MONTHS[d.getMonth()]; }
+function fmtPace(p){ if(!p) return '—'; const m = Math.floor(p); return m+':'+pad(Math.round((p-m)*60))+'/km'; }
+function formatGen(iso){
+  if(!iso) return '';
+  const [datePart, timePart] = iso.split('T');
+  const d = fromISO(datePart);
+  const hm = (timePart||'').slice(0,5);
+  return d.getDate()+' '+MONTHS[d.getMonth()]+' '+d.getFullYear()+(hm?' · '+hm:'');
+}
 
 const allDates = Object.keys(DATA.days).sort();
 const activeDates = allDates.filter(d => DATA.days[d].completed || DATA.days[d].garmin);
-const latestDate = activeDates.length ? fromISO(activeDates[activeDates.length-1])
-                  : (allDates.length ? fromISO(allDates[allDates.length-1]) : new Date());
-const todayISO = toISO(latestDate);
+const TODAY = activeDates.length ? activeDates[activeDates.length-1]
+            : (allDates.length ? allDates[allDates.length-1] : toISO(new Date()));
 
 const state = {
   view: 'week',
-  refDate: new Date(latestDate),
-  expanded: null,
-  customStart: allDates.length ? allDates[Math.max(0, allDates.length-7)] : todayISO,
-  customEnd: todayISO,
+  ref: TODAY,
+  sel: TODAY,
+  cs: allDates.length ? allDates[Math.max(0, allDates.length-7)] : TODAY,
+  ce: TODAY,
 };
 
-function renderSummary(){
-  const s = DATA.week_summary || {};
-  const [semLabel, semColor] = SEMAFORO_LABELS[s.semaforo] || ['—','#888'];
-  const sleepGoal = (s.sleep_goal||[7,8]).join('-')+'h';
-  const el = document.getElementById('summary');
-  el.innerHTML = `
-    <div class="stat"><div class="value">${s.days_to_race ?? '—'}</div><div class="label">Dias para la carrera</div></div>
-    <div class="stat"><div class="value"><span class="badge" style="background:${semColor}">${semLabel}</span></div><div class="label">Cumplimiento del plan</div></div>
-    <div class="stat"><div class="value">${(s.actual_km??0)}<span style="font-size:.6em;color:var(--muted)">/${(s.planned_km??0)}km</span></div><div class="label">KM semana (real/plan)</div></div>
-    <div class="stat"><div class="value">${s.avg_sleep_hours ?? '—'}h</div><div class="label">Sueno vs meta ${sleepGoal}</div></div>
-  `;
-}
-
-function recoveryChip(sug){
-  if(!sug) return '';
-  const isWarn = sug.recommendation === 'consulta_medica';
-  const label = RECOVERY_LABELS[sug.recommendation] || sug.recommendation;
-  const timing = sug.timing ? (sug.timing==='manana'?'AM':'PM') : '';
-  return `<span class="chip ${isWarn?'warn':''}" tabindex="0">
-    <span class="chip-label">${label}${timing?' · '+timing:''}</span>
-    <span class="tooltip">${sug.detail||''}<span class="safety">${sug.safety_note||''}</span></span>
-  </span>`;
-}
-
-function dayCellContent(iso, compact){
-  const day = DATA.days[iso];
-  const dnum = fromISO(iso).getDate();
-  if(!day){
-    return `<div class="dnum">${dnum}</div>`;
-  }
-  const color = SESSION_COLORS[day.session_type] || '#888';
-  const label = SESSION_LABELS[day.session_type] || day.session_type;
-  const check = day.completed ? '<span class="check">✓</span>' : '';
-  let strava = '';
-  if(day.primary_activity){
-    const a = day.primary_activity;
-    const bits = [];
-    if(a.relative_effort) bits.push('Esf '+Math.round(a.relative_effort));
-    if(a.pr_count) bits.push(a.pr_count+' PR');
-    if(a.kudos) bits.push(a.kudos+' 👏');
-    if(bits.length) strava = `<div class="strava-mini">${bits.join(' · ')}</div>`;
-  }
-  return `
-    <div class="dnum"><span><span class="stype-dot" style="background:${color}"></span>${dnum}</span>${check}</div>
-    <div class="stype-label">${label}</div>
-    ${strava}
-    ${recoveryChip(day.recovery_suggestion)}
-  `;
-}
-
-function renderDayDetail(iso){
-  const box = document.getElementById('dayDetail');
-  const day = DATA.days[iso];
-  if(!day){
-    box.style.display='none';
-    return;
-  }
-  box.style.display='block';
-  const log = day.recommendations_log || [];
-  let logHtml = '<p class="empty-note">Sin registro de checkpoints para este dia.</p>';
-  if(log.length){
-    logHtml = log.map(e => `<div class="log-entry"><span class="cp">${e.checkpoint}:</span><span class="txt">${e.text}</span></div>`).join('');
-  }
-  const plan = day.plan;
-  const planHtml = plan ? `<p style="font-size:.78rem;color:var(--muted)">Plan: ${plan.title||''} ${plan.planned_distance_km?('· '+plan.planned_distance_km+'km'):''}</p>` : '';
-  box.innerHTML = `<h3>${iso}${iso===todayISO?' (mas reciente con datos)':''}</h3>${planHtml}${logHtml}`;
-}
-
-function renderCalendar(){
-  const cal = document.getElementById('calendar');
-  const label = document.getElementById('rangeLabel');
-  let isoList = [];
-  let cols = 7;
-
-  if(state.view === 'day'){
-    isoList = [toISO(state.refDate)];
-    cols = 1;
-    label.textContent = isoList[0];
-  } else if(state.view === 'week'){
-    const start = startOfWeek(state.refDate);
-    isoList = Array.from({length:7}, (_,i)=>toISO(addDays(start,i)));
-    label.textContent = isoList[0]+' a '+isoList[6];
-  } else if(state.view === 'month'){
-    const start = startOfMonth(state.refDate);
-    const gridStart = startOfWeek(start);
-    isoList = Array.from({length:42}, (_,i)=>toISO(addDays(gridStart,i)));
-    label.textContent = state.refDate.toLocaleDateString('es-MX', {month:'long', year:'numeric'});
-  } else if(state.view === 'custom'){
-    const s = fromISO(state.customStart), e = fromISO(state.customEnd);
-    const days = Math.max(0, Math.round((e-s)/86400000));
-    isoList = Array.from({length:days+1}, (_,i)=>toISO(addDays(s,i)));
-    cols = 7;
-    label.textContent = state.customStart+' a '+state.customEnd;
-  }
-
-  cal.innerHTML = '';
-  const grid = document.createElement('div');
-  grid.className = 'cal-grid' + (cols===1?' single':'');
-  cal.appendChild(grid);
-
-  if(cols===7 && state.view!=='day'){
-    ['L','M','X','J','V','S','D'].forEach(d=>{
-      const dow = document.createElement('div');
-      dow.className='dow'; dow.textContent=d;
-      grid.appendChild(dow);
-    });
-  }
-
-  const refMonth = state.refDate.getMonth();
-  isoList.forEach(iso=>{
-    const cell = document.createElement('div');
-    cell.className = 'day-cell';
-    if(iso===todayISO) cell.classList.add('today');
-    if(state.view==='month' && fromISO(iso).getMonth()!==refMonth) cell.classList.add('outside');
-    cell.innerHTML = dayCellContent(iso, cols!==1);
-    cell.addEventListener('click', (ev)=>{
-      if(ev.target.closest('.chip')) return;
-      state.expanded = state.expanded===iso ? null : iso;
-      renderDayDetail(state.expanded);
-    });
-    grid.appendChild(cell);
-  });
-
-  if(state.view==='day'){
-    state.expanded = isoList[0];
-    renderDayDetail(state.expanded);
-  } else if(state.expanded && isoList.includes(state.expanded)){
-    renderDayDetail(state.expanded);
-  } else {
-    document.getElementById('dayDetail').style.display='none';
-  }
-}
-
-function renderChart(){
-  const weeks = (DATA.weeks||[]).slice(-8);
-  const wrap = document.getElementById('chart');
-  if(!weeks.length){ wrap.innerHTML = '<p class="empty-note">Sin datos suficientes.</p>'; return; }
-
-  const w = 560, h = 190, padL = 34, padB = 34, padT = 10;
-  const barW = (w - padL - 10) / weeks.length;
-  const maxEffort = Math.max(1, ...weeks.map(x=>x.total_relative_effort||0));
-
-  let svg = `<svg viewBox="0 0 ${w} ${h}" style="width:100%;height:auto;max-width:${w}px" role="img" aria-label="Carga semanal por esfuerzo de Strava">`;
-  // eje
-  svg += `<line x1="${padL}" y1="${h-padB}" x2="${w-5}" y2="${h-padB}" stroke="var(--border)" stroke-width="1"/>`;
-
-  weeks.forEach((wk,i)=>{
-    const x = padL + i*barW + 4;
-    const bw = barW - 8;
-    const eff = wk.total_relative_effort||0;
-    const bh = (eff/maxEffort) * (h-padT-padB);
-    const y = h - padB - bh;
-    svg += `<rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="3" fill="var(--accent)" opacity="0.85"><title>Semana ${wk.week_start}: esfuerzo ${eff}</title></rect>`;
-    svg += `<text x="${x+bw/2}" y="${h-padB+13}" font-size="8" fill="var(--muted)" text-anchor="middle">${wk.week_start.slice(5)}</text>`;
-    svg += `<text x="${x+bw/2}" y="${y-3}" font-size="8" fill="var(--text)" text-anchor="middle">${Math.round(eff)}</text>`;
-  });
-  svg += `</svg>`;
-
-  let kmRows = weeks.map(wk => `<tr><td>${wk.week_start}</td><td>${wk.planned_km}km</td><td>${wk.actual_km}km</td></tr>`).join('');
-  svg += `<div class="table-wrap"><table><thead><tr><th>Semana</th><th>Plan (TP)</th><th>Real (Strava)</th></tr></thead><tbody>${kmRows}</tbody></table></div>`;
-
-  wrap.innerHTML = svg;
-}
-
-function fmtPace(p){
-  if(!p) return '—';
-  const min = Math.floor(p), sec = Math.round((p-min)*60);
-  return min+':'+pad(sec)+'/km';
-}
-
-function renderTable(){
-  const tbody = document.querySelector('#sessionsTable tbody');
-  const rows = (DATA.recent_sessions||[]).map(s=>`
-    <tr>
-      <td>${s.date}</td>
-      <td>${SESSION_LABELS[s.session_type]||s.session_type}</td>
-      <td>${s.distance_km??'—'}km</td>
-      <td>${fmtPace(s.pace_min_per_km)}</td>
-      <td>${s.relative_effort??'—'}</td>
-      <td>${s.pr_count||0}</td>
-      <td>${s.kudos||0}</td>
-    </tr>`).join('');
-  tbody.innerHTML = rows || '<tr><td colspan="7" class="empty-note">Sin sesiones recientes.</td></tr>';
-}
-
-function setActiveTab(){
-  document.querySelectorAll('#viewTabs button').forEach(b=>{
-    b.classList.toggle('active', b.dataset.view===state.view);
-  });
-  document.getElementById('customRange').classList.toggle('active', state.view==='custom');
-  document.getElementById('navRow').style.display = state.view==='custom' ? 'none' : 'flex';
-}
+function byDate(iso){ return DATA.days[iso]; }
 
 function step(dir){
-  if(state.view==='day') state.refDate = addDays(state.refDate, dir);
-  else if(state.view==='week') state.refDate = addDays(state.refDate, dir*7);
-  else if(state.view==='month') state.refDate = new Date(state.refDate.getFullYear(), state.refDate.getMonth()+dir, 1);
-  renderCalendar();
+  const d = fromISO(state.ref);
+  let n;
+  if(state.view === 'day') n = addDays(d, dir);
+  else if(state.view === 'month') n = new Date(d.getFullYear(), d.getMonth()+dir, 1);
+  else n = addDays(d, dir*7);
+  state.ref = toISO(n);
+  if(state.view === 'day') state.sel = state.ref;
+  render();
 }
 
-document.getElementById('viewTabs').addEventListener('click', (e)=>{
-  const btn = e.target.closest('button');
-  if(!btn) return;
-  state.view = btn.dataset.view;
-  setActiveTab();
-  renderCalendar();
-});
-document.getElementById('prevBtn').addEventListener('click', ()=>step(-1));
-document.getElementById('nextBtn').addEventListener('click', ()=>step(1));
-document.getElementById('customStart').addEventListener('change', (e)=>{ state.customStart = e.target.value; renderCalendar(); });
-document.getElementById('customEnd').addEventListener('change', (e)=>{ state.customEnd = e.target.value; renderCalendar(); });
+function computeVals(){
+  const S = DATA.week_summary || {};
+  const sem = SEM_META[S.semaforo] || ['—', '#8A8F98'];
+  const pct = S.planned_km ? Math.round(S.actual_km / S.planned_km * 100) : 0;
 
-document.getElementById('customStart').value = state.customStart;
-document.getElementById('customEnd').value = state.customEnd;
+  const ref = fromISO(state.ref);
+  let list = [], cols = 'repeat(7,minmax(0,1fr))', dows = ['L','M','X','J','V','S','D'], rangeLabel = '';
+  if(state.view === 'day'){
+    list = [state.ref]; cols = 'minmax(0,1fr)'; dows = []; rangeLabel = shortDate(state.ref);
+  } else if(state.view === 'week'){
+    const s = startOfWeek(ref);
+    list = Array.from({length:7}, (_,i) => toISO(addDays(s,i)));
+    rangeLabel = shortDate(list[0])+' — '+shortDate(list[6]);
+  } else if(state.view === 'month'){
+    const first = new Date(ref.getFullYear(), ref.getMonth(), 1);
+    const gs = startOfWeek(first);
+    list = Array.from({length:42}, (_,i) => toISO(addDays(gs,i)));
+    rangeLabel = MONTHS[ref.getMonth()]+' '+ref.getFullYear();
+  } else {
+    const a = fromISO(state.cs), b = fromISO(state.ce);
+    const n = Math.max(0, Math.round((b-a)/86400000));
+    list = Array.from({length: Math.min(n+1, 63)}, (_,i) => toISO(addDays(a,i)));
+    rangeLabel = shortDate(state.cs)+' — '+shortDate(state.ce);
+  }
 
-renderSummary();
-setActiveTab();
-renderCalendar();
-renderChart();
-renderTable();
+  const cells = list.map(iso => {
+    const day = byDate(iso);
+    const ty = day ? (TYPE[day.session_type] || TYPE.other) : null;
+    const outside = state.view === 'month' && fromISO(iso).getMonth() !== ref.getMonth();
+    const isSel = iso === state.sel;
+    const act = day && day.primary_activity;
+    return {
+      iso,
+      num: fromISO(iso).getDate(),
+      label: ty ? ty[0] : '',
+      dot: ty ? ty[1] : 'rgba(255,255,255,.10)',
+      eff: act && act.relative_effort ? 'Esf '+Math.round(act.relative_effort)
+           : (day && day.plan && day.plan.planned_distance_km ? day.plan.planned_distance_km+' km' : ''),
+      effColor: day && day.completed ? '#C7CBD2' : '#7C828C',
+      bg: isSel ? '#1C2027' : '#13151A',
+      border: isSel ? 'rgba(255,255,255,.28)' : (iso === TODAY ? 'rgba(143,180,255,.45)' : 'rgba(255,255,255,.06)'),
+      op: day ? (outside ? 0.35 : 1) : 0.3,
+    };
+  });
+
+  const td = byDate(TODAY);
+  const tdTy = TYPE[td.session_type] || TYPE.other;
+  const tdRecMeta = REC_META[td.recovery_suggestion.recommendation] || [td.recovery_suggestion.recommendation, '#8A8F98'];
+  const tdAct = td.primary_activity;
+  const tdMetrics = [
+    {label:'DISTANCIA', val: tdAct && tdAct.distance_km ? tdAct.distance_km+' km' : '—'},
+    {label:'RITMO', val: fmtPace(tdAct && tdAct.pace_min_per_km)},
+    {label:'ESFUERZO', val: (tdAct && tdAct.relative_effort) ?? '—'},
+    {label:'SUEÑO', val: td.garmin ? td.garmin.sleep_hours+'h' : '—', color: td.garmin && td.garmin.sleep_hours >= 7 ? '#7FE7C4' : '#F0B24A'},
+  ];
+
+  const sel = byDate(state.sel);
+  let selVals = null;
+  if(sel){
+    const rec = REC_META[sel.recovery_suggestion.recommendation] || [sel.recovery_suggestion.recommendation, '#8A8F98'];
+    const g = sel.garmin;
+    const act = sel.primary_activity;
+    const selTy = TYPE[sel.session_type] || TYPE.other;
+    const planKm = sel.plan && sel.plan.planned_distance_km;
+    const selPlan = [
+      planKm ? 'Plan: '+planKm+' km' : 'Plan: sin kilometraje',
+      (sel.plan && sel.plan.notes) || '',
+      'Recuperacion: '+rec[0],
+    ].filter(Boolean).join(' · ');
+    const selMetrics = [
+      {label:'SUEÑO', val: g ? g.sleep_hours+'h' : '—', color: g ? (g.sleep_hours >= 7 ? '#7FE7C4' : '#F0B24A') : '#4A4F57'},
+      {label:'CALIDAD SUEÑO', val: g ? g.sleep_score : '—'},
+      {label:'HRV', val: g ? g.hrv : '—', color: g && sel.hrv_7d_avg && g.hrv < sel.hrv_7d_avg-8 ? '#F0B24A' : '#C7CBD2'},
+      {label:'BODY BATTERY', val: g ? g.body_battery : '—', color: g && g.body_battery < 50 ? '#F0B24A' : '#C7CBD2'},
+      {label:'ESTRÉS', val: g ? g.stress_avg : '—'},
+      {label:'HRV 7 DIAS', val: sel.hrv_7d_avg ?? '—'},
+      {label:'REALIZADO', val: act && act.distance_km ? act.distance_km+' km' : (sel.completed ? 'Si' : 'No'), color: sel.completed ? '#7FE7C4' : '#6B7280'},
+      {label:'KUDOS / PR', val: act ? (act.kudos||0)+' / '+(act.pr_count||0) : '—'},
+    ];
+    let selWarn = '';
+    if(sel.recovery_suggestion.recommendation === 'consulta_medica') selWarn = sel.recovery_suggestion.detail;
+    else if(sel.fatigue_flag) selWarn = 'Bandera de fatiga: HRV y Body Battery por debajo de tu linea base. Considera bajar intensidad o revisarlo con tu entrenador.';
+    const selLogs = sel.recommendations_log || [];
+    selVals = {
+      title: (sel.plan && sel.plan.title) || selTy[0],
+      date: state.sel,
+      plan: selPlan,
+      metrics: selMetrics,
+      warn: selWarn,
+      logs: selLogs,
+      logTitle: selLogs.length ? 'REGISTRO DE CHECKPOINTS' : 'SIN CHECKPOINTS REGISTRADOS ESTE DIA',
+    };
+  }
+
+  const weeks = (DATA.weeks || []).slice(-8);
+  const vals = weeks.map(w => w.total_relative_effort || 0);
+  const max = Math.max.apply(null, vals) || 1;
+  const bars = weeks.map((w,i) => ({
+    label: shortDate(w.week_start),
+    val: Math.round(vals[i]),
+    h: Math.max(6, Math.round(vals[i]/max*104))+'px',
+    color: w.week_start === S.week_start ? '#F0B24A' : '#8FB4FF',
+  }));
+  const weekRows = weeks.map(w => {
+    const p = w.planned_km ? Math.round(w.actual_km/w.planned_km*100) : 0;
+    return {label: shortDate(w.week_start)+' · plan '+w.planned_km+' km', val: w.actual_km+' km · '+p+'%', bar: Math.min(100,p)+'%', color: p >= 95 ? '#7FE7C4' : '#F0B24A'};
+  });
+
+  const sessions = (DATA.recent_sessions || []).slice(0,10).map(s => {
+    const ty = TYPE[s.session_type] || TYPE.other;
+    const meta = [shortDate(s.date), ty[0], 'esf '+(s.relative_effort ?? '—')]
+      .concat(s.kudos ? [s.kudos+' kudos'] : [])
+      .concat(s.pr_count ? [s.pr_count+' PR'] : [])
+      .join(' · ');
+    return {
+      name: s.name || ty[0],
+      color: ty[1],
+      meta,
+      dist: s.distance_km ? s.distance_km+' km' : ty[0],
+      pace: fmtPace(s.pace_min_per_km),
+    };
+  });
+
+  const tabs = [['day','Dia'],['week','Semana'],['month','Mes'],['custom','Rango']].map(t => ({
+    key: t[0], label: t[1],
+    bg: state.view === t[0] ? '#F2F3F5' : '#13151A',
+    color: state.view === t[0] ? '#0A0B0D' : '#8A8F98',
+    border: state.view === t[0] ? '#F2F3F5' : 'rgba(255,255,255,.08)',
+  }));
+
+  const currentWeek = weeks.find(w => w.week_start === S.week_start);
+
+  return {
+    gen: formatGen(DATA.generated_at), dtr: S.days_to_race ?? '—', goal: DATA.goal_time || '',
+    raceLabel: DATA.race_date ? shortDate(DATA.race_date)+' '+fromISO(DATA.race_date).getFullYear() : '',
+    semLabel: sem[0], semColor: sem[1], semBg: sem[1]+'14', semBorder: sem[1]+'59',
+    weekLabel: currentWeek ? shortDate(currentWeek.week_start)+' — '+shortDate(currentWeek.week_end) : '',
+    weekActual: S.actual_km ?? 0, weekPlanned: S.planned_km ?? 0, weekPct: pct, weekBar: Math.min(100,pct)+'%',
+    weekStats: [
+      {label:'SUEÑO PROMEDIO', val: (S.avg_sleep_hours ?? '—')+'h', color: (S.avg_sleep_hours||0) >= 7 ? '#7FE7C4' : '#F0B24A'},
+      {label:'HRV 7 DIAS', val: td.hrv_7d_avg ?? '—'},
+      {label:'ESFUERZO ACUM.', val: currentWeek ? Math.round(currentWeek.total_relative_effort) : '—'},
+    ],
+    tdTitle: (td.plan && td.plan.title) || tdTy[0], tdColor: tdTy[1],
+    tdPlan: (td.plan && td.plan.planned_distance_km ? td.plan.planned_distance_km+' km planeados' : 'sin kilometraje planeado')
+            + (td.plan && td.plan.notes ? ' · '+td.plan.notes : ''),
+    tdState: td.completed ? 'Completado' : 'Pendiente', tdStateColor: td.completed ? '#7FE7C4' : '#F0B24A',
+    tdMetrics, tdRec: tdRecMeta[0], tdRecColor: tdRecMeta[1], tdRecDetail: td.recovery_suggestion.detail,
+    tabs, showCustom: state.view === 'custom', showNav: state.view !== 'custom',
+    cs: state.cs, ce: state.ce,
+    rangeLabel, gridCols: cols, dows, cells,
+    sel: selVals,
+    chartUnit: 'esfuerzo relativo (Strava)',
+    bars, weekRows, sessions,
+    legend: Object.keys(TYPE).map(k => ({label: TYPE[k][0], color: TYPE[k][1]})),
+    safety: SAFETY,
+  };
+}
+
+function buildHTML(v){
+  const statCard = (m) => `<div style="display:flex;flex-direction:column;gap:4px;padding-top:12px">
+    <span style="font:600 18px ${FSANS};color:${m.color||'#F2F3F5'}">${m.val}</span>
+    <span style="font:400 9px ${FMONO};letter-spacing:.08em;color:#5E636C">${m.label}</span>
+  </div>`;
+  const tdMetric = (m) => `<div style="display:flex;flex-direction:column;gap:3px">
+    <span style="font:600 17px ${FSANS};color:${m.color||'#F2F3F5'}">${m.val}</span>
+    <span style="font:400 9px ${FMONO};letter-spacing:.07em;color:#5E636C">${m.label}</span>
+  </div>`;
+  const tab = (t) => `<button data-view="${t.key}" style="flex:1;min-width:0;padding:8px 4px;border-radius:10px;border:1px solid ${t.border};background:${t.bg};color:${t.color};font:500 11px ${FMONO};letter-spacing:.04em;cursor:pointer">${t.label}</button>`;
+  const dow = (d) => `<span style="font:500 10px ${FMONO};color:#8A8F98;text-align:center;letter-spacing:.08em">${d}</span>`;
+  const cell = (c) => `<div class="cal-cell" data-iso="${c.iso}" style="background:${c.bg};border:1px solid ${c.border};border-radius:11px;padding:8px 7px;min-height:74px;cursor:pointer;display:flex;flex-direction:column;gap:5px;opacity:${c.op};min-width:0">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:4px">
+      <span style="font:600 13px ${FSANS};color:#F2F3F5">${c.num}</span>
+      <span style="width:6px;height:6px;border-radius:50%;background:${c.dot};flex-shrink:0"></span>
+    </div>
+    <span style="font:400 9px ${FMONO};color:#8A8F98;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">${c.label}</span>
+    <span style="margin-top:auto;font:500 11px ${FSANS};color:${c.effColor}">${c.eff}</span>
+  </div>`;
+  const selMetric = (m) => `<div style="display:flex;flex-direction:column;gap:3px">
+    <span style="font:600 16px ${FSANS};color:${m.color||'#C7CBD2'}">${m.val}</span>
+    <span style="font:400 9px ${FMONO};letter-spacing:.07em;color:#5E636C">${m.label}</span>
+  </div>`;
+  const logEntry = (l) => `<div style="display:flex;flex-direction:column;gap:5px">
+    <span style="font:500 10px ${FMONO};letter-spacing:.08em;color:#8FB4FF">${(l.checkpoint||'').toUpperCase()}</span>
+    <span style="font:400 13px/1.55 ${FSANS};color:#C7CBD2">${l.text}</span>
+  </div>`;
+  const bar = (b) => `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;justify-content:flex-end;height:100%">
+    <span style="font:500 11px ${FSANS};color:#C7CBD2">${b.val}</span>
+    <div style="width:100%;border-radius:6px 6px 3px 3px;background:${b.color};height:${b.h}"></div>
+    <span style="font:400 9px ${FMONO};color:#5E636C">${b.label}</span>
+  </div>`;
+  const weekRow = (w) => `<div style="display:flex;flex-direction:column;gap:6px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">
+      <span style="font:400 10px ${FMONO};color:#8A8F98">${w.label}</span>
+      <span style="font:500 11px ${FMONO};color:${w.color}">${w.val}</span>
+    </div>
+    <div style="height:4px;border-radius:999px;background:rgba(255,255,255,.06);overflow:hidden">
+      <div style="height:100%;border-radius:999px;background:${w.color};width:${w.bar}"></div>
+    </div>
+  </div>`;
+  const sessionRow = (s) => `<div style="display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.05)">
+    <span style="width:6px;height:6px;border-radius:50%;background:${s.color};flex-shrink:0"></span>
+    <div style="display:flex;flex-direction:column;gap:3px;min-width:0;flex:1">
+      <span style="font:500 13px ${FSANS};overflow:hidden;white-space:nowrap;text-overflow:ellipsis">${s.name}</span>
+      <span style="font:400 10px ${FMONO};color:#5E636C">${s.meta}</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex-shrink:0">
+      <span style="font:600 13px ${FSANS}">${s.dist}</span>
+      <span style="font:400 10px ${FMONO};color:#8A8F98">${s.pace}</span>
+    </div>
+  </div>`;
+  const legendItem = (l) => `<div style="display:flex;align-items:center;gap:6px">
+    <span style="width:6px;height:6px;border-radius:50%;background:${l.color}"></span>
+    <span style="font:400 10px ${FMONO};color:#5E636C">${l.label}</span>
+  </div>`;
+
+  const selSection = v.sel ? `
+  <section style="background:#13151A;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+      <span style="font:600 16px ${FSANS}">${v.sel.title}</span>
+      <span style="font:400 11px ${FMONO};color:#5E636C">${v.sel.date}</span>
+    </div>
+    <span style="font:400 12px/1.5 ${FSANS};color:#8A8F98">${v.sel.plan}</span>
+    <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 10px">
+      ${v.sel.metrics.map(selMetric).join('')}
+    </div>
+    ${v.sel.warn ? `<span style="font:400 12px/1.5 ${FSANS};color:#F0B24A;background:rgba(240,178,74,.08);border-radius:10px;padding:10px 12px">${v.sel.warn}</span>` : ''}
+    <div style="display:flex;flex-direction:column;gap:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06)">
+      <span style="font:400 9px ${FMONO};letter-spacing:.1em;color:#5E636C">${v.sel.logTitle}</span>
+      ${v.sel.logs.map(logEntry).join('') || `<span style="font:400 12px ${FSANS};color:#4A4F57">Sin checkpoints registrados para este dia.</span>`}
+    </div>
+  </section>` : '';
+
+  const customRange = v.showCustom ? `
+    <div style="display:flex;align-items:center;gap:8px">
+      <input type="date" id="csInput" value="${v.cs}" style="flex:1;min-width:0;padding:7px 9px;border-radius:9px;border:1px solid rgba(255,255,255,.08);background:#13151A;color:#F2F3F5;font:400 12px ${FMONO}">
+      <span style="font:400 11px ${FMONO};color:#5E636C">a</span>
+      <input type="date" id="ceInput" value="${v.ce}" style="flex:1;min-width:0;padding:7px 9px;border-radius:9px;border:1px solid rgba(255,255,255,.08);background:#13151A;color:#F2F3F5;font:400 12px ${FMONO}">
+    </div>` : '';
+
+  const navRow = v.showNav ? `
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+      <button id="prevBtn" style="width:30px;height:30px;border-radius:9px;border:1px solid rgba(255,255,255,.08);background:#13151A;color:#8A8F98;font:500 15px ${FSANS};cursor:pointer">‹</button>
+      <span style="font:500 11px ${FMONO};letter-spacing:.04em;color:#8A8F98;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">${v.rangeLabel}</span>
+      <button id="nextBtn" style="width:30px;height:30px;border-radius:9px;border:1px solid rgba(255,255,255,.08);background:#13151A;color:#8A8F98;font:500 15px ${FSANS};cursor:pointer">›</button>
+    </div>` : '';
+
+  return `
+  <header style="display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+      <span style="font:500 10px ${FMONO};letter-spacing:.16em;color:#5E636C">ENTRENADOR · MARATON</span>
+      <span style="font:400 10px ${FMONO};color:#3F444B">${v.gen}</span>
+    </div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div style="display:flex;align-items:flex-end;gap:14px">
+        <span style="font:700 76px/0.82 ${FSANS};letter-spacing:-.04em">${v.dtr}</span>
+        <div style="padding-bottom:7px;display:flex;flex-direction:column;gap:4px">
+          <span style="font:500 14px ${FSANS};color:#F2F3F5">dias para la carrera</span>
+          <span style="font:400 11px ${FMONO};color:#8A8F98">${v.raceLabel} · meta ${v.goal}</span>
+        </div>
+      </div>
+      <span style="font:500 11px ${FMONO};letter-spacing:.06em;padding:5px 11px;border-radius:999px;color:${v.semColor};border:1px solid ${v.semBorder};background:${v.semBg}">${v.semLabel}</span>
+    </div>
+  </header>
+
+  <section style="display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline">
+      <span style="font:500 10px ${FMONO};letter-spacing:.14em;color:#5E636C">SEMANA EN CURSO</span>
+      <span style="font:400 10px ${FMONO};color:#5E636C">${v.weekLabel}</span>
+    </div>
+    <div style="background:#13151A;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px">
+        <div style="display:flex;align-items:baseline;gap:6px">
+          <span style="font:700 40px/1 ${FSANS};letter-spacing:-.02em">${v.weekActual}</span>
+          <span style="font:500 15px ${FSANS};color:#6B7280">/ ${v.weekPlanned} km</span>
+        </div>
+        <span style="font:500 12px ${FMONO};color:#8A8F98">${v.weekPct}% del plan</span>
+      </div>
+      <div style="height:6px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden">
+        <div style="height:100%;border-radius:999px;background:${v.semColor};width:${v.weekBar}"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding-top:4px;border-top:1px solid rgba(255,255,255,.06)">
+        ${v.weekStats.map(statCard).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:10px">
+    <span style="font:500 10px ${FMONO};letter-spacing:.14em;color:#5E636C">HOY</span>
+    <div style="background:#13151A;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:14px">
+        <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="width:7px;height:7px;border-radius:50%;background:${v.tdColor};flex-shrink:0"></span>
+            <span style="font:600 19px ${FSANS};letter-spacing:-.01em">${v.tdTitle}</span>
+          </div>
+          <span style="font:400 12px ${FMONO};color:#8A8F98">${v.tdPlan}</span>
+        </div>
+        <span style="font:500 11px ${FMONO};color:${v.tdStateColor};white-space:nowrap">${v.tdState}</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px">
+        ${v.tdMetrics.map(tdMetric).join('')}
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06)">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font:400 9px ${FMONO};letter-spacing:.1em;color:#5E636C">RECUPERACION</span>
+          <span style="font:500 12px ${FSANS};color:${v.tdRecColor}">${v.tdRec}</span>
+        </div>
+        <span style="font:400 12px/1.5 ${FSANS};color:#8A8F98">${v.tdRecDetail}</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:10px">
+    <span style="font:500 10px ${FMONO};letter-spacing:.14em;color:#5E636C">CALENDARIO</span>
+    <div style="display:flex;gap:6px" id="viewTabs">
+      ${v.tabs.map(tab).join('')}
+    </div>
+    ${customRange}
+    ${navRow}
+    <div style="display:grid;grid-template-columns:${v.gridCols};gap:5px">
+      ${v.dows.map(dow).join('')}
+    </div>
+    <div style="display:grid;grid-template-columns:${v.gridCols};gap:5px" id="calGrid">
+      ${v.cells.map(cell).join('')}
+    </div>
+  </section>
+
+  ${selSection}
+
+  <section style="display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+      <span style="font:500 10px ${FMONO};letter-spacing:.14em;color:#5E636C">CARGA POR SEMANA</span>
+      <span style="font:400 10px ${FMONO};color:#5E636C">${v.chartUnit}</span>
+    </div>
+    <div style="background:#13151A;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;align-items:flex-end;gap:10px;height:150px">
+        ${v.bars.map(bar).join('')}
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06)">
+        ${v.weekRows.map(weekRow).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:10px">
+    <span style="font:500 10px ${FMONO};letter-spacing:.14em;color:#5E636C">SESIONES RECIENTES</span>
+    <div style="background:#13151A;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:6px 18px;display:flex;flex-direction:column">
+      ${v.sessions.map(sessionRow).join('') || `<p style="color:#5E636C;font:400 12px ${FSANS};padding:14px 0">Sin sesiones recientes.</p>`}
+    </div>
+  </section>
+
+  <div style="display:flex;flex-wrap:wrap;gap:12px 16px">
+    ${v.legend.map(legendItem).join('')}
+  </div>
+
+  <footer style="font:400 10px ${FMONO};color:#3F444B;text-align:center;line-height:1.6">
+    entrenador-dk · se actualiza en cada checkpoint<br>${v.safety}
+  </footer>
+  `;
+}
+
+function render(){
+  const v = computeVals();
+  document.getElementById('app').innerHTML = buildHTML(v);
+  wireEvents();
+}
+
+function wireEvents(){
+  const viewTabs = document.getElementById('viewTabs');
+  if(viewTabs) viewTabs.addEventListener('click', e => {
+    const btn = e.target.closest('button[data-view]');
+    if(!btn) return;
+    state.view = btn.dataset.view;
+    if(state.view === 'day') state.sel = state.ref;
+    render();
+  });
+  const calGrid = document.getElementById('calGrid');
+  if(calGrid) calGrid.addEventListener('click', e => {
+    const c = e.target.closest('.cal-cell');
+    if(!c) return;
+    state.sel = c.dataset.iso;
+    render();
+  });
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  if(prevBtn) prevBtn.addEventListener('click', () => step(-1));
+  if(nextBtn) nextBtn.addEventListener('click', () => step(1));
+  const csInput = document.getElementById('csInput');
+  const ceInput = document.getElementById('ceInput');
+  if(csInput) csInput.addEventListener('change', e => { state.cs = e.target.value; render(); });
+  if(ceInput) ceInput.addEventListener('change', e => { state.ce = e.target.value; render(); });
+}
+
+render();
 
 </script>
 </body>

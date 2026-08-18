@@ -393,7 +393,7 @@ def suggest_recovery(d, session_type, symptoms, race_date, week_recovery_count, 
 
     if session_type == "strength":
         return {
-            "recommendation": "sauna_hoy_cold_mañana",
+            "recommendation": "sauna_hoy",
             "timing": "manana",
             "detail": (
                 "Dia de fuerza: cold plunge inmediato puede atenuar la "
