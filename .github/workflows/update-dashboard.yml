@@ -1,0 +1,75 @@
+name: Actualizar dashboard
+
+on:
+  schedule:
+    # Cada 6 horas. Los horarios de cron de GitHub Actions son en UTC.
+    - cron: '0 */6 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+# Evita que dos corridas (ej. el cron y un disparo manual al mismo tiempo)
+# hagan push en paralelo y se pisen.
+concurrency:
+  group: update-dashboard
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      # Garmin y Strava son obligatorios: si fallan, este paso termina con
+      # exit code distinto de cero y el Action queda en rojo (visible),
+      # sin tocar data.json/dashboard.html. TrainingPeaks es best-effort:
+      # si falla, fetch_data.py lo avisa con ::warning:: pero no rompe
+      # este paso -- ver fetch_data.py y README.md.
+      - name: Traer datos (Garmin / Strava / TrainingPeaks)
+        env:
+          GARMIN_USER: ${{ secrets.GARMIN_USER }}
+          GARMIN_PASS: ${{ secrets.GARMIN_PASS }}
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+          TRAININGPEAKS_USER: ${{ secrets.TRAININGPEAKS_USER }}
+          TRAININGPEAKS_PASS: ${{ secrets.TRAININGPEAKS_PASS }}
+        run: python fetch_data.py
+
+      # NOTA: --race-date/--goal-time deben actualizarse aqui (y en el
+      # objetivo del brief) despues del maraton del 27-sep-2026 si cambia
+      # el objetivo -- ver seccion 6 de entrenador-virtual-maraton.md.
+      - name: Combinar datos (build_data.py)
+        run: >
+          python build_data.py
+          --trainingpeaks live/trainingpeaks.csv
+          --garmin live/garmin.csv
+          --strava live/strava.json
+          --race-date 2026-09-27
+          --goal-time 3:40:00
+          --out data.json
+
+      - name: Generar dashboard (render_html.py)
+        run: python render_html.py --data data.json --out dashboard.html
+
+      - name: Commit y push si hay cambios
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json dashboard.html
+          if git diff --cached --quiet; then
+            echo "Sin cambios, no se hace commit."
+          else
+            git commit -m "Actualiza datos automaticamente ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+            git push
+          fi

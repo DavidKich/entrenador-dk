@@ -1,2 +1,19 @@
 __pycache__/
 *.pyc
+
+# Datos crudos jalados por fetch_data.py en cada corrida automatica --
+# no se commitean, solo el data.json/dashboard.html ya combinados.
+live/
+
+# Credenciales / tokens de sesion -- nunca deben subirse a este repo publico.
+.env
+*.env
+*.env.*
+.garth/
+.garminconnect/
+*credentials*
+*secret*
+*.token
+*_token.json
+session*.json
+cookies*.json
