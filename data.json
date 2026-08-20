@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-20T00:52:16",
+  "generated_at": "2026-08-20T00:55:44",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -9,7 +9,7 @@
   "week_summary": {
     "days_to_race": 38,
     "semaforo": "atrasado",
-    "planned_km": 57.0,
+    "planned_km": 40.0,
     "actual_km": 1.4,
     "avg_sleep_hours": 7.29,
     "sleep_goal": [
@@ -26,8 +26,9 @@
       "actual_km": 8.1,
       "total_relative_effort": 115.6,
       "total_planned_tss": 0.0,
-      "avg_sleep_hours": 6.77,
+      "avg_sleep_hours": 6.81,
       "days": [
+        "2026-07-15",
         "2026-07-16",
         "2026-07-17",
         "2026-07-18",
@@ -55,10 +56,10 @@
     {
       "week_start": "2026-07-27",
       "week_end": "2026-08-02",
-      "planned_km": 48.0,
+      "planned_km": 0.0,
       "actual_km": 14.1,
       "total_relative_effort": 146.8,
-      "total_planned_tss": 373.0,
+      "total_planned_tss": 0.0,
       "avg_sleep_hours": 5.89,
       "days": [
         "2026-07-27",
@@ -73,10 +74,10 @@
     {
       "week_start": "2026-08-03",
       "week_end": "2026-08-09",
-      "planned_km": 52.0,
+      "planned_km": 0.0,
       "actual_km": 6.4,
       "total_relative_effort": 29.8,
-      "total_planned_tss": 390.0,
+      "total_planned_tss": 0.0,
       "avg_sleep_hours": 6.47,
       "days": [
         "2026-08-03",
@@ -91,10 +92,10 @@
     {
       "week_start": "2026-08-10",
       "week_end": "2026-08-16",
-      "planned_km": 54.0,
+      "planned_km": 10.6,
       "actual_km": 14.2,
       "total_relative_effort": 325.6,
-      "total_planned_tss": 401.0,
+      "total_planned_tss": 0.0,
       "avg_sleep_hours": 8.41,
       "days": [
         "2026-08-10",
@@ -109,10 +110,10 @@
     {
       "week_start": "2026-08-17",
       "week_end": "2026-08-23",
-      "planned_km": 57.0,
+      "planned_km": 40.0,
       "actual_km": 1.4,
       "total_relative_effort": 91.5,
-      "total_planned_tss": 411.0,
+      "total_planned_tss": 0.0,
       "avg_sleep_hours": 7.29,
       "days": [
         "2026-08-17",
@@ -123,9 +124,53 @@
         "2026-08-22",
         "2026-08-23"
       ]
+    },
+    {
+      "week_start": "2026-08-24",
+      "week_end": "2026-08-30",
+      "planned_km": 65.9,
+      "actual_km": 0.0,
+      "total_relative_effort": 0.0,
+      "total_planned_tss": 0.0,
+      "avg_sleep_hours": null,
+      "days": [
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28",
+        "2026-08-29",
+        "2026-08-30"
+      ]
     }
   ],
   "days": {
+    "2026-07-15": {
+      "date": "2026-07-15",
+      "days_to_race": 74,
+      "plan": null,
+      "activities": [],
+      "primary_activity": null,
+      "completed": false,
+      "session_type": "rest",
+      "garmin": {
+        "sleep_hours": 6.95,
+        "sleep_score": 76.0,
+        "hrv": 66.0,
+        "body_battery": 5.0,
+        "stress_avg": 21.0,
+        "symptoms": ""
+      },
+      "hrv_7d_avg": null,
+      "fatigue_flag": false,
+      "recovery_suggestion": {
+        "recommendation": "sauna_o_contrast",
+        "timing": "manana",
+        "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).",
+        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
+      },
+      "recommendations_log": []
+    },
     "2026-07-16": {
       "date": "2026-07-16",
       "days_to_race": 73,
@@ -168,7 +213,7 @@
         "stress_avg": 38.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": null,
+      "hrv_7d_avg": 66.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -194,7 +239,7 @@
         "stress_avg": 35.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 54.0,
+      "hrv_7d_avg": 60.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -246,8 +291,8 @@
         "stress_avg": 46.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 53.5,
-      "fatigue_flag": false,
+      "hrv_7d_avg": 57.7,
+      "fatigue_flag": true,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
         "timing": "manana",
@@ -272,12 +317,12 @@
         "stress_avg": 58.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 51.7,
+      "hrv_7d_avg": 55.2,
       "fatigue_flag": true,
       "recovery_suggestion": {
-        "recommendation": "sauna_o_contrast",
-        "timing": "manana",
-        "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).",
+        "recommendation": "ninguna",
+        "timing": null,
+        "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — dia libre de protocolo.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
@@ -324,7 +369,7 @@
         "stress_avg": 19.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 44.2,
+      "hrv_7d_avg": 48.6,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
@@ -376,7 +421,7 @@
         "stress_avg": 37.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 48.0,
+      "hrv_7d_avg": 51.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -428,7 +473,7 @@
         "stress_avg": 42.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 48.0,
+      "hrv_7d_avg": 51.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
@@ -571,14 +616,7 @@
     "2026-07-27": {
       "date": "2026-07-27",
       "days_to_race": 62,
-      "plan": {
-        "title": "Descanso",
-        "workout_type": "Rest",
-        "planned_distance_km": null,
-        "planned_duration_min": null,
-        "planned_tss": null,
-        "notes": "Descanso total"
-      },
+      "plan": null,
       "activities": [],
       "primary_activity": null,
       "completed": false,
@@ -604,14 +642,7 @@
     "2026-07-28": {
       "date": "2026-07-28",
       "days_to_race": 61,
-      "plan": {
-        "title": "Rodaje facil",
-        "workout_type": "Run",
-        "planned_distance_km": 8.0,
-        "planned_duration_min": 45.0,
-        "planned_tss": 55.0,
-        "notes": "Ritmo comodo zona 2"
-      },
+      "plan": null,
       "activities": [
         {
           "id": 23831447272,
@@ -676,14 +707,7 @@
     "2026-07-29": {
       "date": "2026-07-29",
       "days_to_race": 60,
-      "plan": {
-        "title": "Series en pista",
-        "workout_type": "Run",
-        "planned_distance_km": 10.0,
-        "planned_duration_min": 55.0,
-        "planned_tss": 78.0,
-        "notes": "6x800m a ritmo de umbral con recuperacion trote"
-      },
+      "plan": null,
       "activities": [
         {
           "id": 23831447697,
@@ -713,7 +737,7 @@
         "relative_effort": 14.455413818359375
       },
       "completed": true,
-      "session_type": "quality",
+      "session_type": "strength",
       "garmin": {
         "sleep_hours": 4.32,
         "sleep_score": 33.0,
@@ -725,9 +749,9 @@
       "hrv_7d_avg": 46.2,
       "fatigue_flag": true,
       "recovery_suggestion": {
-        "recommendation": "contrast",
+        "recommendation": "sauna_hoy",
         "timing": "manana",
-        "detail": "Sesion de calidad/larga: contrast therapy (sauna 10-20 min + cold plunge 1-5 min, 2-4 ciclos terminando en frio) o cold plunge solo ayudan a acelerar la recuperacion antes de la siguiente sesion importante.",
+        "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
@@ -735,14 +759,7 @@
     "2026-07-30": {
       "date": "2026-07-30",
       "days_to_race": 59,
-      "plan": {
-        "title": "Rodaje de recuperacion",
-        "workout_type": "Run",
-        "planned_distance_km": 6.0,
-        "planned_duration_min": 35.0,
-        "planned_tss": 40.0,
-        "notes": "Muy suave"
-      },
+      "plan": null,
       "activities": [
         {
           "id": 23831448597,
@@ -794,18 +811,11 @@
     "2026-07-31": {
       "date": "2026-07-31",
       "days_to_race": 58,
-      "plan": {
-        "title": "Fuerza tren inferior + core",
-        "workout_type": "Strength",
-        "planned_distance_km": null,
-        "planned_duration_min": 50.0,
-        "planned_tss": 45.0,
-        "notes": "Sesion de fuerza por la manana"
-      },
+      "plan": null,
       "activities": [],
       "primary_activity": null,
       "completed": false,
-      "session_type": "strength",
+      "session_type": "rest",
       "garmin": {
         "sleep_hours": 5.37,
         "sleep_score": 53.0,
@@ -817,9 +827,9 @@
       "hrv_7d_avg": 41.7,
       "fatigue_flag": false,
       "recovery_suggestion": {
-        "recommendation": "sauna_hoy",
-        "timing": "manana",
-        "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.",
+        "recommendation": "ninguna",
+        "timing": null,
+        "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — dia libre de protocolo.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
@@ -827,18 +837,11 @@
     "2026-08-01": {
       "date": "2026-08-01",
       "days_to_race": 57,
-      "plan": {
-        "title": "Rodaje largo",
-        "workout_type": "Run",
-        "planned_distance_km": 18.0,
-        "planned_duration_min": 105.0,
-        "planned_tss": 120.0,
-        "notes": "Ritmo aerobico practicar geles cada 45min"
-      },
+      "plan": null,
       "activities": [],
       "primary_activity": null,
       "completed": false,
-      "session_type": "long_run",
+      "session_type": "rest",
       "garmin": {
         "sleep_hours": 4.98,
         "sleep_score": 35.0,
@@ -852,7 +855,7 @@
       "recovery_suggestion": {
         "recommendation": "ninguna",
         "timing": null,
-        "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — sin necesidad de mas hoy.",
+        "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — dia libre de protocolo.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
@@ -860,14 +863,7 @@
     "2026-08-02": {
       "date": "2026-08-02",
       "days_to_race": 56,
-      "plan": {
-        "title": "Facil / descanso activo",
-        "workout_type": "Run",
-        "planned_distance_km": 6.0,
-        "planned_duration_min": 35.0,
-        "planned_tss": 35.0,
-        "notes": "Trote muy suave o descanso si hay fatiga"
-      },
+      "plan": null,
       "activities": [
         {
           "id": 23831449062,
@@ -897,7 +893,7 @@
         "relative_effort": 8.102676391601562
       },
       "completed": true,
-      "session_type": "easy",
+      "session_type": "other",
       "garmin": {
         "sleep_hours": 6.11,
         "sleep_score": 48.0,
@@ -911,7 +907,7 @@
       "recovery_suggestion": {
         "recommendation": "ninguna",
         "timing": null,
-        "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — dia libre de protocolo.",
+        "detail": "Sin sesion clasificada hoy — sin sugerencia especifica.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
@@ -919,14 +915,7 @@
     "2026-08-03": {
       "date": "2026-08-03",
       "days_to_race": 55,
-      "plan": {
-        "title": "Descanso",
-        "workout_type": "Rest",
-        "planned_distance_km": null,
-        "planned_duration_min": null,
-        "planned_tss": null,
-        "notes": "Descanso total"
-      },
+      "plan": null,
       "activities": [
         {
           "id": 23831450253,
@@ -956,7 +945,7 @@
         "relative_effort": 13.209747314453125
       },
       "completed": true,
-      "session_type": "easy",
+      "session_type": "other",
       "garmin": {
         "sleep_hours": 7.25,
         "sleep_score": 84.0,
@@ -968,9 +957,9 @@
       "hrv_7d_avg": 40.9,
       "fatigue_flag": false,
       "recovery_suggestion": {
-        "recommendation": "sauna_o_contrast",
-        "timing": "manana",
-        "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).",
+        "recommendation": "ninguna",
+        "timing": null,
+        "detail": "Sin sesion clasificada hoy — sin sugerencia especifica.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
@@ -978,18 +967,11 @@
     "2026-08-04": {
       "date": "2026-08-04",
       "days_to_race": 54,
-      "plan": {
-        "title": "Rodaje facil + fuerza noche",
-        "workout_type": "Run",
-        "planned_distance_km": 8.0,
-        "planned_duration_min": 45.0,
-        "planned_tss": 55.0,
-        "notes": "Rodaje en la manana fuerza opcional en la noche esta semana"
-      },
+      "plan": null,
       "activities": [],
       "primary_activity": null,
       "completed": false,
-      "session_type": "strength",
+      "session_type": "rest",
       "garmin": {
         "sleep_hours": 5.3,
         "sleep_score": 38.0,
@@ -1001,9 +983,9 @@
       "hrv_7d_avg": 40.9,
       "fatigue_flag": true,
       "recovery_suggestion": {
-        "recommendation": "sauna_hoy",
+        "recommendation": "sauna_o_contrast",
         "timing": "manana",
-        "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.",
+        "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
@@ -1011,14 +993,7 @@
     "2026-08-05": {
       "date": "2026-08-05",
       "days_to_race": 53,
-      "plan": {
-        "title": "Tempo run",
-        "workout_type": "Run",
-        "planned_distance_km": 11.0,
-        "planned_duration_min": 58.0,
-        "planned_tss": 82.0,
-        "notes": "20min a ritmo umbral dentro del rodaje"
-      },
+      "plan": null,
       "activities": [
         {
           "id": 23859306160,
@@ -1048,7 +1023,7 @@
         "relative_effort": 9.66754150390625
       },
       "completed": true,
-      "session_type": "quality",
+      "session_type": "strength",
       "garmin": {
         "sleep_hours": null,
         "sleep_score": null,
@@ -1060,9 +1035,9 @@
       "hrv_7d_avg": 41.7,
       "fatigue_flag": false,
       "recovery_suggestion": {
-        "recommendation": "contrast",
+        "recommendation": "sauna_hoy",
         "timing": "manana",
-        "detail": "Sesion de calidad/larga: contrast therapy (sauna 10-20 min + cold plunge 1-5 min, 2-4 ciclos terminando en frio) o cold plunge solo ayudan a acelerar la recuperacion antes de la siguiente sesion importante.",
+        "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
@@ -1071,17 +1046,17 @@
       "date": "2026-08-06",
       "days_to_race": 52,
       "plan": {
-        "title": "Rodaje de recuperacion",
+        "title": "30-30 Fun",
         "workout_type": "Run",
-        "planned_distance_km": 6.0,
-        "planned_duration_min": 35.0,
-        "planned_tss": 40.0,
-        "notes": ""
+        "planned_distance_km": null,
+        "planned_duration_min": 45.0,
+        "planned_tss": null,
+        "notes": "Warm-up well and then run 15-20 x 30 seconds at a pace about 20 seconds per mile faster than your 5k race pace per mile. Recover by jogging easily for 30 seconds after each. You should cover half of the fast rep distance during your jog (for example, run 150 in 30 seconds, jog 75 in 30 seconds). Stop when you can no longer maintain the targeted pace. This is best on a track or other measured course so that pace may be monitored."
       },
       "activities": [],
       "primary_activity": null,
       "completed": false,
-      "session_type": "easy",
+      "session_type": "long_run",
       "garmin": {
         "sleep_hours": 6.48,
         "sleep_score": 50.0,
@@ -1093,9 +1068,9 @@
       "hrv_7d_avg": 45.0,
       "fatigue_flag": true,
       "recovery_suggestion": {
-        "recommendation": "sauna_o_contrast",
+        "recommendation": "contrast",
         "timing": "manana",
-        "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).",
+        "detail": "Sesion de calidad/larga: contrast therapy (sauna 10-20 min + cold plunge 1-5 min, 2-4 ciclos terminando en frio) o cold plunge solo ayudan a acelerar la recuperacion antes de la siguiente sesion importante.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
@@ -1104,11 +1079,11 @@
       "date": "2026-08-07",
       "days_to_race": 51,
       "plan": {
-        "title": "Fuerza tren inferior + core",
-        "workout_type": "Strength",
+        "title": "Surfing",
+        "workout_type": "Other",
         "planned_distance_km": null,
-        "planned_duration_min": 50.0,
-        "planned_tss": 45.0,
+        "planned_duration_min": null,
+        "planned_tss": null,
         "notes": ""
       },
       "activities": [
@@ -1140,7 +1115,7 @@
         "relative_effort": 6.914215087890625
       },
       "completed": true,
-      "session_type": "strength",
+      "session_type": "easy",
       "garmin": {
         "sleep_hours": 9.22,
         "sleep_score": 92.0,
@@ -1152,9 +1127,9 @@
       "hrv_7d_avg": 39.2,
       "fatigue_flag": false,
       "recovery_suggestion": {
-        "recommendation": "sauna_hoy",
+        "recommendation": "sauna_o_contrast",
         "timing": "manana",
-        "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.",
+        "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
@@ -1163,17 +1138,17 @@
       "date": "2026-08-08",
       "days_to_race": 50,
       "plan": {
-        "title": "Rodaje largo",
+        "title": "Aerobic Endurance Run",
         "workout_type": "Run",
-        "planned_distance_km": 20.0,
-        "planned_duration_min": 118.0,
-        "planned_tss": 130.0,
-        "notes": "Practicar fueling 60g carbo por hora"
+        "planned_distance_km": null,
+        "planned_duration_min": 50.0,
+        "planned_tss": null,
+        "notes": "Nice steady run in Z1-Z2."
       },
       "activities": [],
       "primary_activity": null,
       "completed": false,
-      "session_type": "long_run",
+      "session_type": "easy",
       "garmin": {
         "sleep_hours": 4.08,
         "sleep_score": 31.0,
@@ -1187,7 +1162,7 @@
       "recovery_suggestion": {
         "recommendation": "ninguna",
         "timing": null,
-        "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — sin necesidad de mas hoy.",
+        "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — dia libre de protocolo.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
@@ -1196,17 +1171,17 @@
       "date": "2026-08-09",
       "days_to_race": 49,
       "plan": {
-        "title": "Facil",
-        "workout_type": "Run",
-        "planned_distance_km": 7.0,
-        "planned_duration_min": 40.0,
-        "planned_tss": 38.0,
+        "title": "Day Off",
+        "workout_type": "Day Off",
+        "planned_distance_km": null,
+        "planned_duration_min": null,
+        "planned_tss": null,
         "notes": ""
       },
       "activities": [],
       "primary_activity": null,
       "completed": false,
-      "session_type": "easy",
+      "session_type": "rest",
       "garmin": {
         "sleep_hours": null,
         "sleep_score": null,
@@ -1228,14 +1203,7 @@
     "2026-08-10": {
       "date": "2026-08-10",
       "days_to_race": 48,
-      "plan": {
-        "title": "Descanso",
-        "workout_type": "Rest",
-        "planned_distance_km": null,
-        "planned_duration_min": null,
-        "planned_tss": null,
-        "notes": "Descanso total"
-      },
+      "plan": null,
       "activities": [],
       "primary_activity": null,
       "completed": false,
@@ -1261,18 +1229,11 @@
     "2026-08-11": {
       "date": "2026-08-11",
       "days_to_race": 47,
-      "plan": {
-        "title": "Rodaje facil",
-        "workout_type": "Run",
-        "planned_distance_km": 8.0,
-        "planned_duration_min": 45.0,
-        "planned_tss": 55.0,
-        "notes": ""
-      },
+      "plan": null,
       "activities": [],
       "primary_activity": null,
       "completed": false,
-      "session_type": "easy",
+      "session_type": "rest",
       "garmin": {
         "sleep_hours": 11.05,
         "sleep_score": 88.0,
@@ -1295,12 +1256,12 @@
       "date": "2026-08-12",
       "days_to_race": 46,
       "plan": {
-        "title": "Intervalos",
+        "title": "Fartlek 2",
         "workout_type": "Run",
-        "planned_distance_km": 11.0,
-        "planned_duration_min": 58.0,
-        "planned_tss": 85.0,
-        "notes": "8x1000m a ritmo 10k"
+        "planned_distance_km": 10.56,
+        "planned_duration_min": 58.5,
+        "planned_tss": null,
+        "notes": ""
       },
       "activities": [
         {
@@ -1354,11 +1315,11 @@
       "date": "2026-08-13",
       "days_to_race": 45,
       "plan": {
-        "title": "Rodaje de recuperacion",
+        "title": "Progressive Tempo",
         "workout_type": "Run",
-        "planned_distance_km": 6.0,
-        "planned_duration_min": 35.0,
-        "planned_tss": 40.0,
+        "planned_distance_km": null,
+        "planned_duration_min": 55.0,
+        "planned_tss": null,
         "notes": ""
       },
       "activities": [
@@ -1390,7 +1351,7 @@
         "relative_effort": 76.516845703125
       },
       "completed": true,
-      "session_type": "strength",
+      "session_type": "quality",
       "garmin": {
         "sleep_hours": 9.37,
         "sleep_score": 85.0,
@@ -1402,9 +1363,9 @@
       "hrv_7d_avg": 48.2,
       "fatigue_flag": false,
       "recovery_suggestion": {
-        "recommendation": "sauna_hoy",
+        "recommendation": "contrast",
         "timing": "manana",
-        "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.",
+        "detail": "Sesion de calidad/larga: contrast therapy (sauna 10-20 min + cold plunge 1-5 min, 2-4 ciclos terminando en frio) o cold plunge solo ayudan a acelerar la recuperacion antes de la siguiente sesion importante.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
@@ -1412,14 +1373,7 @@
     "2026-08-14": {
       "date": "2026-08-14",
       "days_to_race": 44,
-      "plan": {
-        "title": "Fuerza tren inferior + core",
-        "workout_type": "Strength",
-        "planned_distance_km": null,
-        "planned_duration_min": 50.0,
-        "planned_tss": 45.0,
-        "notes": ""
-      },
+      "plan": null,
       "activities": [
         {
           "id": 23980687760,
@@ -1471,18 +1425,11 @@
     "2026-08-15": {
       "date": "2026-08-15",
       "days_to_race": 43,
-      "plan": {
-        "title": "Rodaje largo",
-        "workout_type": "Run",
-        "planned_distance_km": 22.0,
-        "planned_duration_min": 128.0,
-        "planned_tss": 138.0,
-        "notes": "Practicar fueling y bebida objetivo de la carrera"
-      },
+      "plan": null,
       "activities": [],
       "primary_activity": null,
       "completed": false,
-      "session_type": "long_run",
+      "session_type": "rest",
       "garmin": {
         "sleep_hours": 8.37,
         "sleep_score": 78.0,
@@ -1496,7 +1443,7 @@
       "recovery_suggestion": {
         "recommendation": "ninguna",
         "timing": null,
-        "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — sin necesidad de mas hoy.",
+        "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — dia libre de protocolo.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
@@ -1505,12 +1452,12 @@
       "date": "2026-08-16",
       "days_to_race": 42,
       "plan": {
-        "title": "Facil",
+        "title": "Aerobic Endurance Run",
         "workout_type": "Run",
-        "planned_distance_km": 7.0,
-        "planned_duration_min": 40.0,
-        "planned_tss": 38.0,
-        "notes": ""
+        "planned_distance_km": null,
+        "planned_duration_min": 50.0,
+        "planned_tss": null,
+        "notes": "Nice steady run in Z1-Z2."
       },
       "activities": [
         {
@@ -1563,14 +1510,7 @@
     "2026-08-17": {
       "date": "2026-08-17",
       "days_to_race": 41,
-      "plan": {
-        "title": "Descanso",
-        "workout_type": "Rest",
-        "planned_distance_km": null,
-        "planned_duration_min": null,
-        "planned_tss": null,
-        "notes": "Descanso total"
-      },
+      "plan": null,
       "activities": [
         {
           "id": 24017314920,
@@ -1623,12 +1563,12 @@
       "date": "2026-08-18",
       "days_to_race": 40,
       "plan": {
-        "title": "Rodaje facil",
-        "workout_type": "Run",
-        "planned_distance_km": 8.0,
+        "title": "HP Active Recovery",
+        "workout_type": "Swim",
+        "planned_distance_km": 2.0,
         "planned_duration_min": 45.0,
-        "planned_tss": 55.0,
-        "notes": ""
+        "planned_tss": null,
+        "notes": "-300m afloje -2 veces: 200m pull + 50m patada 200m pull y paletas + 50m patada -5x50m pull (descansado 15s) -5x50m paletas(descansado 15s) -200m afloje"
       },
       "activities": [
         {
@@ -1681,14 +1621,7 @@
     "2026-08-19": {
       "date": "2026-08-19",
       "days_to_race": 39,
-      "plan": {
-        "title": "Umbral",
-        "workout_type": "Run",
-        "planned_distance_km": 12.0,
-        "planned_duration_min": 60.0,
-        "planned_tss": 88.0,
-        "notes": "25min a ritmo umbral"
-      },
+      "plan": null,
       "activities": [
         {
           "id": 24037100411,
@@ -1718,75 +1651,16 @@
         "relative_effort": 61.40608215332031
       },
       "completed": true,
-      "session_type": "quality",
+      "session_type": "strength",
       "garmin": {
         "sleep_hours": 6.55,
         "sleep_score": 71.0,
         "hrv": 49.0,
-        "body_battery": 13.0,
-        "stress_avg": 32.0,
+        "body_battery": 48.0,
+        "stress_avg": 30.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 56.4,
-      "fatigue_flag": true,
-      "recovery_suggestion": {
-        "recommendation": "contrast",
-        "timing": "manana",
-        "detail": "Sesion de calidad/larga: contrast therapy (sauna 10-20 min + cold plunge 1-5 min, 2-4 ciclos terminando en frio) o cold plunge solo ayudan a acelerar la recuperacion antes de la siguiente sesion importante.",
-        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
-      },
-      "recommendations_log": []
-    },
-    "2026-08-20": {
-      "date": "2026-08-20",
-      "days_to_race": 38,
-      "plan": {
-        "title": "Rodaje de recuperacion",
-        "workout_type": "Run",
-        "planned_distance_km": 6.0,
-        "planned_duration_min": 35.0,
-        "planned_tss": 40.0,
-        "notes": ""
-      },
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
-      "session_type": "easy",
-      "garmin": {
-        "sleep_hours": null,
-        "sleep_score": null,
-        "hrv": null,
-        "body_battery": null,
-        "stress_avg": null,
-        "symptoms": ""
-      },
-      "hrv_7d_avg": 54.9,
-      "fatigue_flag": false,
-      "recovery_suggestion": {
-        "recommendation": "sauna_o_contrast",
-        "timing": "manana",
-        "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).",
-        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
-      },
-      "recommendations_log": []
-    },
-    "2026-08-21": {
-      "date": "2026-08-21",
-      "days_to_race": 37,
-      "plan": {
-        "title": "Fuerza tren inferior + core",
-        "workout_type": "Strength",
-        "planned_distance_km": null,
-        "planned_duration_min": 50.0,
-        "planned_tss": 45.0,
-        "notes": ""
-      },
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
-      "session_type": "strength",
-      "garmin": null,
-      "hrv_7d_avg": 54.7,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
@@ -1796,23 +1670,49 @@
       },
       "recommendations_log": []
     },
-    "2026-08-22": {
-      "date": "2026-08-22",
-      "days_to_race": 36,
+    "2026-08-20": {
+      "date": "2026-08-20",
+      "days_to_race": 38,
       "plan": {
-        "title": "Rodaje largo",
+        "title": "TEMPO",
         "workout_type": "Run",
-        "planned_distance_km": 24.0,
-        "planned_duration_min": 138.0,
-        "planned_tss": 145.0,
-        "notes": "Ultimo rodaje largo antes de reducir volumen"
+        "planned_distance_km": 12.0,
+        "planned_duration_min": 66.3,
+        "planned_tss": null,
+        "notes": "POR QUE TEMPO? 1. Desarrollo de la Resistencia Aeróbica: Propósito: Mejorar la capacidad del sistema cardiovascular para suministrar oxígeno a los músculos durante esfuerzos prolongados. Beneficios: Aumento de la eficiencia aeróbica y mejora en la capacidad para mantener un ritmo sostenido durante distancias más largas. 2. Aumento del Umbral del Lactato: Propósito: Incrementar la velocidad a la cual el cuerpo comienza a acumular lactato, retrasando la fatiga. Beneficios: Mejora de la tolerancia al ácido láctico, permitiendo correr a ritmos más rápidos durante periodos más extensos. 3. Mejora de la Economía de Carrera: Propósito: Desarrollar la eficiencia biomecánica y neuromuscular al mantener un ritmo específico durante un tiempo prolongado. Beneficios: Reducción del desgaste energético y mejoras en la técnica de carrera. 4. Entrenamiento Mental: Propósito: Acostumbrar la mente a mantener el enfoque y superar la fatiga durante sesiones de mayor duración. Beneficios: Desarrollo de la resistencia mental y la capacidad para lidiar con los desafíos físicos y mentales de carreras más largas. 5. Preparación para Carreras de Distancia: Propósito: Simular las demandas fisiológicas de carreras más largas. Beneficios: Mejora de la preparación específica para eventos de distancia, como medias maratones o maratones. 6. Monitoreo del Ritmo: Propósito: Aprender a reconocer y mantener un ritmo específico sin depender de dispositivos electrónicos. Beneficios: Desarrollo de la percepción interna del esfuerzo y la capacidad para juzgar el ritmo sin depender exclusivamente de la tecnología."
+      },
+      "activities": [],
+      "primary_activity": null,
+      "completed": false,
+      "session_type": "quality",
+      "garmin": null,
+      "hrv_7d_avg": 54.9,
+      "fatigue_flag": false,
+      "recovery_suggestion": {
+        "recommendation": "contrast",
+        "timing": "manana",
+        "detail": "Sesion de calidad/larga: contrast therapy (sauna 10-20 min + cold plunge 1-5 min, 2-4 ciclos terminando en frio) o cold plunge solo ayudan a acelerar la recuperacion antes de la siguiente sesion importante.",
+        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
+      },
+      "recommendations_log": []
+    },
+    "2026-08-21": {
+      "date": "2026-08-21",
+      "days_to_race": 37,
+      "plan": {
+        "title": "1",
+        "workout_type": "Run",
+        "planned_distance_km": null,
+        "planned_duration_min": 93.0,
+        "planned_tss": null,
+        "notes": "20,15,10M 4:35 r5min"
       },
       "activities": [],
       "primary_activity": null,
       "completed": false,
       "session_type": "long_run",
       "garmin": null,
-      "hrv_7d_avg": 55.8,
+      "hrv_7d_avg": 54.7,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -1822,23 +1722,23 @@
       },
       "recommendations_log": []
     },
-    "2026-08-23": {
-      "date": "2026-08-23",
-      "days_to_race": 35,
+    "2026-08-22": {
+      "date": "2026-08-22",
+      "days_to_race": 36,
       "plan": {
-        "title": "Facil",
-        "workout_type": "Run",
-        "planned_distance_km": 7.0,
-        "planned_duration_min": 40.0,
-        "planned_tss": 38.0,
-        "notes": ""
+        "title": "Yoga",
+        "workout_type": "Other",
+        "planned_distance_km": null,
+        "planned_duration_min": 30.0,
+        "planned_tss": null,
+        "notes": "Realizar la siguiente rutina https://www.youtube.com/watch?v=6JzvsjN1pzg"
       },
       "activities": [],
       "primary_activity": null,
       "completed": false,
       "session_type": "easy",
       "garmin": null,
-      "hrv_7d_avg": 56.0,
+      "hrv_7d_avg": 55.8,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -1847,12 +1747,220 @@
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
+    },
+    "2026-08-23": {
+      "date": "2026-08-23",
+      "days_to_race": 35,
+      "plan": {
+        "title": "ENDURANCE RUN 26K",
+        "workout_type": "Run",
+        "planned_distance_km": 26.0,
+        "planned_duration_min": 144.4,
+        "planned_tss": null,
+        "notes": ""
+      },
+      "activities": [],
+      "primary_activity": null,
+      "completed": false,
+      "session_type": "long_run",
+      "garmin": null,
+      "hrv_7d_avg": 56.0,
+      "fatigue_flag": false,
+      "recovery_suggestion": {
+        "recommendation": "ninguna",
+        "timing": null,
+        "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — sin necesidad de mas hoy.",
+        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
+      },
+      "recommendations_log": []
+    },
+    "2026-08-24": {
+      "date": "2026-08-24",
+      "days_to_race": 34,
+      "plan": {
+        "title": "Complete Core + Movilidad-30mins",
+        "workout_type": "Strength",
+        "planned_distance_km": null,
+        "planned_duration_min": 50.0,
+        "planned_tss": null,
+        "notes": "Haz 2 series por ejercicio. Si no tienes pesas para ejercicios que requieran pesas, sea creativo y usa, por ejemplo, pesas. botellas de agua llenas, o incluso llevar una bolsa pesada en ejercicios como Farmer's Carry. Anti-extensión: -Body saw 10 repeticiones (en suelo resbaladizo con calcetines) https://youtu.be/iABks8uy3OE -Plancha frontal alcanza 10 repeticiones por lado (reemplazar con una plancha estática de 30 a 90 segundos si el elemento de alcance es demasiado difícil) https://youtu.be/CW004tUZIBs Antirotación: -Giros rusos 15-20 repeticiones https://youtu.be/m7ucEp_nc9I -Press Pallof (usando bandas elásticas) 10 repeticiones por lado https://youtu.be/UD0J0YXfBmI Flexión antilateral: -Farmers carry (usar, por ejemplo, una bolsa pesada como peso) 45 segundos por lado https://youtu.be/eM7u45iNOEU -Offload lunge walk (peso/bolsa pesada en la mano opuesta a la pierna que da un paso adelante) 10 repeticiones con la pierna derecha, luego 10 repeticiones con la pierna izquierda Cadena posterior: -Super dogs 10 repeticiones por lado https://youtu.be/jQnMT98GSpg -Curls nórdicos de isquiotibiales (con persona que lo asista: tantas repeticiones como sea posible) o variaciones (https://youtu.be/ihTUvs997b4) como el lanzamiento de pelota suiza con 12 repeticiones (https://youtu.be/T5reFpufijU)) | https://www.youtube.com/watch?v=obUrlYJfW50"
+      },
+      "activities": [],
+      "primary_activity": null,
+      "completed": false,
+      "session_type": "strength",
+      "garmin": null,
+      "hrv_7d_avg": 57.3,
+      "fatigue_flag": false,
+      "recovery_suggestion": {
+        "recommendation": "sauna_hoy",
+        "timing": "manana",
+        "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.",
+        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
+      },
+      "recommendations_log": []
+    },
+    "2026-08-25": {
+      "date": "2026-08-25",
+      "days_to_race": 33,
+      "plan": {
+        "title": "Kenyan Run",
+        "workout_type": "Run",
+        "planned_distance_km": 12.91,
+        "planned_duration_min": 71.4,
+        "planned_tss": null,
+        "notes": "3km afloje 5x1km Aeróbico intenso (80%) con 1min de recuperación. -3km TEMPO (85%) -1km afloje"
+      },
+      "activities": [],
+      "primary_activity": null,
+      "completed": false,
+      "session_type": "quality",
+      "garmin": null,
+      "hrv_7d_avg": 56.5,
+      "fatigue_flag": false,
+      "recovery_suggestion": {
+        "recommendation": "contrast",
+        "timing": "manana",
+        "detail": "Sesion de calidad/larga: contrast therapy (sauna 10-20 min + cold plunge 1-5 min, 2-4 ciclos terminando en frio) o cold plunge solo ayudan a acelerar la recuperacion antes de la siguiente sesion importante.",
+        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
+      },
+      "recommendations_log": []
+    },
+    "2026-08-26": {
+      "date": "2026-08-26",
+      "days_to_race": 32,
+      "plan": {
+        "title": "Tren inferior",
+        "workout_type": "Strength",
+        "planned_distance_km": null,
+        "planned_duration_min": null,
+        "planned_tss": null,
+        "notes": "-Leg extension 4x8reps RPE 8 https://youtube.com/shorts/b_MY7h_2H1o?si=B7nbVoxgzwepmZAH -Curl Pierna (sentada) 4x8reps RPE 8 https://youtube.com/shorts/oc8SshREFi0?si=X0ttxZ7xadz7RLdP -Sentadilla libre 5x8reps RPE 8 https://youtube.com/shorts/oSxJ78WQBZ0?si=HK1zG5NKA3wYuSTV -Desplante búlgaro 3x8 reps por lado RPE 8 https://youtu.be/DzSjRCfz4ZE?si=FGOw28IDYOWXMIr5 -Aductor 4x10 reps RPE 7 https://youtube.com/shorts/76uNT_VMhPI?si=O0DC8iv6XXbs4Jw3 -Abductor 4x10 reps RPE 7 https://youtube.com/shorts/-yCeBlrDcNw?si=Jz8Z-KNqa9dvhoRM -Pantorrilla (sentada) con dos segundos de isometrico 3x15 reps RPE 6 https://youtube.com/shorts/RDLWmpc0suQ?si=jb6fcxaS0H5zrbwt"
+      },
+      "activities": [],
+      "primary_activity": null,
+      "completed": false,
+      "session_type": "strength",
+      "garmin": null,
+      "hrv_7d_avg": 49.0,
+      "fatigue_flag": false,
+      "recovery_suggestion": {
+        "recommendation": "sauna_hoy",
+        "timing": "manana",
+        "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.",
+        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
+      },
+      "recommendations_log": []
+    },
+    "2026-08-27": {
+      "date": "2026-08-27",
+      "days_to_race": 31,
+      "plan": {
+        "title": "Cuestas+Plano",
+        "workout_type": "Run",
+        "planned_distance_km": 10.85,
+        "planned_duration_min": 64.9,
+        "planned_tss": null,
+        "notes": ""
+      },
+      "activities": [],
+      "primary_activity": null,
+      "completed": false,
+      "session_type": "quality",
+      "garmin": null,
+      "hrv_7d_avg": null,
+      "fatigue_flag": false,
+      "recovery_suggestion": {
+        "recommendation": "contrast",
+        "timing": "manana",
+        "detail": "Sesion de calidad/larga: contrast therapy (sauna 10-20 min + cold plunge 1-5 min, 2-4 ciclos terminando en frio) o cold plunge solo ayudan a acelerar la recuperacion antes de la siguiente sesion importante.",
+        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
+      },
+      "recommendations_log": []
+    },
+    "2026-08-28": {
+      "date": "2026-08-28",
+      "days_to_race": 30,
+      "plan": {
+        "title": "Intervalo Largo",
+        "workout_type": "Run",
+        "planned_distance_km": 14.17,
+        "planned_duration_min": 80.0,
+        "planned_tss": null,
+        "notes": ""
+      },
+      "activities": [],
+      "primary_activity": null,
+      "completed": false,
+      "session_type": "quality",
+      "garmin": null,
+      "hrv_7d_avg": null,
+      "fatigue_flag": false,
+      "recovery_suggestion": {
+        "recommendation": "ninguna",
+        "timing": null,
+        "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — sin necesidad de mas hoy.",
+        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
+      },
+      "recommendations_log": []
+    },
+    "2026-08-29": {
+      "date": "2026-08-29",
+      "days_to_race": 29,
+      "plan": {
+        "title": "Day Off",
+        "workout_type": "Day Off",
+        "planned_distance_km": null,
+        "planned_duration_min": null,
+        "planned_tss": null,
+        "notes": ""
+      },
+      "activities": [],
+      "primary_activity": null,
+      "completed": false,
+      "session_type": "rest",
+      "garmin": null,
+      "hrv_7d_avg": null,
+      "fatigue_flag": false,
+      "recovery_suggestion": {
+        "recommendation": "ninguna",
+        "timing": null,
+        "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — dia libre de protocolo.",
+        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
+      },
+      "recommendations_log": []
+    },
+    "2026-08-30": {
+      "date": "2026-08-30",
+      "days_to_race": 28,
+      "plan": {
+        "title": "28k Long Run Tempo",
+        "workout_type": "Run",
+        "planned_distance_km": 28.01,
+        "planned_duration_min": 150.8,
+        "planned_tss": null,
+        "notes": "Puedes hacer este en plano o 28km flat zona 2 en montaña"
+      },
+      "activities": [],
+      "primary_activity": null,
+      "completed": false,
+      "session_type": "quality",
+      "garmin": null,
+      "hrv_7d_avg": null,
+      "fatigue_flag": false,
+      "recovery_suggestion": {
+        "recommendation": "ninguna",
+        "timing": null,
+        "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — sin necesidad de mas hoy.",
+        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
+      },
+      "recommendations_log": []
     }
   },
   "recent_sessions": [
     {
       "date": "2026-08-19",
-      "session_type": "quality",
+      "session_type": "strength",
       "name": "Strength",
       "sport_type": "WeightTraining",
       "distance_km": 0.0,
@@ -1897,7 +2005,7 @@
     },
     {
       "date": "2026-08-13",
-      "session_type": "strength",
+      "session_type": "quality",
       "name": "Strength",
       "sport_type": "WeightTraining",
       "distance_km": 0.0,
@@ -1915,7 +2023,7 @@
     },
     {
       "date": "2026-08-07",
-      "session_type": "strength",
+      "session_type": "easy",
       "name": "Badung Surfing",
       "sport_type": "Surfing_V2",
       "distance_km": 1.55,
@@ -1924,7 +2032,7 @@
     },
     {
       "date": "2026-08-05",
-      "session_type": "quality",
+      "session_type": "strength",
       "name": "Strength",
       "sport_type": "WeightTraining",
       "distance_km": 0.0,
@@ -1933,7 +2041,7 @@
     },
     {
       "date": "2026-08-03",
-      "session_type": "easy",
+      "session_type": "other",
       "name": "Lombok Tengah Surfing",
       "sport_type": "Surfing_V2",
       "distance_km": 4.84,
@@ -1942,7 +2050,7 @@
     },
     {
       "date": "2026-08-02",
-      "session_type": "easy",
+      "session_type": "other",
       "name": "Lombok Tengah Surfing",
       "sport_type": "Surfing_V2",
       "distance_km": 0.52,
@@ -1960,7 +2068,7 @@
     },
     {
       "date": "2026-07-29",
-      "session_type": "quality",
+      "session_type": "strength",
       "name": "Strength",
       "sport_type": "WeightTraining",
       "distance_km": 0.0,
