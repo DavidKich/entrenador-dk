@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
 build_data.py — Combina plan (TrainingPeaks CSV), metricas de recuperacion
-(Garmin CSV) y actividades reales (Strava JSON) en un solo data.json que
-consume render_html.py.
+(Garmin CSV) y actividades reales completadas (Garmin JSON) en un solo
+data.json que consume render_html.py.
 
 Uso:
     python build_data.py \
         --trainingpeaks trainingpeaks.csv \
         --garmin garmin.csv \
-        --strava strava.json \
+        --garmin-activities garmin_activities.json \
         [--daily-log daily-log.md] \
         [--race-date 2026-09-27] \
         [--goal-time 3:40:00] \
@@ -23,15 +23,15 @@ Formatos de entrada esperados (ver README.md para detalle y alias de columnas):
   Garmin CSV (sueno / HRV / Body Battery / estres):
     date, sleep_hours, sleep_score, hrv, body_battery, stress_avg, symptoms
 
-  Strava JSON (formato de mcp__Strava__list_activities): lista de actividades
-  (o {"activities": [...]}), cada una con id/name/description/sport_type/
-  start_date_local y datos resumen de distancia, tiempo, relative_effort,
-  kudos_count, pr_count, achievement_count. El parser acepta tanto campos
-  anidados bajo "summary" como aplanados en el objeto raiz.
+  Garmin actividades JSON (formato de salida de fetch_data.py): lista de
+  actividades (o {"activities": [...]}), cada una con id/name/sport_type/
+  start_date_local y datos resumen de distancia, tiempo y relative_effort
+  (proxy de Garmin para carga por sesion, `activityTrainingLoad`). El
+  parser acepta tanto campos anidados bajo "summary" como aplanados en el
+  objeto raiz.
 
-Nada de esto usa el TSS de TrainingPeaks como metrica de carga dia a dia:
-la carga semanal se deriva del esfuerzo (Relative Effort) de Strava, tal
-como pide la seccion 4 del brief y la seccion 3.4 del spec del dashboard.
+La grafica de carga semanal usa el TSS planeado de TrainingPeaks (suma por
+semana de planned_tss), no un agregado de esfuerzo por actividad.
 """
 
 import argparse
@@ -150,7 +150,7 @@ def load_garmin(path):
 
 
 # ---------------------------------------------------------------------------
-# 3. Strava JSON -> actividades reales por dia
+# 3. Garmin actividades JSON -> actividades reales por dia
 # ---------------------------------------------------------------------------
 
 def _activity_field(act, *keys, default=None):
@@ -163,7 +163,7 @@ def _activity_field(act, *keys, default=None):
     return default
 
 
-def load_strava(path):
+def load_garmin_activities(path):
     activities_by_date = defaultdict(list)
     if not path:
         return activities_by_date
@@ -185,12 +185,7 @@ def load_strava(path):
         moving_s = _to_float(_activity_field(act, "moving_time_s", "moving_time"), default=0.0)
         elapsed_s = _to_float(_activity_field(act, "elapsed_time_s", "elapsed_time"), default=moving_s)
         relative_effort = _to_float(
-            _activity_field(act, "relative_effort", "suffer_score", "effort_score")
-        )
-        kudos = int(_to_float(_activity_field(act, "kudos_count", "kudos"), default=0) or 0)
-        pr_count = int(_to_float(_activity_field(act, "pr_count", "pr_effort_count"), default=0) or 0)
-        achievements = int(
-            _to_float(_activity_field(act, "achievement_count"), default=0) or 0
+            _activity_field(act, "relative_effort", "activity_training_load")
         )
         avg_speed = _to_float(_activity_field(act, "avg_speed_mps", "average_speed"))
 
@@ -213,9 +208,6 @@ def load_strava(path):
             "pace_min_per_km": pace_min_per_km,
             "avg_speed_mps": avg_speed,
             "relative_effort": relative_effort,
-            "kudos": kudos,
-            "pr_count": pr_count,
-            "achievement_count": achievements,
         })
     return activities_by_date
 
@@ -466,14 +458,14 @@ def suggest_recovery(d, session_type, symptoms, race_date, week_recovery_count, 
 # 7. Ensamblado principal
 # ---------------------------------------------------------------------------
 
-def build(trainingpeaks_path, garmin_path, strava_path, daily_log_path, race_date, goal_time, sleep_goal=(7, 8)):
+def build(trainingpeaks_path, garmin_path, garmin_activities_path, daily_log_path, race_date, goal_time, sleep_goal=(7, 8)):
     plan_by_date = load_trainingpeaks(trainingpeaks_path)
     garmin_by_date = load_garmin(garmin_path)
-    strava_by_date = load_strava(strava_path)
+    activities_by_date = load_garmin_activities(garmin_activities_path)
     log_by_date = load_daily_log(daily_log_path)
 
     all_dates = sorted(
-        set(plan_by_date) | set(garmin_by_date) | set(strava_by_date) | set(log_by_date)
+        set(plan_by_date) | set(garmin_by_date) | set(activities_by_date) | set(log_by_date)
     )
     if not all_dates:
         raise SystemExit("No se encontro ninguna fecha en las fuentes provistas.")
@@ -497,7 +489,7 @@ def build(trainingpeaks_path, garmin_path, strava_path, daily_log_path, race_dat
     for d_str in all_dates:
         d = parse_date(d_str)
         plan = plan_by_date.get(d_str)
-        activities = strava_by_date.get(d_str, [])
+        activities = activities_by_date.get(d_str, [])
         garmin = garmin_by_date.get(d_str)
 
         session_type = classify_session(plan, activities)
@@ -547,7 +539,7 @@ def build(trainingpeaks_path, garmin_path, strava_path, daily_log_path, race_dat
 
     # --- agregados semanales (para 3.1 resumen y 3.4 grafica de carga) ---
     weeks_map = defaultdict(lambda: {
-        "planned_km": 0.0, "actual_km": 0.0, "total_relative_effort": 0.0,
+        "planned_km": 0.0, "actual_km": 0.0, "total_relative_effort": 0.0, "total_planned_tss": 0.0,
         "sleep_hours": [], "days": [],
     })
     for d_str, day in days.items():
@@ -556,6 +548,8 @@ def build(trainingpeaks_path, garmin_path, strava_path, daily_log_path, race_dat
         w["days"].append(d_str)
         if day["plan"] and day["plan"].get("planned_distance_km"):
             w["planned_km"] += day["plan"]["planned_distance_km"]
+        if day["plan"] and day["plan"].get("planned_tss"):
+            w["total_planned_tss"] += day["plan"]["planned_tss"]
         for act in day["activities"]:
             w["actual_km"] += act.get("distance_km") or 0.0
             if act.get("relative_effort"):
@@ -574,6 +568,7 @@ def build(trainingpeaks_path, garmin_path, strava_path, daily_log_path, race_dat
             "planned_km": round(w["planned_km"], 1),
             "actual_km": round(w["actual_km"], 1),
             "total_relative_effort": round(w["total_relative_effort"], 1),
+            "total_planned_tss": round(w["total_planned_tss"], 1),
             "avg_sleep_hours": avg_sleep,
             "days": sorted(w["days"]),
         })
@@ -616,9 +611,6 @@ def build(trainingpeaks_path, garmin_path, strava_path, daily_log_path, race_dat
                 "distance_km": act.get("distance_km"),
                 "pace_min_per_km": act.get("pace_min_per_km"),
                 "relative_effort": act.get("relative_effort"),
-                "pr_count": act.get("pr_count"),
-                "kudos": act.get("kudos"),
-                "achievement_count": act.get("achievement_count"),
             })
     recent_sessions = recent_sessions[:20]
 
@@ -638,7 +630,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--trainingpeaks", required=True, help="CSV de plan de TrainingPeaks")
     ap.add_argument("--garmin", required=True, help="CSV de metricas de Garmin")
-    ap.add_argument("--strava", required=True, help="JSON de actividades de Strava")
+    ap.add_argument("--garmin-activities", required=True, help="JSON de actividades reales de Garmin")
     ap.add_argument("--daily-log", default=None, help="daily-log.md opcional (registro de checkpoints)")
     ap.add_argument("--race-date", default="2026-09-27", help="Fecha del maraton, YYYY-MM-DD")
     ap.add_argument("--goal-time", default="3:40:00", help="Tiempo objetivo del maraton")
@@ -650,7 +642,7 @@ def main():
         raise SystemExit(f"--race-date invalido: {args.race_date}")
 
     data = build(
-        args.trainingpeaks, args.garmin, args.strava, args.daily_log,
+        args.trainingpeaks, args.garmin, args.garmin_activities, args.daily_log,
         race_date, args.goal_time,
     )
 

@@ -24,4 +24,4 @@ Buen descanso hoy. Manana toca rodaje facil de 8km — nada especial que prepara
 ### Mañana
 Plan de hoy: rodaje facil de 8km. Dormiste 7.2h, dentro de meta. HRV y Body Battery normales. ¿Como te sientes fisicamente hoy? Avisame si algo duele o se siente distinto a lo normal antes de salir.
 ### Mediodía
-Rodaje completado, 8.1km, sensaciones buenas segun Strava. Vas en linea con el plan de la semana. Para la comida, porcion moderada de carbohidrato (dia facil, no hace falta cargar tanto) + proteina — algo tipo ensalada con pollo o pescado y arroz o tortilla.
+Rodaje completado, 8.1km, sensaciones buenas segun Garmin. Vas en linea con el plan de la semana. Para la comida, porcion moderada de carbohidrato (dia facil, no hace falta cargar tanto) + proteina — algo tipo ensalada con pollo o pescado y arroz o tortilla.

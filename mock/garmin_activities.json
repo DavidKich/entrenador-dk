@@ -1,0 +1,112 @@
+{
+  "activities": [
+    {
+      "id": 1001, "name": "Rodaje facil manana", "sport_type": "Run",
+      "start_date_local": "2026-07-28T07:05:00",
+      "summary": {"distance_m": 8100, "moving_time_s": 2760, "elapsed_time_s": 2820, "elevation_gain_m": 60,
+        "avg_speed_mps": 2.93, "max_speed_mps": 3.6, "calories": 480, "relative_effort": 45}
+    },
+    {
+      "id": 1002, "name": "Series 6x800m", "sport_type": "Run",
+      "start_date_local": "2026-07-29T07:00:00",
+      "summary": {"distance_m": 10200, "moving_time_s": 3300, "elapsed_time_s": 3420, "elevation_gain_m": 45,
+        "avg_speed_mps": 3.09, "max_speed_mps": 4.8, "calories": 620, "relative_effort": 72}
+    },
+    {
+      "id": 1003, "name": "Recuperacion suave", "sport_type": "Run",
+      "start_date_local": "2026-07-30T07:10:00",
+      "summary": {"distance_m": 6000, "moving_time_s": 2160, "elapsed_time_s": 2200, "elevation_gain_m": 30,
+        "avg_speed_mps": 2.78, "max_speed_mps": 3.3, "calories": 340, "relative_effort": 32}
+    },
+    {
+      "id": 1004, "name": "Fuerza tren inferior + core", "sport_type": "WeightTraining",
+      "start_date_local": "2026-07-31T07:30:00",
+      "summary": {"distance_m": 0, "moving_time_s": 3000, "elapsed_time_s": 3000, "elevation_gain_m": 0,
+        "avg_speed_mps": 0, "max_speed_mps": 0, "calories": 260, "relative_effort": 38}
+    },
+    {
+      "id": 1005, "name": "Rodaje largo 18km", "sport_type": "Run",
+      "start_date_local": "2026-08-01T06:45:00",
+      "summary": {"distance_m": 18300, "moving_time_s": 6360, "elapsed_time_s": 6480, "elevation_gain_m": 140,
+        "avg_speed_mps": 2.88, "max_speed_mps": 3.9, "calories": 1180, "relative_effort": 110}
+    },
+    {
+      "id": 1006, "name": "Trote domingo", "sport_type": "Run",
+      "start_date_local": "2026-08-02T08:00:00",
+      "summary": {"distance_m": 6200, "moving_time_s": 2220, "elapsed_time_s": 2260, "elevation_gain_m": 35,
+        "avg_speed_mps": 2.79, "max_speed_mps": 3.2, "calories": 350, "relative_effort": 30}
+    },
+    {
+      "id": 1007, "name": "Rodaje facil manana", "sport_type": "Run",
+      "start_date_local": "2026-08-04T07:05:00",
+      "summary": {"distance_m": 8050, "moving_time_s": 2700, "elapsed_time_s": 2760, "elevation_gain_m": 55,
+        "avg_speed_mps": 2.98, "max_speed_mps": 3.6, "calories": 470, "relative_effort": 44}
+    },
+    {
+      "id": 1008, "name": "Tempo run", "sport_type": "Run",
+      "start_date_local": "2026-08-05T07:00:00",
+      "summary": {"distance_m": 11100, "moving_time_s": 3480, "elapsed_time_s": 3560, "elevation_gain_m": 50,
+        "avg_speed_mps": 3.19, "max_speed_mps": 4.6, "calories": 660, "relative_effort": 76}
+    },
+    {
+      "id": 1009, "name": "Fuerza tren inferior + core", "sport_type": "WeightTraining",
+      "start_date_local": "2026-08-07T07:30:00",
+      "summary": {"distance_m": 0, "moving_time_s": 3000, "elapsed_time_s": 3000, "elevation_gain_m": 0,
+        "avg_speed_mps": 0, "max_speed_mps": 0, "calories": 255, "relative_effort": 37}
+    },
+    {
+      "id": 1010, "name": "Rodaje largo 20km", "sport_type": "Run",
+      "start_date_local": "2026-08-08T06:40:00",
+      "summary": {"distance_m": 20400, "moving_time_s": 7080, "elapsed_time_s": 7200, "elevation_gain_m": 160,
+        "avg_speed_mps": 2.88, "max_speed_mps": 3.9, "calories": 1310, "relative_effort": 118}
+    },
+    {
+      "id": 1011, "name": "Trote domingo", "sport_type": "Run",
+      "start_date_local": "2026-08-09T08:00:00",
+      "summary": {"distance_m": 7100, "moving_time_s": 2460, "elapsed_time_s": 2500, "elevation_gain_m": 40,
+        "avg_speed_mps": 2.89, "max_speed_mps": 3.3, "calories": 400, "relative_effort": 34}
+    },
+    {
+      "id": 1012, "name": "Rodaje facil manana", "sport_type": "Run",
+      "start_date_local": "2026-08-11T07:05:00",
+      "summary": {"distance_m": 8000, "moving_time_s": 2700, "elapsed_time_s": 2760, "elevation_gain_m": 55,
+        "avg_speed_mps": 2.96, "max_speed_mps": 3.6, "calories": 465, "relative_effort": 43}
+    },
+    {
+      "id": 1013, "name": "Intervalos 8x1000m", "sport_type": "Run",
+      "start_date_local": "2026-08-12T07:00:00",
+      "summary": {"distance_m": 11000, "moving_time_s": 3480, "elapsed_time_s": 3600, "elevation_gain_m": 48,
+        "avg_speed_mps": 3.16, "max_speed_mps": 4.7, "calories": 655, "relative_effort": 80}
+    },
+    {
+      "id": 1014, "name": "Recuperacion suave", "sport_type": "Run",
+      "start_date_local": "2026-08-13T07:10:00",
+      "summary": {"distance_m": 5900, "moving_time_s": 2220, "elapsed_time_s": 2260, "elevation_gain_m": 28,
+        "avg_speed_mps": 2.66, "max_speed_mps": 3.1, "calories": 335, "relative_effort": 35}
+    },
+    {
+      "id": 1015, "name": "Fuerza tren inferior + core", "sport_type": "WeightTraining",
+      "start_date_local": "2026-08-14T07:30:00",
+      "summary": {"distance_m": 0, "moving_time_s": 3000, "elapsed_time_s": 3000, "elevation_gain_m": 0,
+        "avg_speed_mps": 0, "max_speed_mps": 0, "calories": 258, "relative_effort": 36}
+    },
+    {
+      "id": 1016, "name": "Rodaje largo 22km", "sport_type": "Run",
+      "start_date_local": "2026-08-15T06:35:00",
+      "summary": {"distance_m": 22500, "moving_time_s": 7860, "elapsed_time_s": 7980, "elevation_gain_m": 175,
+        "avg_speed_mps": 2.86, "max_speed_mps": 3.8, "calories": 1440, "relative_effort": 128}
+    },
+    {
+      "id": 1017, "name": "Trote domingo", "sport_type": "Run",
+      "start_date_local": "2026-08-16T08:00:00",
+      "summary": {"distance_m": 7050, "moving_time_s": 2460, "elapsed_time_s": 2500, "elevation_gain_m": 38,
+        "avg_speed_mps": 2.87, "max_speed_mps": 3.3, "calories": 395, "relative_effort": 33}
+    },
+    {
+      "id": 1018, "name": "Rodaje facil manana", "sport_type": "Run",
+      "start_date_local": "2026-08-18T07:05:00",
+      "summary": {"distance_m": 8100, "moving_time_s": 2760, "elapsed_time_s": 2820, "elevation_gain_m": 58,
+        "avg_speed_mps": 2.93, "max_speed_mps": 3.6, "calories": 482, "relative_effort": 46}
+    }
+  ]
+}

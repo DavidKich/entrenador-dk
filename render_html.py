@@ -214,7 +214,6 @@ function computeVals(){
       {label:'ESTRÉS', val: g ? g.stress_avg : '—'},
       {label:'HRV 7 DIAS', val: sel.hrv_7d_avg ?? '—'},
       {label:'REALIZADO', val: act && act.distance_km ? act.distance_km+' km' : (sel.completed ? 'Si' : 'No'), color: sel.completed ? '#7FE7C4' : '#6B7280'},
-      {label:'KUDOS / PR', val: act ? (act.kudos||0)+' / '+(act.pr_count||0) : '—'},
     ];
     let selWarn = '';
     if(sel.recovery_suggestion.recommendation === 'consulta_medica') selWarn = sel.recovery_suggestion.detail;
@@ -232,7 +231,7 @@ function computeVals(){
   }
 
   const weeks = (DATA.weeks || []).slice(-8);
-  const vals = weeks.map(w => w.total_relative_effort || 0);
+  const vals = weeks.map(w => w.total_planned_tss || 0);
   const max = Math.max.apply(null, vals) || 1;
   const bars = weeks.map((w,i) => ({
     label: shortDate(w.week_start),
@@ -248,8 +247,6 @@ function computeVals(){
   const sessions = (DATA.recent_sessions || []).slice(0,10).map(s => {
     const ty = TYPE[s.session_type] || TYPE.other;
     const meta = [shortDate(s.date), ty[0], 'esf '+(s.relative_effort ?? '—')]
-      .concat(s.kudos ? [s.kudos+' kudos'] : [])
-      .concat(s.pr_count ? [s.pr_count+' PR'] : [])
       .join(' · ');
     return {
       name: s.name || ty[0],
@@ -289,7 +286,7 @@ function computeVals(){
     cs: state.cs, ce: state.ce,
     rangeLabel, gridCols: cols, dows, cells,
     sel: selVals,
-    chartUnit: 'esfuerzo relativo (Strava)',
+    chartUnit: 'TSS planeado (TrainingPeaks)',
     bars, weekRows, sessions,
     legend: Object.keys(TYPE).map(k => ({label: TYPE[k][0], color: TYPE[k][1]})),
     safety: SAFETY,

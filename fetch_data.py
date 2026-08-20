@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-fetch_data.py — Trae datos reales de Garmin Connect, Strava y (best-effort)
-TrainingPeaks, y los deja en formato listo para build_data.py.
+fetch_data.py — Trae datos reales de Garmin Connect (recuperacion +
+actividades) y (best-effort) TrainingPeaks, y los deja en formato listo
+para build_data.py.
 
 Disenado para correr en GitHub Actions cada 6 horas (ver
 .github/workflows/update-dashboard.yml), pero tambien corre en local para
@@ -10,15 +11,14 @@ probar. Todas las credenciales se leen UNICAMENTE de variables de entorno
 que se vaya a commitear.
 
 Variables de entorno esperadas:
-  GARMIN_USER, GARMIN_PASS                                  (obligatorias)
-  STRAVA_CLIENT_ID, STRAVA_CLIENT_SECRET, STRAVA_REFRESH_TOKEN (obligatorias)
-  TRAININGPEAKS_USER, TRAININGPEAKS_PASS                    (opcionales)
+  GARMIN_USER, GARMIN_PASS                (obligatorias)
+  TRAININGPEAKS_USER, TRAININGPEAKS_PASS  (opcionales)
 
 Politica de fallos (a peticion explicita, ver README):
-  - Si falla Garmin o Strava: el script se detiene con exit code 1 y un
-    error visible (::error:: en la sintaxis de anotaciones de GitHub
-    Actions) -- son las fuentes que mas importan, no se debe generar un
-    dashboard con datos viejos sin que quede claro que algo se rompio.
+  - Si falla Garmin: el script se detiene con exit code 1 y un error
+    visible (::error:: en la sintaxis de anotaciones de GitHub Actions)
+    -- es la fuente que mas importa, no se debe generar un dashboard con
+    datos viejos sin que quede claro que algo se rompio.
   - Si falla TrainingPeaks (integracion no oficial, mas fragil, y el plan
     cambia poco): se avisa con ::warning:: pero el script sigue. Se
     reusa el plan de la ultima corrida exitosa leyendo el data.json ya
@@ -27,12 +27,11 @@ Politica de fallos (a peticion explicita, ver README):
 Salida (en --out-dir, por defecto "live/" -- ver .gitignore, no se
 commitea el contenido crudo, solo el data.json/dashboard.html finales):
   live/garmin.csv
-  live/strava.json
+  live/garmin_activities.json
   live/trainingpeaks.csv
 
 Uso local:
     export GARMIN_USER=... GARMIN_PASS=...
-    export STRAVA_CLIENT_ID=... STRAVA_CLIENT_SECRET=... STRAVA_REFRESH_TOKEN=...
     python fetch_data.py
 """
 
@@ -42,7 +41,7 @@ import json
 import os
 import pathlib
 import sys
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, timedelta
 
 import requests
 
@@ -81,17 +80,7 @@ def write_csv(path, rows, fieldnames):
 # Garmin Connect (via la libreria no oficial `garminconnect`)
 # ---------------------------------------------------------------------------
 
-def fetch_garmin(email, password, start, end, out_path):
-    """Trae sueno / HRV / Body Battery / estres dia por dia.
-
-    Nota: los nombres de campo dentro de las respuestas de Garmin
-    Connect (dailySleepDTO, hrvSummary, bodyBatteryValuesArray, etc.)
-    vienen de la forma en que la libreria garminconnect expone hoy la
-    API interna de Garmin -- pueden cambiar si Garmin actualiza su API
-    o la libreria se actualiza. Cada metrica esta en su propio
-    try/except para que un cambio de forma en UNA metrica no tire todo
-    el dia ni la corrida completa.
-    """
+def login_garmin(email, password):
     from garminconnect import Garmin
 
     client = Garmin(email, password)
@@ -103,7 +92,20 @@ def fetch_garmin(email, password, start, end, out_path):
             "dos pasos (2FA) activada, el login automatico no puede completarla "
             "-- usa una cuenta sin 2FA para este proposito, o desactivalo."
         ) from e
+    return client
 
+
+def fetch_garmin(client, start, end, out_path):
+    """Trae sueno / HRV / Body Battery / estres dia por dia.
+
+    Nota: los nombres de campo dentro de las respuestas de Garmin
+    Connect (dailySleepDTO, hrvSummary, bodyBatteryValuesArray, etc.)
+    vienen de la forma en que la libreria garminconnect expone hoy la
+    API interna de Garmin -- pueden cambiar si Garmin actualiza su API
+    o la libreria se actualiza. Cada metrica esta en su propio
+    try/except para que un cambio de forma en UNA metrica no tire todo
+    el dia ni la corrida completa.
+    """
     rows = []
     d = start
     while d <= end:
@@ -156,61 +158,54 @@ def fetch_garmin(email, password, start, end, out_path):
 
 
 # ---------------------------------------------------------------------------
-# Strava (API oficial, OAuth2 con refresh token)
+# Garmin Connect -- actividades reales completadas (reemplaza a Strava)
 # ---------------------------------------------------------------------------
 
-def fetch_strava(client_id, client_secret, refresh_token, days, out_path):
-    resp = requests.post(
-        "https://www.strava.com/oauth/token",
-        data={
-            "client_id": client_id,
-            "client_secret": client_secret,
-            "grant_type": "refresh_token",
-            "refresh_token": refresh_token,
-        },
-        timeout=20,
-    )
-    resp.raise_for_status()
-    access_token = resp.json()["access_token"]
+# Normaliza el typeKey interno de Garmin a los mismos valores que build_data.py
+# ya sabe clasificar (ver STRENGTH_KEYWORDS / "run"|"ride"|"swim" en build_data.py).
+GARMIN_SPORT_MAP = {
+    "running": "Run", "trail_running": "Run", "treadmill_running": "Run",
+    "cycling": "Ride", "road_biking": "Ride", "indoor_cycling": "Ride", "mountain_biking": "Ride",
+    "lap_swimming": "Swim", "open_water_swimming": "Swim",
+    "strength_training": "WeightTraining",
+    "walking": "Walk", "hiking": "Hike",
+}
 
-    after = int((datetime.now(timezone.utc) - timedelta(days=days)).timestamp())
-    activities = []
-    page = 1
-    while page <= 10:
-        r = requests.get(
-            "https://www.strava.com/api/v3/athlete/activities",
-            headers={"Authorization": f"Bearer {access_token}"},
-            params={"after": after, "per_page": 100, "page": page},
-            timeout=20,
-        )
-        r.raise_for_status()
-        batch = r.json()
-        if not batch:
-            break
-        activities.extend(batch)
-        page += 1
+
+def fetch_garmin_activities(client, start, end, out_path):
+    """Trae actividades completadas dia por dia (nombre, distancia, ritmo,
+    tipo, esfuerzo) via `get_activities_by_date` -- reemplaza lo que antes
+    daba Strava. `activityTrainingLoad` es el proxy de Garmin para carga /
+    esfuerzo relativo por sesion (equivalente al Relative Effort de Strava).
+    """
+    raw = client.get_activities_by_date(start.isoformat(), end.isoformat())
 
     out = []
-    for a in activities:
+    for a in raw:
+        type_key = ((a.get("activityType") or {}).get("typeKey") or "").lower()
+        sport_type = GARMIN_SPORT_MAP.get(type_key, type_key.title() or "Other")
+
+        relative_effort = a.get("activityTrainingLoad")
+        if relative_effort is None:
+            aerobic = a.get("aerobicTrainingEffect") or 0
+            anaerobic = a.get("anaerobicTrainingEffect") or 0
+            relative_effort = round((aerobic + anaerobic) * 10, 1) or None
+
         out.append({
-            "id": a.get("id"),
-            "name": a.get("name", ""),
-            "description": "",  # requiere un GET por actividad; se omite para no gastar rate limit
-            "sport_type": a.get("sport_type") or a.get("type") or "",
-            "start_date_local": a.get("start_date_local"),
+            "id": a.get("activityId"),
+            "name": a.get("activityName", ""),
+            "description": "",
+            "sport_type": sport_type,
+            "start_date_local": (a.get("startTimeLocal") or "").replace(" ", "T"),
             "summary": {
                 "distance_m": a.get("distance"),
-                "moving_time_s": a.get("moving_time"),
-                "elapsed_time_s": a.get("elapsed_time"),
-                "elevation_gain_m": a.get("total_elevation_gain"),
-                "avg_speed_mps": a.get("average_speed"),
-                "max_speed_mps": a.get("max_speed"),
-                "avg_cadence": a.get("average_cadence"),
+                "moving_time_s": a.get("movingDuration") or a.get("duration"),
+                "elapsed_time_s": a.get("elapsedDuration") or a.get("duration"),
+                "elevation_gain_m": a.get("elevationGain"),
+                "avg_speed_mps": a.get("averageSpeed"),
+                "max_speed_mps": a.get("maxSpeed"),
                 "calories": a.get("calories"),
-                "relative_effort": a.get("suffer_score"),
-                "kudos_count": a.get("kudos_count"),
-                "achievement_count": a.get("achievement_count"),
-                "pr_count": a.get("pr_count"),
+                "relative_effort": relative_effort,
             },
         })
 
@@ -317,49 +312,52 @@ def fallback_trainingpeaks_csv(previous_data_path, out_path):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--out-dir", default="live", help="Carpeta de salida (no se commitea, ver .gitignore)")
-    ap.add_argument("--days", type=int, default=35, help="Dias hacia atras a traer de Garmin/Strava")
+    ap.add_argument("--days", type=int, default=35, help="Dias hacia atras a traer de Garmin (recuperacion + actividades)")
     ap.add_argument("--plan-days-ahead", type=int, default=14, help="Dias hacia adelante a traer del plan de TrainingPeaks")
     ap.add_argument("--previous-data", default="data.json", help="data.json ya commiteado, usado como respaldo si falla TrainingPeaks")
+    ap.add_argument("--skip-garmin", action="store_true",
+                     help="No trae datos de Garmin (recuperacion + actividades) -- no exige GARMIN_USER/GARMIN_PASS. Util para probar TrainingPeaks solo.")
+    ap.add_argument("--skip-trainingpeaks", action="store_true",
+                     help="No trae el plan de TrainingPeaks -- no exige TRAININGPEAKS_USER/TRAININGPEAKS_PASS ni reusa el plan anterior. Util para probar Garmin solo.")
     args = ap.parse_args()
 
     out_dir = pathlib.Path(args.out_dir)
     today = date.today()
     start = today - timedelta(days=args.days)
 
-    garmin_user = require_env("GARMIN_USER")
-    garmin_pass = require_env("GARMIN_PASS")
-    try:
-        n = fetch_garmin(garmin_user, garmin_pass, start, today, out_dir / "garmin.csv")
-        print(f"Garmin OK: {n} dias -> {out_dir / 'garmin.csv'}")
-    except Exception as e:
-        fail(f"Fallo Garmin Connect: {e}")
-
-    strava_id = require_env("STRAVA_CLIENT_ID")
-    strava_secret = require_env("STRAVA_CLIENT_SECRET")
-    strava_refresh = require_env("STRAVA_REFRESH_TOKEN")
-    try:
-        n = fetch_strava(strava_id, strava_secret, strava_refresh, args.days, out_dir / "strava.json")
-        print(f"Strava OK: {n} actividades -> {out_dir / 'strava.json'}")
-    except Exception as e:
-        fail(f"Fallo Strava: {e}. El refresh token puede haber sido revocado -- "
-             "revisa el secret STRAVA_REFRESH_TOKEN.")
-
-    tp_user = os.environ.get("TRAININGPEAKS_USER")
-    tp_pass = os.environ.get("TRAININGPEAKS_PASS")
-    tp_out = out_dir / "trainingpeaks.csv"
-    if not tp_user or not tp_pass:
-        warn("TRAININGPEAKS_USER/TRAININGPEAKS_PASS no configurados -- se reusa el plan anterior.")
-        n = fallback_trainingpeaks_csv(pathlib.Path(args.previous_data), tp_out)
-        print(f"TrainingPeaks: sin credenciales, {n} sesiones reusadas del data.json anterior -> {tp_out}")
+    if args.skip_garmin:
+        print("Garmin: --skip-garmin, se omite.")
     else:
+        garmin_user = require_env("GARMIN_USER")
+        garmin_pass = require_env("GARMIN_PASS")
         try:
-            n = fetch_trainingpeaks(tp_user, tp_pass, start, today + timedelta(days=args.plan_days_ahead), tp_out)
-            print(f"TrainingPeaks OK: {n} sesiones -> {tp_out}")
+            client = login_garmin(garmin_user, garmin_pass)
+            n = fetch_garmin(client, start, today, out_dir / "garmin.csv")
+            print(f"Garmin OK: {n} dias -> {out_dir / 'garmin.csv'}")
+            n = fetch_garmin_activities(client, start, today, out_dir / "garmin_activities.json")
+            print(f"Garmin actividades OK: {n} actividades -> {out_dir / 'garmin_activities.json'}")
         except Exception as e:
-            warn(f"Fallo TrainingPeaks (integracion no oficial, puede romperse sin aviso "
-                 f"si cambian su sitio): {e}. Se reusa el plan de la ultima corrida exitosa.")
+            fail(f"Fallo Garmin Connect: {e}")
+
+    if args.skip_trainingpeaks:
+        print("TrainingPeaks: --skip-trainingpeaks, se omite.")
+    else:
+        tp_user = os.environ.get("TRAININGPEAKS_USER")
+        tp_pass = os.environ.get("TRAININGPEAKS_PASS")
+        tp_out = out_dir / "trainingpeaks.csv"
+        if not tp_user or not tp_pass:
+            warn("TRAININGPEAKS_USER/TRAININGPEAKS_PASS no configurados -- se reusa el plan anterior.")
             n = fallback_trainingpeaks_csv(pathlib.Path(args.previous_data), tp_out)
-            print(f"TrainingPeaks: {n} sesiones reusadas del data.json anterior -> {tp_out}")
+            print(f"TrainingPeaks: sin credenciales, {n} sesiones reusadas del data.json anterior -> {tp_out}")
+        else:
+            try:
+                n = fetch_trainingpeaks(tp_user, tp_pass, start, today + timedelta(days=args.plan_days_ahead), tp_out)
+                print(f"TrainingPeaks OK: {n} sesiones -> {tp_out}")
+            except Exception as e:
+                warn(f"Fallo TrainingPeaks (integracion no oficial, puede romperse sin aviso "
+                     f"si cambian su sitio): {e}. Se reusa el plan de la ultima corrida exitosa.")
+                n = fallback_trainingpeaks_csv(pathlib.Path(args.previous_data), tp_out)
+                print(f"TrainingPeaks: {n} sesiones reusadas del data.json anterior -> {tp_out}")
 
     print("fetch_data.py: listo.")
 

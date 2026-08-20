@@ -30,18 +30,15 @@ jobs:
       - name: Instalar dependencias
         run: pip install -r requirements.txt
 
-      # Garmin y Strava son obligatorios: si fallan, este paso termina con
-      # exit code distinto de cero y el Action queda en rojo (visible),
-      # sin tocar data.json/dashboard.html. TrainingPeaks es best-effort:
-      # si falla, fetch_data.py lo avisa con ::warning:: pero no rompe
-      # este paso -- ver fetch_data.py y README.md.
-      - name: Traer datos (Garmin / Strava / TrainingPeaks)
+      # Garmin es obligatorio: si falla, este paso termina con exit code
+      # distinto de cero y el Action queda en rojo (visible), sin tocar
+      # data.json/dashboard.html. TrainingPeaks es best-effort: si falla,
+      # fetch_data.py lo avisa con ::warning:: pero no rompe este paso --
+      # ver fetch_data.py y README.md.
+      - name: Traer datos (Garmin / TrainingPeaks)
         env:
           GARMIN_USER: ${{ secrets.GARMIN_USER }}
           GARMIN_PASS: ${{ secrets.GARMIN_PASS }}
-          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
-          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
-          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
           TRAININGPEAKS_USER: ${{ secrets.TRAININGPEAKS_USER }}
           TRAININGPEAKS_PASS: ${{ secrets.TRAININGPEAKS_PASS }}
         run: python fetch_data.py
@@ -54,7 +51,7 @@ jobs:
           python build_data.py
           --trainingpeaks live/trainingpeaks.csv
           --garmin live/garmin.csv
-          --strava live/strava.json
+          --garmin-activities live/garmin_activities.json
           --race-date 2026-09-27
           --goal-time 3:40:00
           --out data.json
