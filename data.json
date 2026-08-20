@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-20T06:41:12",
+  "generated_at": "2026-08-20T12:42:46",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -1663,7 +1663,7 @@
         "sleep_score": null,
         "hrv": null,
         "body_battery": 22.0,
-        "stress_avg": 26.0,
+        "stress_avg": 27.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 54.9,
