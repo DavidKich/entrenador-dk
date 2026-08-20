@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-20T12:42:46",
+  "generated_at": "2026-08-20T18:35:19",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -10,8 +10,8 @@
     "days_to_race": 38,
     "semaforo": "atrasado",
     "planned_km": 40.0,
-    "actual_km": 1.4,
-    "avg_sleep_hours": 7.29,
+    "actual_km": 12.5,
+    "avg_sleep_hours": 7.31,
     "sleep_goal": [
       7,
       8
@@ -110,10 +110,10 @@
       "week_start": "2026-08-17",
       "week_end": "2026-08-23",
       "planned_km": 40.0,
-      "actual_km": 1.4,
-      "total_relative_effort": 91.5,
+      "actual_km": 12.5,
+      "total_relative_effort": 284.4,
       "total_planned_tss": 0.0,
-      "avg_sleep_hours": 7.29,
+      "avg_sleep_hours": 7.31,
       "days": [
         "2026-08-17",
         "2026-08-18",
@@ -1654,16 +1654,42 @@
         "planned_tss": null,
         "notes": "POR QUE TEMPO? 1. Desarrollo de la Resistencia Aeróbica: Propósito: Mejorar la capacidad del sistema cardiovascular para suministrar oxígeno a los músculos durante esfuerzos prolongados. Beneficios: Aumento de la eficiencia aeróbica y mejora en la capacidad para mantener un ritmo sostenido durante distancias más largas. 2. Aumento del Umbral del Lactato: Propósito: Incrementar la velocidad a la cual el cuerpo comienza a acumular lactato, retrasando la fatiga. Beneficios: Mejora de la tolerancia al ácido láctico, permitiendo correr a ritmos más rápidos durante periodos más extensos. 3. Mejora de la Economía de Carrera: Propósito: Desarrollar la eficiencia biomecánica y neuromuscular al mantener un ritmo específico durante un tiempo prolongado. Beneficios: Reducción del desgaste energético y mejoras en la técnica de carrera. 4. Entrenamiento Mental: Propósito: Acostumbrar la mente a mantener el enfoque y superar la fatiga durante sesiones de mayor duración. Beneficios: Desarrollo de la resistencia mental y la capacidad para lidiar con los desafíos físicos y mentales de carreras más largas. 5. Preparación para Carreras de Distancia: Propósito: Simular las demandas fisiológicas de carreras más largas. Beneficios: Mejora de la preparación específica para eventos de distancia, como medias maratones o maratones. 6. Monitoreo del Ritmo: Propósito: Aprender a reconocer y mantener un ritmo específico sin depender de dispositivos electrónicos. Beneficios: Desarrollo de la percepción interna del esfuerzo y la capacidad para juzgar el ritmo sin depender exclusivamente de la tecnología."
       },
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
+      "activities": [
+        {
+          "id": 24050009546,
+          "name": "Miguel Hidalgo - TEMPO",
+          "description": "",
+          "sport_type": "Run",
+          "start_date_local": "2026-08-20T07:55:23",
+          "distance_km": 11.05,
+          "moving_time_min": 61.9,
+          "elapsed_time_min": 67.9,
+          "pace_min_per_km": 5.6,
+          "avg_speed_mps": 2.97,
+          "relative_effort": 192.89
+        }
+      ],
+      "primary_activity": {
+        "id": 24050009546,
+        "name": "Miguel Hidalgo - TEMPO",
+        "description": "",
+        "sport_type": "Run",
+        "start_date_local": "2026-08-20T07:55:23",
+        "distance_km": 11.05,
+        "moving_time_min": 61.9,
+        "elapsed_time_min": 67.9,
+        "pace_min_per_km": 5.6,
+        "avg_speed_mps": 2.97,
+        "relative_effort": 192.89
+      },
+      "completed": true,
       "session_type": "quality",
       "garmin": {
-        "sleep_hours": null,
-        "sleep_score": null,
-        "hrv": null,
+        "sleep_hours": 7.38,
+        "sleep_score": 79.0,
+        "hrv": 58.0,
         "body_battery": 22.0,
-        "stress_avg": 27.0,
+        "stress_avg": 21.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 54.9,
@@ -1692,7 +1718,7 @@
       "completed": false,
       "session_type": "long_run",
       "garmin": null,
-      "hrv_7d_avg": 54.7,
+      "hrv_7d_avg": 55.1,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -1718,7 +1744,7 @@
       "completed": false,
       "session_type": "easy",
       "garmin": null,
-      "hrv_7d_avg": 55.8,
+      "hrv_7d_avg": 56.2,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -1744,7 +1770,7 @@
       "completed": false,
       "session_type": "long_run",
       "garmin": null,
-      "hrv_7d_avg": 56.0,
+      "hrv_7d_avg": 56.4,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -1770,7 +1796,7 @@
       "completed": false,
       "session_type": "strength",
       "garmin": null,
-      "hrv_7d_avg": 57.3,
+      "hrv_7d_avg": 57.5,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
@@ -1796,7 +1822,7 @@
       "completed": false,
       "session_type": "quality",
       "garmin": null,
-      "hrv_7d_avg": 56.5,
+      "hrv_7d_avg": 57.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "contrast",
@@ -1822,7 +1848,7 @@
       "completed": false,
       "session_type": "strength",
       "garmin": null,
-      "hrv_7d_avg": 49.0,
+      "hrv_7d_avg": 53.5,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
@@ -1848,7 +1874,7 @@
       "completed": false,
       "session_type": "quality",
       "garmin": null,
-      "hrv_7d_avg": null,
+      "hrv_7d_avg": 58.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "contrast",
@@ -1938,6 +1964,15 @@
     }
   },
   "recent_sessions": [
+    {
+      "date": "2026-08-20",
+      "session_type": "quality",
+      "name": "Miguel Hidalgo - TEMPO",
+      "sport_type": "Run",
+      "distance_km": 11.05,
+      "pace_min_per_km": 5.6,
+      "relative_effort": 192.89
+    },
     {
       "date": "2026-08-19",
       "session_type": "strength",
@@ -2108,15 +2143,6 @@
       "distance_km": 0.0,
       "pace_min_per_km": null,
       "relative_effort": 12.49
-    },
-    {
-      "date": "2026-07-18",
-      "session_type": "easy",
-      "name": "Miguel Hidalgo Running",
-      "sport_type": "Run",
-      "distance_km": 8.05,
-      "pace_min_per_km": 6.11,
-      "relative_effort": 90.38
     }
   ]
 }
