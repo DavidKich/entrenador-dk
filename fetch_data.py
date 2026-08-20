@@ -24,6 +24,13 @@ Politica de fallos (a peticion explicita, ver README):
     reusa el plan de la ultima corrida exitosa leyendo el data.json ya
     commiteado en el repo, en vez de dejar el plan vacio.
 
+Flags --skip-garmin / --skip-trainingpeaks: permiten probar cada fuente
+por separado sin exigir las credenciales de la otra. --skip-trainingpeaks
+tambien se usa en el Action automatico (ver update-dashboard.yml) porque
+el plan ahora se actualiza a mano via Chrome/Cowork, no por este pipeline
+-- con el flag, ni siquiera se intenta la API (que falla con 401), y se
+reusa directamente el plan del ultimo data.json commiteado.
+
 Salida (en --out-dir, por defecto "live/" -- ver .gitignore, no se
 commitea el contenido crudo, solo el data.json/dashboard.html finales):
   live/garmin.csv
@@ -33,6 +40,8 @@ commitea el contenido crudo, solo el data.json/dashboard.html finales):
 Uso local:
     export GARMIN_USER=... GARMIN_PASS=...
     python fetch_data.py
+    python fetch_data.py --skip-garmin        # solo probar TrainingPeaks
+    python fetch_data.py --skip-trainingpeaks # solo probar Garmin
 """
 
 import argparse
@@ -318,7 +327,9 @@ def main():
     ap.add_argument("--skip-garmin", action="store_true",
                      help="No trae datos de Garmin (recuperacion + actividades) -- no exige GARMIN_USER/GARMIN_PASS. Util para probar TrainingPeaks solo.")
     ap.add_argument("--skip-trainingpeaks", action="store_true",
-                     help="No trae el plan de TrainingPeaks -- no exige TRAININGPEAKS_USER/TRAININGPEAKS_PASS ni reusa el plan anterior. Util para probar Garmin solo.")
+                     help="No intenta traer el plan de TrainingPeaks (no exige TRAININGPEAKS_USER/TRAININGPEAKS_PASS ni pega a la API) -- "
+                          "siempre reusa el plan del ultimo data.json commiteado, igual que el fallback por fallo. "
+                          "Util para probar Garmin solo, o cuando el plan se actualiza por otro medio (ej. manualmente via Chrome/Cowork).")
     args = ap.parse_args()
 
     out_dir = pathlib.Path(args.out_dir)
@@ -339,12 +350,13 @@ def main():
         except Exception as e:
             fail(f"Fallo Garmin Connect: {e}")
 
+    tp_out = out_dir / "trainingpeaks.csv"
     if args.skip_trainingpeaks:
-        print("TrainingPeaks: --skip-trainingpeaks, se omite.")
+        n = fallback_trainingpeaks_csv(pathlib.Path(args.previous_data), tp_out)
+        print(f"TrainingPeaks: --skip-trainingpeaks, {n} sesiones reusadas del data.json anterior -> {tp_out}")
     else:
         tp_user = os.environ.get("TRAININGPEAKS_USER")
         tp_pass = os.environ.get("TRAININGPEAKS_PASS")
-        tp_out = out_dir / "trainingpeaks.csv"
         if not tp_user or not tp_pass:
             warn("TRAININGPEAKS_USER/TRAININGPEAKS_PASS no configurados -- se reusa el plan anterior.")
             n = fallback_trainingpeaks_csv(pathlib.Path(args.previous_data), tp_out)

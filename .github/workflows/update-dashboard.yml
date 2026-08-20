@@ -32,16 +32,16 @@ jobs:
 
       # Garmin es obligatorio: si falla, este paso termina con exit code
       # distinto de cero y el Action queda en rojo (visible), sin tocar
-      # data.json/dashboard.html. TrainingPeaks es best-effort: si falla,
-      # fetch_data.py lo avisa con ::warning:: pero no rompe este paso --
-      # ver fetch_data.py y README.md.
-      - name: Traer datos (Garmin / TrainingPeaks)
+      # data.json/dashboard.html. TrainingPeaks ya no se trae aqui -- el
+      # plan se actualiza a mano via Chrome/Cowork (la integracion
+      # automatica no es confiable, falla con 401) -- --skip-trainingpeaks
+      # evita que lo intente y reusa directamente el plan del ultimo
+      # data.json commiteado -- ver fetch_data.py y README.md.
+      - name: Traer datos (Garmin)
         env:
           GARMIN_USER: ${{ secrets.GARMIN_USER }}
           GARMIN_PASS: ${{ secrets.GARMIN_PASS }}
-          TRAININGPEAKS_USER: ${{ secrets.TRAININGPEAKS_USER }}
-          TRAININGPEAKS_PASS: ${{ secrets.TRAININGPEAKS_PASS }}
-        run: python fetch_data.py
+        run: python fetch_data.py --skip-trainingpeaks
 
       # NOTA: --race-date/--goal-time deben actualizarse aqui (y en el
       # objetivo del brief) despues del maraton del 27-sep-2026 si cambia
