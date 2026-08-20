@@ -137,15 +137,6 @@ function computeVals(){
   });
 
   const td = byDate(TODAY);
-  const tdTy = TYPE[td.session_type] || TYPE.other;
-  const tdRecMeta = REC_META[td.recovery_suggestion.recommendation] || [td.recovery_suggestion.recommendation, '#8A8F98'];
-  const tdAct = td.primary_activity;
-  const tdMetrics = [
-    {label:'DISTANCIA', val: tdAct && tdAct.distance_km ? tdAct.distance_km+' km' : '—'},
-    {label:'RITMO', val: fmtPace(tdAct && tdAct.pace_min_per_km)},
-    {label:'ESFUERZO', val: (tdAct && tdAct.relative_effort) ?? '—'},
-    {label:'SUEÑO', val: td.garmin ? td.garmin.sleep_hours+'h' : '—', color: td.garmin && td.garmin.sleep_hours >= 7 ? '#7FE7C4' : '#F0B24A'},
-  ];
 
   const sel = byDate(state.sel);
   let selVals = null;
@@ -158,16 +149,17 @@ function computeVals(){
     const selPlan = [
       planKm ? 'Plan: '+planKm+' km' : 'Plan: sin kilometraje',
       (sel.plan && sel.plan.notes) || '',
-      'Recuperacion: '+rec[0],
     ].filter(Boolean).join(' · ');
     const selMetrics = [
+      {label:'DISTANCIA', val: act && act.distance_km ? act.distance_km+' km' : (sel.completed ? 'Si' : 'No'), color: sel.completed ? '#7FE7C4' : '#6B7280'},
+      {label:'RITMO', val: fmtPace(act && act.pace_min_per_km)},
+      {label:'ESFUERZO', val: (act && act.relative_effort) ?? '—'},
       {label:'SUEÑO', val: g ? g.sleep_hours+'h' : '—', color: g ? (g.sleep_hours >= 7 ? '#7FE7C4' : '#F0B24A') : '#4A4F57'},
       {label:'CALIDAD SUEÑO', val: g ? g.sleep_score : '—'},
       {label:'HRV', val: g ? g.hrv : '—', color: g && sel.hrv_7d_avg && g.hrv < sel.hrv_7d_avg-8 ? '#F0B24A' : '#C7CBD2'},
+      {label:'HRV 7 DIAS', val: sel.hrv_7d_avg ?? '—'},
       {label:'BODY BATTERY', val: g ? g.body_battery : '—', color: g && g.body_battery < 50 ? '#F0B24A' : '#C7CBD2'},
       {label:'ESTRÉS', val: g ? g.stress_avg : '—'},
-      {label:'HRV 7 DIAS', val: sel.hrv_7d_avg ?? '—'},
-      {label:'REALIZADO', val: act && act.distance_km ? act.distance_km+' km' : (sel.completed ? 'Si' : 'No'), color: sel.completed ? '#7FE7C4' : '#6B7280'},
     ];
     let selWarn = '';
     if(sel.recovery_suggestion.recommendation === 'consulta_medica') selWarn = sel.recovery_suggestion.detail;
@@ -176,8 +168,10 @@ function computeVals(){
     selVals = {
       title: (sel.plan && sel.plan.title) || selTy[0],
       date: state.sel,
+      state: sel.completed ? 'Completado' : 'Pendiente', stateColor: sel.completed ? '#7FE7C4' : '#F0B24A',
       plan: selPlan,
       metrics: selMetrics,
+      recLabel: rec[0], recColor: rec[1], recDetail: sel.recovery_suggestion.detail,
       warn: selWarn,
       logs: selLogs,
       logTitle: selLogs.length ? 'REGISTRO DE CHECKPOINTS' : 'SIN CHECKPOINTS REGISTRADOS ESTE DIA',
@@ -231,11 +225,6 @@ function computeVals(){
       {label:'HRV 7 DIAS', val: td.hrv_7d_avg ?? '—'},
       {label:'ESFUERZO ACUM.', val: currentWeek ? Math.round(currentWeek.total_relative_effort) : '—'},
     ],
-    tdTitle: (td.plan && td.plan.title) || tdTy[0], tdColor: tdTy[1],
-    tdPlan: (td.plan && td.plan.planned_distance_km ? td.plan.planned_distance_km+' km planeados' : 'sin kilometraje planeado')
-            + (td.plan && td.plan.notes ? ' · '+td.plan.notes : ''),
-    tdState: td.completed ? 'Completado' : 'Pendiente', tdStateColor: td.completed ? '#7FE7C4' : '#F0B24A',
-    tdMetrics, tdRec: tdRecMeta[0], tdRecColor: tdRecMeta[1], tdRecDetail: td.recovery_suggestion.detail,
     tabs, showCustom: state.view === 'custom', showNav: state.view !== 'custom',
     cs: state.cs, ce: state.ce,
     rangeLabel, gridCols: cols, dows, cells,
@@ -251,10 +240,6 @@ function buildHTML(v){
   const statCard = (m) => `<div style="display:flex;flex-direction:column;gap:4px;padding-top:12px">
     <span style="font:600 18px ${FSANS};color:${m.color||'#F2F3F5'}">${m.val}</span>
     <span style="font:400 9px ${FMONO};letter-spacing:.08em;color:#5E636C">${m.label}</span>
-  </div>`;
-  const tdMetric = (m) => `<div style="display:flex;flex-direction:column;gap:3px">
-    <span style="font:600 17px ${FSANS};color:${m.color||'#F2F3F5'}">${m.val}</span>
-    <span style="font:400 9px ${FMONO};letter-spacing:.07em;color:#5E636C">${m.label}</span>
   </div>`;
   const tab = (t) => `<button data-view="${t.key}" style="flex:1;min-width:0;padding:8px 4px;border-radius:10px;border:1px solid ${t.border};background:${t.bg};color:${t.color};font:500 11px ${FMONO};letter-spacing:.04em;cursor:pointer">${t.label}</button>`;
   const dow = (d) => `<span style="font:500 10px ${FMONO};color:#8A8F98;text-align:center;letter-spacing:.08em">${d}</span>`;
@@ -306,13 +291,22 @@ function buildHTML(v){
 
   const selSection = v.sel ? `
   <section style="background:#13151A;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:16px">
-    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
-      <span style="font:600 16px ${FSANS}">${v.sel.title}</span>
-      <span style="font:400 11px ${FMONO};color:#5E636C">${v.sel.date}</span>
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+      <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+        <span style="font:600 16px ${FSANS}">${v.sel.title}</span>
+        <span style="font:400 12px ${FMONO};color:#8A8F98">${v.sel.date}${v.sel.plan ? ' · '+v.sel.plan : ''}</span>
+      </div>
+      <span style="font:500 11px ${FMONO};color:${v.sel.stateColor};white-space:nowrap">${v.sel.state}</span>
     </div>
-    <span style="font:400 12px/1.5 ${FSANS};color:#8A8F98">${v.sel.plan}</span>
     <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 10px">
       ${v.sel.metrics.map(selMetric).join('')}
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06)">
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font:400 9px ${FMONO};letter-spacing:.1em;color:#5E636C">RECUPERACION</span>
+        <span style="font:500 12px ${FSANS};color:${v.sel.recColor}">${v.sel.recLabel}</span>
+      </div>
+      <span style="font:400 12px/1.5 ${FSANS};color:#8A8F98">${v.sel.recDetail}</span>
     </div>
     ${v.sel.warn ? `<span style="font:400 12px/1.5 ${FSANS};color:#F0B24A;background:rgba(240,178,74,.08);border-radius:10px;padding:10px 12px">${v.sel.warn}</span>` : ''}
     <div style="display:flex;flex-direction:column;gap:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06)">
@@ -371,32 +365,6 @@ function buildHTML(v){
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding-top:4px;border-top:1px solid rgba(255,255,255,.06)">
         ${v.weekStats.map(statCard).join('')}
-      </div>
-    </div>
-  </section>
-
-  <section style="display:flex;flex-direction:column;gap:10px">
-    <span style="font:500 10px ${FMONO};letter-spacing:.14em;color:#5E636C">HOY</span>
-    <div style="background:#13151A;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:16px">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:14px">
-        <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
-          <div style="display:flex;align-items:center;gap:8px">
-            <span style="width:7px;height:7px;border-radius:50%;background:${v.tdColor};flex-shrink:0"></span>
-            <span style="font:600 19px ${FSANS};letter-spacing:-.01em">${v.tdTitle}</span>
-          </div>
-          <span style="font:400 12px ${FMONO};color:#8A8F98">${v.tdPlan}</span>
-        </div>
-        <span style="font:500 11px ${FMONO};color:${v.tdStateColor};white-space:nowrap">${v.tdState}</span>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px">
-        ${v.tdMetrics.map(tdMetric).join('')}
-      </div>
-      <div style="display:flex;flex-direction:column;gap:6px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06)">
-        <div style="display:flex;align-items:center;gap:8px">
-          <span style="font:400 9px ${FMONO};letter-spacing:.1em;color:#5E636C">RECUPERACION</span>
-          <span style="font:500 12px ${FSANS};color:${v.tdRecColor}">${v.tdRec}</span>
-        </div>
-        <span style="font:400 12px/1.5 ${FSANS};color:#8A8F98">${v.tdRecDetail}</span>
       </div>
     </div>
   </section>
