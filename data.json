@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-20T00:55:44",
+  "generated_at": "2026-08-20T01:00:01",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -26,9 +26,8 @@
       "actual_km": 8.1,
       "total_relative_effort": 115.6,
       "total_planned_tss": 0.0,
-      "avg_sleep_hours": 6.81,
+      "avg_sleep_hours": 6.77,
       "days": [
-        "2026-07-15",
         "2026-07-16",
         "2026-07-17",
         "2026-07-18",
@@ -145,32 +144,6 @@
     }
   ],
   "days": {
-    "2026-07-15": {
-      "date": "2026-07-15",
-      "days_to_race": 74,
-      "plan": null,
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
-      "session_type": "rest",
-      "garmin": {
-        "sleep_hours": 6.95,
-        "sleep_score": 76.0,
-        "hrv": 66.0,
-        "body_battery": 5.0,
-        "stress_avg": 21.0,
-        "symptoms": ""
-      },
-      "hrv_7d_avg": null,
-      "fatigue_flag": false,
-      "recovery_suggestion": {
-        "recommendation": "sauna_o_contrast",
-        "timing": "manana",
-        "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).",
-        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
-      },
-      "recommendations_log": []
-    },
     "2026-07-16": {
       "date": "2026-07-16",
       "days_to_race": 73,
@@ -213,7 +186,7 @@
         "stress_avg": 38.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 66.0,
+      "hrv_7d_avg": null,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -239,7 +212,7 @@
         "stress_avg": 35.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 60.0,
+      "hrv_7d_avg": 54.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -291,8 +264,8 @@
         "stress_avg": 46.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 57.7,
-      "fatigue_flag": true,
+      "hrv_7d_avg": 53.5,
+      "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
         "timing": "manana",
@@ -317,12 +290,12 @@
         "stress_avg": 58.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 55.2,
+      "hrv_7d_avg": 51.7,
       "fatigue_flag": true,
       "recovery_suggestion": {
-        "recommendation": "ninguna",
-        "timing": null,
-        "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — dia libre de protocolo.",
+        "recommendation": "sauna_o_contrast",
+        "timing": "manana",
+        "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
@@ -369,7 +342,7 @@
         "stress_avg": 19.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 48.6,
+      "hrv_7d_avg": 44.2,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
@@ -421,7 +394,7 @@
         "stress_avg": 37.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 51.0,
+      "hrv_7d_avg": 48.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -473,7 +446,7 @@
         "stress_avg": 42.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 51.0,
+      "hrv_7d_avg": 48.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
@@ -1656,12 +1629,12 @@
         "sleep_hours": 6.55,
         "sleep_score": 71.0,
         "hrv": 49.0,
-        "body_battery": 48.0,
-        "stress_avg": 30.0,
+        "body_battery": 13.0,
+        "stress_avg": 32.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 56.4,
-      "fatigue_flag": false,
+      "fatigue_flag": true,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
         "timing": "manana",
@@ -1685,7 +1658,14 @@
       "primary_activity": null,
       "completed": false,
       "session_type": "quality",
-      "garmin": null,
+      "garmin": {
+        "sleep_hours": null,
+        "sleep_score": null,
+        "hrv": null,
+        "body_battery": null,
+        "stress_avg": null,
+        "symptoms": ""
+      },
       "hrv_7d_avg": 54.9,
       "fatigue_flag": false,
       "recovery_suggestion": {
