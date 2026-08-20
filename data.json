@@ -160,7 +160,7 @@
           "elapsed_time_min": 19.5,
           "pace_min_per_km": null,
           "avg_speed_mps": 0.0,
-          "relative_effort": 25.181137084960938
+          "relative_effort": 25.18
         }
       ],
       "primary_activity": {
@@ -174,7 +174,7 @@
         "elapsed_time_min": 19.5,
         "pace_min_per_km": null,
         "avg_speed_mps": 0.0,
-        "relative_effort": 25.181137084960938
+        "relative_effort": 25.18
       },
       "completed": true,
       "session_type": "easy",
@@ -237,8 +237,8 @@
           "moving_time_min": 49.2,
           "elapsed_time_min": 75.8,
           "pace_min_per_km": 6.11,
-          "avg_speed_mps": 2.7179999351501465,
-          "relative_effort": 90.384033203125
+          "avg_speed_mps": 2.72,
+          "relative_effort": 90.38
         }
       ],
       "primary_activity": {
@@ -251,8 +251,8 @@
         "moving_time_min": 49.2,
         "elapsed_time_min": 75.8,
         "pace_min_per_km": 6.11,
-        "avg_speed_mps": 2.7179999351501465,
-        "relative_effort": 90.384033203125
+        "avg_speed_mps": 2.72,
+        "relative_effort": 90.38
       },
       "completed": true,
       "session_type": "easy",
@@ -316,7 +316,7 @@
           "elapsed_time_min": 63.3,
           "pace_min_per_km": null,
           "avg_speed_mps": 0.0,
-          "relative_effort": 12.487884521484375
+          "relative_effort": 12.49
         }
       ],
       "primary_activity": {
@@ -330,7 +330,7 @@
         "elapsed_time_min": 63.3,
         "pace_min_per_km": null,
         "avg_speed_mps": 0.0,
-        "relative_effort": 12.487884521484375
+        "relative_effort": 12.49
       },
       "completed": true,
       "session_type": "strength",
@@ -368,7 +368,7 @@
           "elapsed_time_min": 50.1,
           "pace_min_per_km": null,
           "avg_speed_mps": 0.0,
-          "relative_effort": 40.92854309082031
+          "relative_effort": 40.93
         }
       ],
       "primary_activity": {
@@ -382,7 +382,7 @@
         "elapsed_time_min": 50.1,
         "pace_min_per_km": null,
         "avg_speed_mps": 0.0,
-        "relative_effort": 40.92854309082031
+        "relative_effort": 40.93
       },
       "completed": true,
       "session_type": "easy",
@@ -420,7 +420,7 @@
           "elapsed_time_min": 48.8,
           "pace_min_per_km": null,
           "avg_speed_mps": 0.0,
-          "relative_effort": 4.970458984375
+          "relative_effort": 4.97
         }
       ],
       "primary_activity": {
@@ -434,7 +434,7 @@
         "elapsed_time_min": 48.8,
         "pace_min_per_km": null,
         "avg_speed_mps": 0.0,
-        "relative_effort": 4.970458984375
+        "relative_effort": 4.97
       },
       "completed": true,
       "session_type": "strength",
@@ -523,8 +523,8 @@
           "moving_time_min": 25.3,
           "elapsed_time_min": 36.1,
           "pace_min_per_km": 6.02,
-          "avg_speed_mps": 2.755000114440918,
-          "relative_effort": 68.791015625
+          "avg_speed_mps": 2.76,
+          "relative_effort": 68.79
         }
       ],
       "primary_activity": {
@@ -537,8 +537,8 @@
         "moving_time_min": 25.3,
         "elapsed_time_min": 36.1,
         "pace_min_per_km": 6.02,
-        "avg_speed_mps": 2.755000114440918,
-        "relative_effort": 68.791015625
+        "avg_speed_mps": 2.76,
+        "relative_effort": 68.79
       },
       "completed": true,
       "session_type": "easy",
@@ -627,8 +627,8 @@
           "moving_time_min": 15.9,
           "elapsed_time_min": 26.6,
           "pace_min_per_km": 11.95,
-          "avg_speed_mps": 0.8370000123977661,
-          "relative_effort": 17.370040893554688
+          "avg_speed_mps": 0.84,
+          "relative_effort": 17.37
         },
         {
           "id": 23757840278,
@@ -641,7 +641,7 @@
           "elapsed_time_min": 60.0,
           "pace_min_per_km": null,
           "avg_speed_mps": 0.0,
-          "relative_effort": 26.367691040039062
+          "relative_effort": 26.37
         }
       ],
       "primary_activity": {
@@ -655,7 +655,7 @@
         "elapsed_time_min": 60.0,
         "pace_min_per_km": null,
         "avg_speed_mps": 0.0,
-        "relative_effort": 26.367691040039062
+        "relative_effort": 26.37
       },
       "completed": true,
       "session_type": "easy",
@@ -693,7 +693,7 @@
           "elapsed_time_min": 54.4,
           "pace_min_per_km": null,
           "avg_speed_mps": 0.0,
-          "relative_effort": 14.455413818359375
+          "relative_effort": 14.46
         }
       ],
       "primary_activity": {
@@ -707,7 +707,7 @@
         "elapsed_time_min": 54.4,
         "pace_min_per_km": null,
         "avg_speed_mps": 0.0,
-        "relative_effort": 14.455413818359375
+        "relative_effort": 14.46
       },
       "completed": true,
       "session_type": "strength",
@@ -744,8 +744,8 @@
           "moving_time_min": 60.5,
           "elapsed_time_min": 61.5,
           "pace_min_per_km": 4.95,
-          "avg_speed_mps": 3.315000057220459,
-          "relative_effort": 80.49287414550781
+          "avg_speed_mps": 3.32,
+          "relative_effort": 80.49
         }
       ],
       "primary_activity": {
@@ -758,8 +758,8 @@
         "moving_time_min": 60.5,
         "elapsed_time_min": 61.5,
         "pace_min_per_km": 4.95,
-        "avg_speed_mps": 3.315000057220459,
-        "relative_effort": 80.49287414550781
+        "avg_speed_mps": 3.32,
+        "relative_effort": 80.49
       },
       "completed": true,
       "session_type": "easy",
@@ -848,8 +848,8 @@
           "moving_time_min": 3.6,
           "elapsed_time_min": 22.6,
           "pace_min_per_km": 6.92,
-          "avg_speed_mps": 0.38499999046325684,
-          "relative_effort": 8.102676391601562
+          "avg_speed_mps": 0.38,
+          "relative_effort": 8.1
         }
       ],
       "primary_activity": {
@@ -862,8 +862,8 @@
         "moving_time_min": 3.6,
         "elapsed_time_min": 22.6,
         "pace_min_per_km": 6.92,
-        "avg_speed_mps": 0.38499999046325684,
-        "relative_effort": 8.102676391601562
+        "avg_speed_mps": 0.38,
+        "relative_effort": 8.1
       },
       "completed": true,
       "session_type": "other",
@@ -900,8 +900,8 @@
           "moving_time_min": 48.4,
           "elapsed_time_min": 103.3,
           "pace_min_per_km": 10.0,
-          "avg_speed_mps": 0.781000018119812,
-          "relative_effort": 13.209747314453125
+          "avg_speed_mps": 0.78,
+          "relative_effort": 13.21
         }
       ],
       "primary_activity": {
@@ -914,8 +914,8 @@
         "moving_time_min": 48.4,
         "elapsed_time_min": 103.3,
         "pace_min_per_km": 10.0,
-        "avg_speed_mps": 0.781000018119812,
-        "relative_effort": 13.209747314453125
+        "avg_speed_mps": 0.78,
+        "relative_effort": 13.21
       },
       "completed": true,
       "session_type": "other",
@@ -979,7 +979,7 @@
           "elapsed_time_min": 44.7,
           "pace_min_per_km": null,
           "avg_speed_mps": 0.0,
-          "relative_effort": 9.66754150390625
+          "relative_effort": 9.67
         }
       ],
       "primary_activity": {
@@ -993,7 +993,7 @@
         "elapsed_time_min": 44.7,
         "pace_min_per_km": null,
         "avg_speed_mps": 0.0,
-        "relative_effort": 9.66754150390625
+        "relative_effort": 9.67
       },
       "completed": true,
       "session_type": "strength",
@@ -1070,8 +1070,8 @@
           "moving_time_min": 16.6,
           "elapsed_time_min": 29.1,
           "pace_min_per_km": 10.71,
-          "avg_speed_mps": 0.8870000243186951,
-          "relative_effort": 6.914215087890625
+          "avg_speed_mps": 0.89,
+          "relative_effort": 6.91
         }
       ],
       "primary_activity": {
@@ -1084,8 +1084,8 @@
         "moving_time_min": 16.6,
         "elapsed_time_min": 29.1,
         "pace_min_per_km": 10.71,
-        "avg_speed_mps": 0.8870000243186951,
-        "relative_effort": 6.914215087890625
+        "avg_speed_mps": 0.89,
+        "relative_effort": 6.91
       },
       "completed": true,
       "session_type": "easy",
@@ -1247,8 +1247,8 @@
           "moving_time_min": 36.5,
           "elapsed_time_min": 38.1,
           "pace_min_per_km": 6.37,
-          "avg_speed_mps": 2.609999895095825,
-          "relative_effort": 40.00799560546875
+          "avg_speed_mps": 2.61,
+          "relative_effort": 40.01
         }
       ],
       "primary_activity": {
@@ -1261,8 +1261,8 @@
         "moving_time_min": 36.5,
         "elapsed_time_min": 38.1,
         "pace_min_per_km": 6.37,
-        "avg_speed_mps": 2.609999895095825,
-        "relative_effort": 40.00799560546875
+        "avg_speed_mps": 2.61,
+        "relative_effort": 40.01
       },
       "completed": true,
       "session_type": "quality",
@@ -1307,7 +1307,7 @@
           "elapsed_time_min": 42.2,
           "pace_min_per_km": null,
           "avg_speed_mps": 0.0,
-          "relative_effort": 76.516845703125
+          "relative_effort": 76.52
         }
       ],
       "primary_activity": {
@@ -1321,7 +1321,7 @@
         "elapsed_time_min": 42.2,
         "pace_min_per_km": null,
         "avg_speed_mps": 0.0,
-        "relative_effort": 76.516845703125
+        "relative_effort": 76.52
       },
       "completed": true,
       "session_type": "quality",
@@ -1359,7 +1359,7 @@
           "elapsed_time_min": 60.9,
           "pace_min_per_km": null,
           "avg_speed_mps": 0.0,
-          "relative_effort": 18.224151611328125
+          "relative_effort": 18.22
         }
       ],
       "primary_activity": {
@@ -1373,7 +1373,7 @@
         "elapsed_time_min": 60.9,
         "pace_min_per_km": null,
         "avg_speed_mps": 0.0,
-        "relative_effort": 18.224151611328125
+        "relative_effort": 18.22
       },
       "completed": true,
       "session_type": "strength",
@@ -1443,8 +1443,8 @@
           "moving_time_min": 49.3,
           "elapsed_time_min": 51.5,
           "pace_min_per_km": 5.8,
-          "avg_speed_mps": 2.8310000896453857,
-          "relative_effort": 190.85906982421875
+          "avg_speed_mps": 2.83,
+          "relative_effort": 190.86
         }
       ],
       "primary_activity": {
@@ -1457,8 +1457,8 @@
         "moving_time_min": 49.3,
         "elapsed_time_min": 51.5,
         "pace_min_per_km": 5.8,
-        "avg_speed_mps": 2.8310000896453857,
-        "relative_effort": 190.85906982421875
+        "avg_speed_mps": 2.83,
+        "relative_effort": 190.86
       },
       "completed": true,
       "session_type": "easy",
@@ -1496,7 +1496,7 @@
           "elapsed_time_min": 48.6,
           "pace_min_per_km": null,
           "avg_speed_mps": 0.0,
-          "relative_effort": 3.4306182861328125
+          "relative_effort": 3.43
         }
       ],
       "primary_activity": {
@@ -1510,7 +1510,7 @@
         "elapsed_time_min": 48.6,
         "pace_min_per_km": null,
         "avg_speed_mps": 0.0,
-        "relative_effort": 3.4306182861328125
+        "relative_effort": 3.43
       },
       "completed": true,
       "session_type": "strength",
@@ -1554,8 +1554,8 @@
           "moving_time_min": 36.7,
           "elapsed_time_min": 68.1,
           "pace_min_per_km": 25.66,
-          "avg_speed_mps": 0.6480000019073486,
-          "relative_effort": 26.65643310546875
+          "avg_speed_mps": 0.65,
+          "relative_effort": 26.66
         }
       ],
       "primary_activity": {
@@ -1568,8 +1568,8 @@
         "moving_time_min": 36.7,
         "elapsed_time_min": 68.1,
         "pace_min_per_km": 25.66,
-        "avg_speed_mps": 0.6480000019073486,
-        "relative_effort": 26.65643310546875
+        "avg_speed_mps": 0.65,
+        "relative_effort": 26.66
       },
       "completed": true,
       "session_type": "easy",
@@ -1607,7 +1607,7 @@
           "elapsed_time_min": 41.7,
           "pace_min_per_km": null,
           "avg_speed_mps": 0.0,
-          "relative_effort": 61.40608215332031
+          "relative_effort": 61.41
         }
       ],
       "primary_activity": {
@@ -1621,7 +1621,7 @@
         "elapsed_time_min": 41.7,
         "pace_min_per_km": null,
         "avg_speed_mps": 0.0,
-        "relative_effort": 61.40608215332031
+        "relative_effort": 61.41
       },
       "completed": true,
       "session_type": "strength",
@@ -1945,7 +1945,7 @@
       "sport_type": "WeightTraining",
       "distance_km": 0.0,
       "pace_min_per_km": null,
-      "relative_effort": 61.40608215332031
+      "relative_effort": 61.41
     },
     {
       "date": "2026-08-18",
@@ -1954,7 +1954,7 @@
       "sport_type": "Swim",
       "distance_km": 1.43,
       "pace_min_per_km": 25.66,
-      "relative_effort": 26.65643310546875
+      "relative_effort": 26.66
     },
     {
       "date": "2026-08-17",
@@ -1963,7 +1963,7 @@
       "sport_type": "WeightTraining",
       "distance_km": 0.0,
       "pace_min_per_km": null,
-      "relative_effort": 3.4306182861328125
+      "relative_effort": 3.43
     },
     {
       "date": "2026-08-16",
@@ -1972,7 +1972,7 @@
       "sport_type": "Run",
       "distance_km": 8.5,
       "pace_min_per_km": 5.8,
-      "relative_effort": 190.85906982421875
+      "relative_effort": 190.86
     },
     {
       "date": "2026-08-14",
@@ -1981,7 +1981,7 @@
       "sport_type": "WeightTraining",
       "distance_km": 0.0,
       "pace_min_per_km": null,
-      "relative_effort": 18.224151611328125
+      "relative_effort": 18.22
     },
     {
       "date": "2026-08-13",
@@ -1990,7 +1990,7 @@
       "sport_type": "WeightTraining",
       "distance_km": 0.0,
       "pace_min_per_km": null,
-      "relative_effort": 76.516845703125
+      "relative_effort": 76.52
     },
     {
       "date": "2026-08-12",
@@ -1999,7 +1999,7 @@
       "sport_type": "Run",
       "distance_km": 5.73,
       "pace_min_per_km": 6.37,
-      "relative_effort": 40.00799560546875
+      "relative_effort": 40.01
     },
     {
       "date": "2026-08-07",
@@ -2008,7 +2008,7 @@
       "sport_type": "Surfing_V2",
       "distance_km": 1.55,
       "pace_min_per_km": 10.71,
-      "relative_effort": 6.914215087890625
+      "relative_effort": 6.91
     },
     {
       "date": "2026-08-05",
@@ -2017,7 +2017,7 @@
       "sport_type": "WeightTraining",
       "distance_km": 0.0,
       "pace_min_per_km": null,
-      "relative_effort": 9.66754150390625
+      "relative_effort": 9.67
     },
     {
       "date": "2026-08-03",
@@ -2026,7 +2026,7 @@
       "sport_type": "Surfing_V2",
       "distance_km": 4.84,
       "pace_min_per_km": 10.0,
-      "relative_effort": 13.209747314453125
+      "relative_effort": 13.21
     },
     {
       "date": "2026-08-02",
@@ -2035,7 +2035,7 @@
       "sport_type": "Surfing_V2",
       "distance_km": 0.52,
       "pace_min_per_km": 6.92,
-      "relative_effort": 8.102676391601562
+      "relative_effort": 8.1
     },
     {
       "date": "2026-07-30",
@@ -2044,7 +2044,7 @@
       "sport_type": "Run",
       "distance_km": 12.23,
       "pace_min_per_km": 4.95,
-      "relative_effort": 80.49287414550781
+      "relative_effort": 80.49
     },
     {
       "date": "2026-07-29",
@@ -2053,7 +2053,7 @@
       "sport_type": "WeightTraining",
       "distance_km": 0.0,
       "pace_min_per_km": null,
-      "relative_effort": 14.455413818359375
+      "relative_effort": 14.46
     },
     {
       "date": "2026-07-28",
@@ -2062,7 +2062,7 @@
       "sport_type": "Surfing_V2",
       "distance_km": 1.33,
       "pace_min_per_km": 11.95,
-      "relative_effort": 17.370040893554688
+      "relative_effort": 17.37
     },
     {
       "date": "2026-07-28",
@@ -2071,7 +2071,7 @@
       "sport_type": "Ride",
       "distance_km": 0.0,
       "pace_min_per_km": null,
-      "relative_effort": 26.367691040039062
+      "relative_effort": 26.37
     },
     {
       "date": "2026-07-25",
@@ -2080,7 +2080,7 @@
       "sport_type": "Run",
       "distance_km": 4.2,
       "pace_min_per_km": 6.02,
-      "relative_effort": 68.791015625
+      "relative_effort": 68.79
     },
     {
       "date": "2026-07-22",
@@ -2089,7 +2089,7 @@
       "sport_type": "WeightTraining",
       "distance_km": 0.0,
       "pace_min_per_km": null,
-      "relative_effort": 4.970458984375
+      "relative_effort": 4.97
     },
     {
       "date": "2026-07-21",
@@ -2098,7 +2098,7 @@
       "sport_type": "Ride",
       "distance_km": 0.0,
       "pace_min_per_km": null,
-      "relative_effort": 40.92854309082031
+      "relative_effort": 40.93
     },
     {
       "date": "2026-07-20",
@@ -2107,7 +2107,7 @@
       "sport_type": "WeightTraining",
       "distance_km": 0.0,
       "pace_min_per_km": null,
-      "relative_effort": 12.487884521484375
+      "relative_effort": 12.49
     },
     {
       "date": "2026-07-18",
@@ -2116,7 +2116,7 @@
       "sport_type": "Run",
       "distance_km": 8.05,
       "pace_min_per_km": 6.11,
-      "relative_effort": 90.384033203125
+      "relative_effort": 90.38
     }
   ]
 }

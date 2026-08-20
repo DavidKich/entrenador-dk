@@ -225,7 +225,8 @@ function computeVals(){
   }
 
   const weeks = (DATA.weeks || []).slice(-8);
-  const vals = weeks.map(w => w.total_planned_tss || 0);
+  const hasTss = weeks.some(w => (w.total_planned_tss || 0) > 0);
+  const vals = weeks.map(w => hasTss ? (w.total_planned_tss || 0) : (w.total_relative_effort || 0));
   const max = Math.max.apply(null, vals) || 1;
   const bars = weeks.map((w,i) => ({
     label: shortDate(w.week_start),
@@ -275,7 +276,7 @@ function computeVals(){
     cs: state.cs, ce: state.ce,
     rangeLabel, gridCols: cols, dows, cells,
     sel: selVals,
-    chartUnit: 'TSS planeado (TrainingPeaks)',
+    chartUnit: hasTss ? 'TSS planeado (TrainingPeaks)' : 'esfuerzo (Garmin) · sin TSS de TrainingPeaks',
     bars, weekRows, sessions,
     legend: Object.keys(TYPE).map(k => ({label: TYPE[k][0], color: TYPE[k][1]})),
     safety: SAFETY,

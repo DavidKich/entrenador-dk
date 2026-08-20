@@ -187,7 +187,11 @@ def load_garmin_activities(path):
         relative_effort = _to_float(
             _activity_field(act, "relative_effort", "activity_training_load")
         )
+        if relative_effort is not None:
+            relative_effort = round(relative_effort, 2)
         avg_speed = _to_float(_activity_field(act, "avg_speed_mps", "average_speed"))
+        if avg_speed is not None:
+            avg_speed = round(avg_speed, 2)
 
         distance_km = round(distance_m / 1000.0, 2) if distance_m else 0.0
         moving_min = round(moving_s / 60.0, 1) if moving_s else 0.0
