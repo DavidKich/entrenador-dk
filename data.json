@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T12:40:41",
+  "generated_at": "2026-08-21T18:33:15",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -11,7 +11,7 @@
     "semaforo": "atrasado",
     "planned_km": 40.0,
     "actual_km": 12.5,
-    "avg_sleep_hours": 7.31,
+    "avg_sleep_hours": 7.06,
     "sleep_goal": [
       7,
       8
@@ -112,7 +112,7 @@
       "actual_km": 12.5,
       "total_relative_effort": 284.4,
       "total_planned_tss": 0.0,
-      "avg_sleep_hours": 7.31,
+      "avg_sleep_hours": 7.06,
       "days": [
         "2026-08-17",
         "2026-08-18",
@@ -1660,20 +1660,46 @@
         "planned_tss": null,
         "notes": "20,15,10M 4:35 r5min"
       },
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
+      "activities": [
+        {
+          "id": 24062549630,
+          "name": "Stopwatch",
+          "description": "",
+          "sport_type": "Stop_Watch",
+          "start_date_local": "2026-08-21T08:42:45",
+          "distance_km": 0.0,
+          "moving_time_min": 26.1,
+          "elapsed_time_min": 26.1,
+          "pace_min_per_km": null,
+          "avg_speed_mps": null,
+          "relative_effort": null
+        }
+      ],
+      "primary_activity": {
+        "id": 24062549630,
+        "name": "Stopwatch",
+        "description": "",
+        "sport_type": "Stop_Watch",
+        "start_date_local": "2026-08-21T08:42:45",
+        "distance_km": 0.0,
+        "moving_time_min": 26.1,
+        "elapsed_time_min": 26.1,
+        "pace_min_per_km": null,
+        "avg_speed_mps": null,
+        "relative_effort": null
+      },
+      "completed": true,
       "session_type": "long_run",
       "garmin": {
-        "sleep_hours": null,
-        "sleep_score": null,
-        "hrv": null,
-        "body_battery": 34.0,
-        "stress_avg": 70.0,
+        "sleep_hours": 6.02,
+        "sleep_score": 42.0,
+        "hrv": 25.0,
+        "body_battery": 31.0,
+        "stress_avg": 58.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 55.1,
-      "fatigue_flag": false,
+      "fatigue_flag": true,
       "recovery_suggestion": {
         "recommendation": "ninguna",
         "timing": null,
@@ -1698,7 +1724,7 @@
       "completed": false,
       "session_type": "easy",
       "garmin": null,
-      "hrv_7d_avg": 56.2,
+      "hrv_7d_avg": 51.7,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -1724,7 +1750,7 @@
       "completed": false,
       "session_type": "long_run",
       "garmin": null,
-      "hrv_7d_avg": 56.4,
+      "hrv_7d_avg": 51.2,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -1750,7 +1776,7 @@
       "completed": false,
       "session_type": "strength",
       "garmin": null,
-      "hrv_7d_avg": 57.5,
+      "hrv_7d_avg": 51.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
@@ -1776,7 +1802,7 @@
       "completed": false,
       "session_type": "quality",
       "garmin": null,
-      "hrv_7d_avg": 57.0,
+      "hrv_7d_avg": 49.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "contrast",
@@ -1802,7 +1828,7 @@
       "completed": false,
       "session_type": "strength",
       "garmin": null,
-      "hrv_7d_avg": 53.5,
+      "hrv_7d_avg": 44.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
@@ -1828,7 +1854,7 @@
       "completed": false,
       "session_type": "quality",
       "garmin": null,
-      "hrv_7d_avg": 58.0,
+      "hrv_7d_avg": 41.5,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "contrast",
@@ -1854,7 +1880,7 @@
       "completed": false,
       "session_type": "quality",
       "garmin": null,
-      "hrv_7d_avg": null,
+      "hrv_7d_avg": 25.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -1918,6 +1944,15 @@
     }
   },
   "recent_sessions": [
+    {
+      "date": "2026-08-21",
+      "session_type": "long_run",
+      "name": "Stopwatch",
+      "sport_type": "Stop_Watch",
+      "distance_km": 0.0,
+      "pace_min_per_km": null,
+      "relative_effort": null
+    },
     {
       "date": "2026-08-20",
       "session_type": "quality",
@@ -2088,15 +2123,6 @@
       "distance_km": 0.0,
       "pace_min_per_km": null,
       "relative_effort": 40.93
-    },
-    {
-      "date": "2026-07-20",
-      "session_type": "strength",
-      "name": "Strength",
-      "sport_type": "WeightTraining",
-      "distance_km": 0.0,
-      "pace_min_per_km": null,
-      "relative_effort": 12.49
     }
   ]
 }
