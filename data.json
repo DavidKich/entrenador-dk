@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T18:33:15",
+  "generated_at": "2026-08-22T01:04:01",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -7,7 +7,7 @@
     8
   ],
   "week_summary": {
-    "days_to_race": 37,
+    "days_to_race": 36,
     "semaforo": "atrasado",
     "planned_km": 40.0,
     "actual_km": 12.5,
@@ -26,9 +26,8 @@
       "actual_km": 8.1,
       "total_relative_effort": 90.4,
       "total_planned_tss": 0.0,
-      "avg_sleep_hours": 7.05,
+      "avg_sleep_hours": 5.96,
       "days": [
-        "2026-07-17",
         "2026-07-18",
         "2026-07-19"
       ]
@@ -143,32 +142,6 @@
     }
   ],
   "days": {
-    "2026-07-17": {
-      "date": "2026-07-17",
-      "days_to_race": 72,
-      "plan": null,
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
-      "session_type": "rest",
-      "garmin": {
-        "sleep_hours": 9.23,
-        "sleep_score": 78.0,
-        "hrv": 53.0,
-        "body_battery": 10.0,
-        "stress_avg": 35.0,
-        "symptoms": ""
-      },
-      "hrv_7d_avg": null,
-      "fatigue_flag": false,
-      "recovery_suggestion": {
-        "recommendation": "sauna_o_contrast",
-        "timing": "manana",
-        "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).",
-        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
-      },
-      "recommendations_log": []
-    },
     "2026-07-18": {
       "date": "2026-07-18",
       "days_to_race": 71,
@@ -211,7 +184,7 @@
         "stress_avg": 46.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 53.0,
+      "hrv_7d_avg": null,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -237,7 +210,7 @@
         "stress_avg": 58.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 50.5,
+      "hrv_7d_avg": 48.0,
       "fatigue_flag": true,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -289,7 +262,7 @@
         "stress_avg": 19.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 41.0,
+      "hrv_7d_avg": 35.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
@@ -341,7 +314,7 @@
         "stress_avg": 37.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 46.5,
+      "hrv_7d_avg": 44.3,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -393,7 +366,7 @@
         "stress_avg": 42.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 46.5,
+      "hrv_7d_avg": 44.3,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
@@ -419,7 +392,7 @@
         "stress_avg": 18.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 47.4,
+      "hrv_7d_avg": 46.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -445,7 +418,7 @@
         "stress_avg": 43.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 50.2,
+      "hrv_7d_avg": 49.6,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -1695,7 +1668,7 @@
         "sleep_score": 42.0,
         "hrv": 25.0,
         "body_battery": 31.0,
-        "stress_avg": 58.0,
+        "stress_avg": 49.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 55.1,
@@ -1723,7 +1696,14 @@
       "primary_activity": null,
       "completed": false,
       "session_type": "easy",
-      "garmin": null,
+      "garmin": {
+        "sleep_hours": null,
+        "sleep_score": null,
+        "hrv": null,
+        "body_battery": null,
+        "stress_avg": null,
+        "symptoms": ""
+      },
       "hrv_7d_avg": 51.7,
       "fatigue_flag": false,
       "recovery_suggestion": {
