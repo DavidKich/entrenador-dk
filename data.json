@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-23T12:34:48",
+  "generated_at": "2026-08-23T18:25:09",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -8,9 +8,9 @@
   ],
   "week_summary": {
     "days_to_race": 35,
-    "semaforo": "atrasado",
+    "semaforo": "en_linea",
     "planned_km": 40.0,
-    "actual_km": 12.5,
+    "actual_km": 38.5,
     "avg_sleep_hours": 7.09,
     "sleep_goal": [
       7,
@@ -107,8 +107,8 @@
       "week_start": "2026-08-17",
       "week_end": "2026-08-23",
       "planned_km": 40.0,
-      "actual_km": 12.5,
-      "total_relative_effort": 284.4,
+      "actual_km": 38.5,
+      "total_relative_effort": 513.4,
       "total_planned_tss": 0.0,
       "avg_sleep_hours": 7.09,
       "days": [
@@ -1672,16 +1672,42 @@
         "planned_tss": null,
         "notes": ""
       },
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
+      "activities": [
+        {
+          "id": 24088903876,
+          "name": "Miguel Hidalgo Running",
+          "description": "",
+          "sport_type": "Run",
+          "start_date_local": "2026-08-23T09:08:15",
+          "distance_km": 26.0,
+          "moving_time_min": 159.1,
+          "elapsed_time_min": 160.2,
+          "pace_min_per_km": 6.12,
+          "avg_speed_mps": 2.72,
+          "relative_effort": 228.98
+        }
+      ],
+      "primary_activity": {
+        "id": 24088903876,
+        "name": "Miguel Hidalgo Running",
+        "description": "",
+        "sport_type": "Run",
+        "start_date_local": "2026-08-23T09:08:15",
+        "distance_km": 26.0,
+        "moving_time_min": 159.1,
+        "elapsed_time_min": 160.2,
+        "pace_min_per_km": 6.12,
+        "avg_speed_mps": 2.72,
+        "relative_effort": 228.98
+      },
+      "completed": true,
       "session_type": "long_run",
       "garmin": {
         "sleep_hours": null,
         "sleep_score": null,
         "hrv": null,
-        "body_battery": null,
-        "stress_avg": null,
+        "body_battery": 87.0,
+        "stress_avg": 22.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 52.3,
@@ -1879,6 +1905,15 @@
   },
   "recent_sessions": [
     {
+      "date": "2026-08-23",
+      "session_type": "long_run",
+      "name": "Miguel Hidalgo Running",
+      "sport_type": "Run",
+      "distance_km": 26.0,
+      "pace_min_per_km": 6.12,
+      "relative_effort": 228.98
+    },
+    {
       "date": "2026-08-21",
       "session_type": "long_run",
       "name": "Stopwatch",
@@ -2048,15 +2083,6 @@
       "distance_km": 0.0,
       "pace_min_per_km": null,
       "relative_effort": 4.97
-    },
-    {
-      "date": "2026-07-21",
-      "session_type": "easy",
-      "name": "Indoor Cycling",
-      "sport_type": "Ride",
-      "distance_km": 0.0,
-      "pace_min_per_km": null,
-      "relative_effort": 40.93
     }
   ]
 }
