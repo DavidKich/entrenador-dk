@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-25T06:41:10",
+  "generated_at": "2026-08-25T12:41:49",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -11,7 +11,7 @@
     "semaforo": "atrasado",
     "planned_km": 65.9,
     "actual_km": 0.0,
-    "avg_sleep_hours": null,
+    "avg_sleep_hours": 7.42,
     "sleep_goal": [
       7,
       8
@@ -115,7 +115,7 @@
       "actual_km": 0.0,
       "total_relative_effort": 4.6,
       "total_planned_tss": 0.0,
-      "avg_sleep_hours": null,
+      "avg_sleep_hours": 7.42,
       "days": [
         "2026-08-24",
         "2026-08-25",
@@ -1704,11 +1704,11 @@
       "completed": false,
       "session_type": "quality",
       "garmin": {
-        "sleep_hours": null,
-        "sleep_score": null,
-        "hrv": null,
+        "sleep_hours": 7.42,
+        "sleep_score": 83.0,
+        "hrv": 62.0,
         "body_battery": 43.0,
-        "stress_avg": 15.0,
+        "stress_avg": 10.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 51.0,
@@ -1737,7 +1737,7 @@
       "completed": false,
       "session_type": "strength",
       "garmin": null,
-      "hrv_7d_avg": 47.8,
+      "hrv_7d_avg": 50.6,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
@@ -1763,7 +1763,7 @@
       "completed": false,
       "session_type": "quality",
       "garmin": null,
-      "hrv_7d_avg": 47.3,
+      "hrv_7d_avg": 51.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "contrast",
@@ -1789,7 +1789,7 @@
       "completed": false,
       "session_type": "quality",
       "garmin": null,
-      "hrv_7d_avg": 42.0,
+      "hrv_7d_avg": 48.7,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -1815,7 +1815,7 @@
       "completed": false,
       "session_type": "rest",
       "garmin": null,
-      "hrv_7d_avg": 59.0,
+      "hrv_7d_avg": 60.5,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -1841,7 +1841,7 @@
       "completed": false,
       "session_type": "quality",
       "garmin": null,
-      "hrv_7d_avg": null,
+      "hrv_7d_avg": 62.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
