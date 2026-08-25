@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-25T12:41:49",
+  "generated_at": "2026-08-25T18:36:09",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -10,7 +10,7 @@
     "days_to_race": 33,
     "semaforo": "atrasado",
     "planned_km": 65.9,
-    "actual_km": 0.0,
+    "actual_km": 12.2,
     "avg_sleep_hours": 7.42,
     "sleep_goal": [
       7,
@@ -112,8 +112,8 @@
       "week_start": "2026-08-24",
       "week_end": "2026-08-30",
       "planned_km": 65.9,
-      "actual_km": 0.0,
-      "total_relative_effort": 4.6,
+      "actual_km": 12.2,
+      "total_relative_effort": 221.2,
       "total_planned_tss": 0.0,
       "avg_sleep_hours": 7.42,
       "days": [
@@ -1699,16 +1699,42 @@
         "planned_tss": null,
         "notes": "3km afloje 5x1km Aeróbico intenso (80%) con 1min de recuperación. -3km TEMPO (85%) -1km afloje"
       },
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
+      "activities": [
+        {
+          "id": 24110488256,
+          "name": "Miguel Hidalgo - Kenyan Run",
+          "description": "",
+          "sport_type": "Run",
+          "start_date_local": "2026-08-25T06:48:25",
+          "distance_km": 12.22,
+          "moving_time_min": 68.9,
+          "elapsed_time_min": 72.8,
+          "pace_min_per_km": 5.64,
+          "avg_speed_mps": 2.94,
+          "relative_effort": 216.58
+        }
+      ],
+      "primary_activity": {
+        "id": 24110488256,
+        "name": "Miguel Hidalgo - Kenyan Run",
+        "description": "",
+        "sport_type": "Run",
+        "start_date_local": "2026-08-25T06:48:25",
+        "distance_km": 12.22,
+        "moving_time_min": 68.9,
+        "elapsed_time_min": 72.8,
+        "pace_min_per_km": 5.64,
+        "avg_speed_mps": 2.94,
+        "relative_effort": 216.58
+      },
+      "completed": true,
       "session_type": "quality",
       "garmin": {
         "sleep_hours": 7.42,
         "sleep_score": 83.0,
         "hrv": 62.0,
         "body_battery": 43.0,
-        "stress_avg": 10.0,
+        "stress_avg": 21.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 51.0,
@@ -1853,6 +1879,15 @@
     }
   },
   "recent_sessions": [
+    {
+      "date": "2026-08-25",
+      "session_type": "quality",
+      "name": "Miguel Hidalgo - Kenyan Run",
+      "sport_type": "Run",
+      "distance_km": 12.22,
+      "pace_min_per_km": 5.64,
+      "relative_effort": 216.58
+    },
     {
       "date": "2026-08-24",
       "session_type": "strength",
@@ -2023,15 +2058,6 @@
       "distance_km": 0.0,
       "pace_min_per_km": null,
       "relative_effort": 26.37
-    },
-    {
-      "date": "2026-07-25",
-      "session_type": "easy",
-      "name": "Sydney - Aerobic Endurance Run",
-      "sport_type": "Run",
-      "distance_km": 4.2,
-      "pace_min_per_km": 6.02,
-      "relative_effort": 68.79
     }
   ]
 }
