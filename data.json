@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-25T01:05:58",
+  "generated_at": "2026-08-25T06:41:10",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -113,7 +113,7 @@
       "week_end": "2026-08-30",
       "planned_km": 65.9,
       "actual_km": 0.0,
-      "total_relative_effort": 0.0,
+      "total_relative_effort": 4.6,
       "total_planned_tss": 0.0,
       "avg_sleep_hours": null,
       "days": [
@@ -1640,16 +1640,42 @@
         "planned_tss": null,
         "notes": "Haz 2 series por ejercicio. Si no tienes pesas para ejercicios que requieran pesas, sea creativo y usa, por ejemplo, pesas. botellas de agua llenas, o incluso llevar una bolsa pesada en ejercicios como Farmer's Carry. Anti-extensión: -Body saw 10 repeticiones (en suelo resbaladizo con calcetines) https://youtu.be/iABks8uy3OE -Plancha frontal alcanza 10 repeticiones por lado (reemplazar con una plancha estática de 30 a 90 segundos si el elemento de alcance es demasiado difícil) https://youtu.be/CW004tUZIBs Antirotación: -Giros rusos 15-20 repeticiones https://youtu.be/m7ucEp_nc9I -Press Pallof (usando bandas elásticas) 10 repeticiones por lado https://youtu.be/UD0J0YXfBmI Flexión antilateral: -Farmers carry (usar, por ejemplo, una bolsa pesada como peso) 45 segundos por lado https://youtu.be/eM7u45iNOEU -Offload lunge walk (peso/bolsa pesada en la mano opuesta a la pierna que da un paso adelante) 10 repeticiones con la pierna derecha, luego 10 repeticiones con la pierna izquierda Cadena posterior: -Super dogs 10 repeticiones por lado https://youtu.be/jQnMT98GSpg -Curls nórdicos de isquiotibiales (con persona que lo asista: tantas repeticiones como sea posible) o variaciones (https://youtu.be/ihTUvs997b4) como el lanzamiento de pelota suiza con 12 repeticiones (https://youtu.be/T5reFpufijU)) | https://www.youtube.com/watch?v=obUrlYJfW50"
       },
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
+      "activities": [
+        {
+          "id": 24104652780,
+          "name": "Strength",
+          "description": "",
+          "sport_type": "WeightTraining",
+          "start_date_local": "2026-08-24T19:51:39",
+          "distance_km": 0.0,
+          "moving_time_min": 38.0,
+          "elapsed_time_min": 68.6,
+          "pace_min_per_km": null,
+          "avg_speed_mps": 0.0,
+          "relative_effort": 4.57
+        }
+      ],
+      "primary_activity": {
+        "id": 24104652780,
+        "name": "Strength",
+        "description": "",
+        "sport_type": "WeightTraining",
+        "start_date_local": "2026-08-24T19:51:39",
+        "distance_km": 0.0,
+        "moving_time_min": 38.0,
+        "elapsed_time_min": 68.6,
+        "pace_min_per_km": null,
+        "avg_speed_mps": 0.0,
+        "relative_effort": 4.57
+      },
+      "completed": true,
       "session_type": "strength",
       "garmin": {
         "sleep_hours": null,
         "sleep_score": null,
         "hrv": null,
-        "body_battery": null,
-        "stress_avg": null,
+        "body_battery": 49.0,
+        "stress_avg": 26.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 52.3,
@@ -1681,8 +1707,8 @@
         "sleep_hours": null,
         "sleep_score": null,
         "hrv": null,
-        "body_battery": null,
-        "stress_avg": null,
+        "body_battery": 43.0,
+        "stress_avg": 15.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 51.0,
@@ -1827,6 +1853,15 @@
     }
   },
   "recent_sessions": [
+    {
+      "date": "2026-08-24",
+      "session_type": "strength",
+      "name": "Strength",
+      "sport_type": "WeightTraining",
+      "distance_km": 0.0,
+      "pace_min_per_km": null,
+      "relative_effort": 4.57
+    },
     {
       "date": "2026-08-23",
       "session_type": "long_run",
@@ -1997,15 +2032,6 @@
       "distance_km": 4.2,
       "pace_min_per_km": 6.02,
       "relative_effort": 68.79
-    },
-    {
-      "date": "2026-07-22",
-      "session_type": "strength",
-      "name": "Strength",
-      "sport_type": "WeightTraining",
-      "distance_km": 0.0,
-      "pace_min_per_km": null,
-      "relative_effort": 4.97
     }
   ]
 }
