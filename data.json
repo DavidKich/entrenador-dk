@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-25T18:36:09",
+  "generated_at": "2026-08-26T01:07:50",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -7,7 +7,7 @@
     8
   ],
   "week_summary": {
-    "days_to_race": 33,
+    "days_to_race": 32,
     "semaforo": "atrasado",
     "planned_km": 65.9,
     "actual_km": 12.2,
@@ -24,11 +24,10 @@
       "week_end": "2026-07-26",
       "planned_km": 0.0,
       "actual_km": 4.2,
-      "total_relative_effort": 114.7,
+      "total_relative_effort": 73.8,
       "total_planned_tss": 0.0,
       "avg_sleep_hours": 5.61,
       "days": [
-        "2026-07-21",
         "2026-07-22",
         "2026-07-23",
         "2026-07-24",
@@ -128,58 +127,6 @@
     }
   ],
   "days": {
-    "2026-07-21": {
-      "date": "2026-07-21",
-      "days_to_race": 68,
-      "plan": null,
-      "activities": [
-        {
-          "id": 23684851554,
-          "name": "Indoor Cycling",
-          "description": "",
-          "sport_type": "Ride",
-          "start_date_local": "2026-07-21T18:16:48",
-          "distance_km": 0.0,
-          "moving_time_min": 50.1,
-          "elapsed_time_min": 50.1,
-          "pace_min_per_km": null,
-          "avg_speed_mps": 0.0,
-          "relative_effort": 40.93
-        }
-      ],
-      "primary_activity": {
-        "id": 23684851554,
-        "name": "Indoor Cycling",
-        "description": "",
-        "sport_type": "Ride",
-        "start_date_local": "2026-07-21T18:16:48",
-        "distance_km": 0.0,
-        "moving_time_min": 50.1,
-        "elapsed_time_min": 50.1,
-        "pace_min_per_km": null,
-        "avg_speed_mps": 0.0,
-        "relative_effort": 40.93
-      },
-      "completed": true,
-      "session_type": "easy",
-      "garmin": {
-        "sleep_hours": null,
-        "sleep_score": null,
-        "hrv": null,
-        "body_battery": 80.0,
-        "stress_avg": 37.0,
-        "symptoms": ""
-      },
-      "hrv_7d_avg": null,
-      "fatigue_flag": false,
-      "recovery_suggestion": {
-        "recommendation": "sauna_o_contrast",
-        "timing": "manana",
-        "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).",
-        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
-      },
-      "recommendations_log": []
-    },
     "2026-07-22": {
       "date": "2026-07-22",
       "days_to_race": 67,
@@ -329,9 +276,9 @@
       "hrv_7d_avg": 57.5,
       "fatigue_flag": true,
       "recovery_suggestion": {
-        "recommendation": "ninguna",
-        "timing": null,
-        "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — dia libre de protocolo.",
+        "recommendation": "sauna_o_contrast",
+        "timing": "manana",
+        "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
@@ -1734,7 +1681,7 @@
         "sleep_score": 83.0,
         "hrv": 62.0,
         "body_battery": 43.0,
-        "stress_avg": 21.0,
+        "stress_avg": 30.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 51.0,
@@ -1762,7 +1709,14 @@
       "primary_activity": null,
       "completed": false,
       "session_type": "strength",
-      "garmin": null,
+      "garmin": {
+        "sleep_hours": null,
+        "sleep_score": null,
+        "hrv": null,
+        "body_battery": null,
+        "stress_avg": null,
+        "symptoms": ""
+      },
       "hrv_7d_avg": 50.6,
       "fatigue_flag": false,
       "recovery_suggestion": {
