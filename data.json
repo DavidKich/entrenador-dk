@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T12:45:57",
+  "generated_at": "2026-08-26T19:44:43",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -10,8 +10,8 @@
     "days_to_race": 32,
     "semaforo": "atrasado",
     "planned_km": 65.9,
-    "actual_km": 12.2,
-    "avg_sleep_hours": 7.42,
+    "actual_km": 22.4,
+    "avg_sleep_hours": 7.47,
     "sleep_goal": [
       7,
       8
@@ -111,10 +111,10 @@
       "week_start": "2026-08-24",
       "week_end": "2026-08-30",
       "planned_km": 65.9,
-      "actual_km": 12.2,
-      "total_relative_effort": 221.2,
+      "actual_km": 22.4,
+      "total_relative_effort": 504.1,
       "total_planned_tss": 0.0,
-      "avg_sleep_hours": 7.42,
+      "avg_sleep_hours": 7.47,
       "days": [
         "2026-08-24",
         "2026-08-25",
@@ -1705,16 +1705,42 @@
         "planned_tss": null,
         "notes": "-Leg extension 4x8reps RPE 8 https://youtube.com/shorts/b_MY7h_2H1o?si=B7nbVoxgzwepmZAH -Curl Pierna (sentada) 4x8reps RPE 8 https://youtube.com/shorts/oc8SshREFi0?si=X0ttxZ7xadz7RLdP -Sentadilla libre 5x8reps RPE 8 https://youtube.com/shorts/oSxJ78WQBZ0?si=HK1zG5NKA3wYuSTV -Desplante búlgaro 3x8 reps por lado RPE 8 https://youtu.be/DzSjRCfz4ZE?si=FGOw28IDYOWXMIr5 -Aductor 4x10 reps RPE 7 https://youtube.com/shorts/76uNT_VMhPI?si=O0DC8iv6XXbs4Jw3 -Abductor 4x10 reps RPE 7 https://youtube.com/shorts/-yCeBlrDcNw?si=Jz8Z-KNqa9dvhoRM -Pantorrilla (sentada) con dos segundos de isometrico 3x15 reps RPE 6 https://youtube.com/shorts/RDLWmpc0suQ?si=jb6fcxaS0H5zrbwt"
       },
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
+      "activities": [
+        {
+          "id": 24124906641,
+          "name": "Miguel Hidalgo - Cuestas Plano",
+          "description": "",
+          "sport_type": "Run",
+          "start_date_local": "2026-08-26T08:21:08",
+          "distance_km": 10.2,
+          "moving_time_min": 59.9,
+          "elapsed_time_min": 65.5,
+          "pace_min_per_km": 5.87,
+          "avg_speed_mps": 2.83,
+          "relative_effort": 282.95
+        }
+      ],
+      "primary_activity": {
+        "id": 24124906641,
+        "name": "Miguel Hidalgo - Cuestas Plano",
+        "description": "",
+        "sport_type": "Run",
+        "start_date_local": "2026-08-26T08:21:08",
+        "distance_km": 10.2,
+        "moving_time_min": 59.9,
+        "elapsed_time_min": 65.5,
+        "pace_min_per_km": 5.87,
+        "avg_speed_mps": 2.83,
+        "relative_effort": 282.95
+      },
+      "completed": true,
       "session_type": "strength",
       "garmin": {
-        "sleep_hours": null,
-        "sleep_score": null,
-        "hrv": null,
+        "sleep_hours": 7.53,
+        "sleep_score": 83.0,
+        "hrv": 57.0,
         "body_battery": 20.0,
-        "stress_avg": 14.0,
+        "stress_avg": 15.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 50.6,
@@ -1743,7 +1769,7 @@
       "completed": false,
       "session_type": "quality",
       "garmin": null,
-      "hrv_7d_avg": 51.0,
+      "hrv_7d_avg": 52.2,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "contrast",
@@ -1769,7 +1795,7 @@
       "completed": false,
       "session_type": "quality",
       "garmin": null,
-      "hrv_7d_avg": 48.7,
+      "hrv_7d_avg": 50.8,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -1795,7 +1821,7 @@
       "completed": false,
       "session_type": "rest",
       "garmin": null,
-      "hrv_7d_avg": 60.5,
+      "hrv_7d_avg": 59.3,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -1821,7 +1847,7 @@
       "completed": false,
       "session_type": "quality",
       "garmin": null,
-      "hrv_7d_avg": 62.0,
+      "hrv_7d_avg": 59.5,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -1833,6 +1859,15 @@
     }
   },
   "recent_sessions": [
+    {
+      "date": "2026-08-26",
+      "session_type": "strength",
+      "name": "Miguel Hidalgo - Cuestas Plano",
+      "sport_type": "Run",
+      "distance_km": 10.2,
+      "pace_min_per_km": 5.87,
+      "relative_effort": 282.95
+    },
     {
       "date": "2026-08-25",
       "session_type": "quality",
@@ -2003,15 +2038,6 @@
       "distance_km": 1.33,
       "pace_min_per_km": 11.95,
       "relative_effort": 17.37
-    },
-    {
-      "date": "2026-07-28",
-      "session_type": "easy",
-      "name": "Stimulation Strength Set",
-      "sport_type": "Ride",
-      "distance_km": 0.0,
-      "pace_min_per_km": null,
-      "relative_effort": 26.37
     }
   ]
 }
