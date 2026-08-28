@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27T21:43:29",
+  "generated_at": "2026-08-28T09:26:26",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -7,10 +7,10 @@
     8
   ],
   "week_summary": {
-    "days_to_race": 31,
+    "days_to_race": 30,
     "semaforo": "atrasado",
     "planned_km": 65.9,
-    "actual_km": 22.4,
+    "actual_km": 27.4,
     "avg_sleep_hours": 7.52,
     "sleep_goal": [
       7,
@@ -26,9 +26,8 @@
       "actual_km": 4.2,
       "total_relative_effort": 68.8,
       "total_planned_tss": 0.0,
-      "avg_sleep_hours": 5.37,
+      "avg_sleep_hours": 4.21,
       "days": [
-        "2026-07-23",
         "2026-07-24",
         "2026-07-25",
         "2026-07-26"
@@ -110,8 +109,8 @@
       "week_start": "2026-08-24",
       "week_end": "2026-08-30",
       "planned_km": 65.9,
-      "actual_km": 22.4,
-      "total_relative_effort": 504.1,
+      "actual_km": 27.4,
+      "total_relative_effort": 578.1,
       "total_planned_tss": 0.0,
       "avg_sleep_hours": 7.52,
       "days": [
@@ -126,32 +125,6 @@
     }
   ],
   "days": {
-    "2026-07-23": {
-      "date": "2026-07-23",
-      "days_to_race": 66,
-      "plan": null,
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
-      "session_type": "rest",
-      "garmin": {
-        "sleep_hours": 7.68,
-        "sleep_score": 72.0,
-        "hrv": 64.0,
-        "body_battery": 12.0,
-        "stress_avg": 18.0,
-        "symptoms": ""
-      },
-      "hrv_7d_avg": null,
-      "fatigue_flag": false,
-      "recovery_suggestion": {
-        "recommendation": "sauna_o_contrast",
-        "timing": "manana",
-        "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).",
-        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
-      },
-      "recommendations_log": []
-    },
     "2026-07-24": {
       "date": "2026-07-24",
       "days_to_race": 65,
@@ -168,7 +141,7 @@
         "stress_avg": 43.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 64.0,
+      "hrv_7d_avg": null,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -220,8 +193,8 @@
         "stress_avg": 51.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 64.0,
-      "fatigue_flag": true,
+      "hrv_7d_avg": null,
+      "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
         "timing": "manana",
@@ -246,7 +219,7 @@
         "stress_avg": 57.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 56.0,
+      "hrv_7d_avg": 48.0,
       "fatigue_flag": true,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -272,7 +245,7 @@
         "stress_avg": 36.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 45.0,
+      "hrv_7d_avg": 35.5,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -337,7 +310,7 @@
         "stress_avg": 61.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 49.8,
+      "hrv_7d_avg": 45.0,
       "fatigue_flag": true,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -389,7 +362,7 @@
         "stress_avg": 55.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 45.2,
+      "hrv_7d_avg": 40.5,
       "fatigue_flag": true,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
@@ -441,7 +414,7 @@
         "stress_avg": 31.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 41.3,
+      "hrv_7d_avg": 36.8,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -1711,16 +1684,42 @@
         "planned_tss": null,
         "notes": ""
       },
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
+      "activities": [
+        {
+          "id": 24143020816,
+          "name": "Miguel Hidalgo - Intervalo Largo",
+          "description": "",
+          "sport_type": "Run",
+          "start_date_local": "2026-08-27T18:06:04",
+          "distance_km": 5.0,
+          "moving_time_min": 39.9,
+          "elapsed_time_min": 41.3,
+          "pace_min_per_km": 7.98,
+          "avg_speed_mps": 2.08,
+          "relative_effort": 73.97
+        }
+      ],
+      "primary_activity": {
+        "id": 24143020816,
+        "name": "Miguel Hidalgo - Intervalo Largo",
+        "description": "",
+        "sport_type": "Run",
+        "start_date_local": "2026-08-27T18:06:04",
+        "distance_km": 5.0,
+        "moving_time_min": 39.9,
+        "elapsed_time_min": 41.3,
+        "pace_min_per_km": 7.98,
+        "avg_speed_mps": 2.08,
+        "relative_effort": 73.97
+      },
+      "completed": true,
       "session_type": "quality",
       "garmin": {
         "sleep_hours": 7.6,
         "sleep_score": 71.0,
         "hrv": 50.0,
         "body_battery": 10.0,
-        "stress_avg": 26.0,
+        "stress_avg": 28.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 52.2,
@@ -1748,7 +1747,14 @@
       "primary_activity": null,
       "completed": false,
       "session_type": "quality",
-      "garmin": null,
+      "garmin": {
+        "sleep_hours": null,
+        "sleep_score": null,
+        "hrv": null,
+        "body_battery": 24.0,
+        "stress_avg": 28.0,
+        "symptoms": ""
+      },
       "hrv_7d_avg": 50.6,
       "fatigue_flag": false,
       "recovery_suggestion": {
@@ -1813,6 +1819,15 @@
     }
   },
   "recent_sessions": [
+    {
+      "date": "2026-08-27",
+      "session_type": "quality",
+      "name": "Miguel Hidalgo - Intervalo Largo",
+      "sport_type": "Run",
+      "distance_km": 5.0,
+      "pace_min_per_km": 7.98,
+      "relative_effort": 73.97
+    },
     {
       "date": "2026-08-26",
       "session_type": "strength",
@@ -1983,15 +1998,6 @@
       "distance_km": 0.0,
       "pace_min_per_km": null,
       "relative_effort": 14.46
-    },
-    {
-      "date": "2026-07-28",
-      "session_type": "easy",
-      "name": "Badung Surfing",
-      "sport_type": "Surfing_V2",
-      "distance_km": 1.33,
-      "pace_min_per_km": 11.95,
-      "relative_effort": 17.37
     }
   ]
 }
