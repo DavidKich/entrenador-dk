@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-28T21:42:54",
+  "generated_at": "2026-08-29T05:35:02",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -7,7 +7,7 @@
     8
   ],
   "week_summary": {
-    "days_to_race": 30,
+    "days_to_race": 29,
     "semaforo": "atrasado",
     "planned_km": 65.9,
     "actual_km": 27.4,
@@ -28,7 +28,6 @@
       "total_planned_tss": 0.0,
       "avg_sleep_hours": 4.21,
       "days": [
-        "2026-07-24",
         "2026-07-25",
         "2026-07-26"
       ]
@@ -125,32 +124,6 @@
     }
   ],
   "days": {
-    "2026-07-24": {
-      "date": "2026-07-24",
-      "days_to_race": 65,
-      "plan": null,
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
-      "session_type": "rest",
-      "garmin": {
-        "sleep_hours": null,
-        "sleep_score": null,
-        "hrv": null,
-        "body_battery": 67.0,
-        "stress_avg": 43.0,
-        "symptoms": ""
-      },
-      "hrv_7d_avg": null,
-      "fatigue_flag": false,
-      "recovery_suggestion": {
-        "recommendation": "sauna_o_contrast",
-        "timing": "manana",
-        "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).",
-        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
-      },
-      "recommendations_log": []
-    },
     "2026-07-25": {
       "date": "2026-07-25",
       "days_to_race": 64,
@@ -1752,7 +1725,7 @@
         "sleep_score": 89.0,
         "hrv": 59.0,
         "body_battery": 24.0,
-        "stress_avg": 21.0,
+        "stress_avg": 34.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 50.6,
@@ -1780,7 +1753,14 @@
       "primary_activity": null,
       "completed": false,
       "session_type": "rest",
-      "garmin": null,
+      "garmin": {
+        "sleep_hours": null,
+        "sleep_score": null,
+        "hrv": null,
+        "body_battery": null,
+        "stress_avg": null,
+        "symptoms": ""
+      },
       "hrv_7d_avg": 57.4,
       "fatigue_flag": false,
       "recovery_suggestion": {
