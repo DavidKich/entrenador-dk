@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-29T20:23:14",
+  "generated_at": "2026-08-30T03:33:36",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -7,7 +7,7 @@
     8
   ],
   "week_summary": {
-    "days_to_race": 29,
+    "days_to_race": 28,
     "semaforo": "atrasado",
     "planned_km": 65.9,
     "actual_km": 55.4,
@@ -23,12 +23,11 @@
       "week_start": "2026-07-20",
       "week_end": "2026-07-26",
       "planned_km": 0.0,
-      "actual_km": 4.2,
-      "total_relative_effort": 68.8,
+      "actual_km": 0.0,
+      "total_relative_effort": 0.0,
       "total_planned_tss": 0.0,
-      "avg_sleep_hours": 4.21,
+      "avg_sleep_hours": 1.5,
       "days": [
-        "2026-07-25",
         "2026-07-26"
       ]
     },
@@ -124,58 +123,6 @@
     }
   ],
   "days": {
-    "2026-07-25": {
-      "date": "2026-07-25",
-      "days_to_race": 64,
-      "plan": null,
-      "activities": [
-        {
-          "id": 23721031266,
-          "name": "Sydney - Aerobic Endurance Run",
-          "description": "",
-          "sport_type": "Run",
-          "start_date_local": "2026-07-25T08:38:25",
-          "distance_km": 4.2,
-          "moving_time_min": 25.3,
-          "elapsed_time_min": 36.1,
-          "pace_min_per_km": 6.02,
-          "avg_speed_mps": 2.76,
-          "relative_effort": 68.79
-        }
-      ],
-      "primary_activity": {
-        "id": 23721031266,
-        "name": "Sydney - Aerobic Endurance Run",
-        "description": "",
-        "sport_type": "Run",
-        "start_date_local": "2026-07-25T08:38:25",
-        "distance_km": 4.2,
-        "moving_time_min": 25.3,
-        "elapsed_time_min": 36.1,
-        "pace_min_per_km": 6.02,
-        "avg_speed_mps": 2.76,
-        "relative_effort": 68.79
-      },
-      "completed": true,
-      "session_type": "easy",
-      "garmin": {
-        "sleep_hours": 6.92,
-        "sleep_score": 65.0,
-        "hrv": 48.0,
-        "body_battery": 5.0,
-        "stress_avg": 51.0,
-        "symptoms": ""
-      },
-      "hrv_7d_avg": null,
-      "fatigue_flag": false,
-      "recovery_suggestion": {
-        "recommendation": "sauna_o_contrast",
-        "timing": "manana",
-        "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).",
-        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
-      },
-      "recommendations_log": []
-    },
     "2026-07-26": {
       "date": "2026-07-26",
       "days_to_race": 63,
@@ -192,8 +139,8 @@
         "stress_avg": 57.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 48.0,
-      "fatigue_flag": true,
+      "hrv_7d_avg": null,
+      "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
         "timing": "manana",
@@ -218,7 +165,7 @@
         "stress_avg": 36.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 35.5,
+      "hrv_7d_avg": 23.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -283,7 +230,7 @@
         "stress_avg": 61.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 45.0,
+      "hrv_7d_avg": 43.5,
       "fatigue_flag": true,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -335,7 +282,7 @@
         "stress_avg": 55.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 40.5,
+      "hrv_7d_avg": 38.0,
       "fatigue_flag": true,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
@@ -387,7 +334,7 @@
         "stress_avg": 31.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 36.8,
+      "hrv_7d_avg": 34.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -413,7 +360,7 @@
         "stress_avg": 47.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 41.7,
+      "hrv_7d_avg": 40.4,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -439,7 +386,7 @@
         "stress_avg": 66.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 42.3,
+      "hrv_7d_avg": 41.3,
       "fatigue_flag": true,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -1784,7 +1731,7 @@
         "sleep_score": 85.0,
         "hrv": 60.0,
         "body_battery": 20.0,
-        "stress_avg": 14.0,
+        "stress_avg": 35.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 57.4,
@@ -1812,7 +1759,14 @@
       "primary_activity": null,
       "completed": false,
       "session_type": "quality",
-      "garmin": null,
+      "garmin": {
+        "sleep_hours": null,
+        "sleep_score": null,
+        "hrv": null,
+        "body_battery": null,
+        "stress_avg": null,
+        "symptoms": ""
+      },
       "hrv_7d_avg": 57.6,
       "fatigue_flag": false,
       "recovery_suggestion": {
