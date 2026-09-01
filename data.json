@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-01T11:04:54",
+  "generated_at": "2026-09-01T16:03:15",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -10,8 +10,8 @@
     "days_to_race": 26,
     "semaforo": "en_linea",
     "planned_km": 0.0,
-    "actual_km": 0.0,
-    "avg_sleep_hours": 9.64,
+    "actual_km": 9.6,
+    "avg_sleep_hours": 8.87,
     "sleep_goal": [
       7,
       8
@@ -112,10 +112,10 @@
       "week_start": "2026-08-31",
       "week_end": "2026-09-06",
       "planned_km": 0.0,
-      "actual_km": 0.0,
-      "total_relative_effort": 8.8,
+      "actual_km": 9.6,
+      "total_relative_effort": 220.6,
       "total_planned_tss": 0.0,
-      "avg_sleep_hours": 9.64,
+      "avg_sleep_hours": 8.87,
       "days": [
         "2026-08-31",
         "2026-09-01"
@@ -1781,30 +1781,65 @@
       "date": "2026-09-01",
       "days_to_race": 26,
       "plan": null,
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
-      "session_type": "rest",
+      "activities": [
+        {
+          "id": 24198000638,
+          "name": "Miguel Hidalgo - Series (800mtsx400mts)",
+          "description": "",
+          "sport_type": "Run",
+          "start_date_local": "2026-09-01T08:24:26",
+          "distance_km": 9.57,
+          "moving_time_min": 58.6,
+          "elapsed_time_min": 58.8,
+          "pace_min_per_km": 6.12,
+          "avg_speed_mps": 2.71,
+          "relative_effort": 211.77
+        }
+      ],
+      "primary_activity": {
+        "id": 24198000638,
+        "name": "Miguel Hidalgo - Series (800mtsx400mts)",
+        "description": "",
+        "sport_type": "Run",
+        "start_date_local": "2026-09-01T08:24:26",
+        "distance_km": 9.57,
+        "moving_time_min": 58.6,
+        "elapsed_time_min": 58.8,
+        "pace_min_per_km": 6.12,
+        "avg_speed_mps": 2.71,
+        "relative_effort": 211.77
+      },
+      "completed": true,
+      "session_type": "quality",
       "garmin": {
-        "sleep_hours": null,
-        "sleep_score": null,
-        "hrv": null,
+        "sleep_hours": 8.1,
+        "sleep_score": 85.0,
+        "hrv": 68.0,
         "body_battery": 47.0,
-        "stress_avg": 12.0,
+        "stress_avg": 10.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 53.7,
       "fatigue_flag": false,
       "recovery_suggestion": {
-        "recommendation": "sauna_o_contrast",
+        "recommendation": "contrast",
         "timing": "manana",
-        "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).",
+        "detail": "Sesion de calidad/larga: contrast therapy (sauna 10-20 min + cold plunge 1-5 min, 2-4 ciclos terminando en frio) o cold plunge solo ayudan a acelerar la recuperacion antes de la siguiente sesion importante.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
     }
   },
   "recent_sessions": [
+    {
+      "date": "2026-09-01",
+      "session_type": "quality",
+      "name": "Miguel Hidalgo - Series (800mtsx400mts)",
+      "sport_type": "Run",
+      "distance_km": 9.57,
+      "pace_min_per_km": 6.12,
+      "relative_effort": 211.77
+    },
     {
       "date": "2026-08-31",
       "session_type": "strength",
@@ -1975,15 +2010,6 @@
       "distance_km": 4.84,
       "pace_min_per_km": 10.0,
       "relative_effort": 13.21
-    },
-    {
-      "date": "2026-08-02",
-      "session_type": "other",
-      "name": "Lombok Tengah Surfing",
-      "sport_type": "Surfing_V2",
-      "distance_km": 0.52,
-      "pace_min_per_km": 6.92,
-      "relative_effort": 8.1
     }
   ]
 }
