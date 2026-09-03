@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-03T10:39:48",
+  "generated_at": "2026-09-03T15:45:47",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -10,8 +10,8 @@
     "days_to_race": 24,
     "semaforo": "en_linea",
     "planned_km": 0.0,
-    "actual_km": 22.6,
-    "avg_sleep_hours": 8.24,
+    "actual_km": 35.4,
+    "avg_sleep_hours": 7.8,
     "sleep_goal": [
       7,
       8
@@ -110,10 +110,10 @@
       "week_start": "2026-08-31",
       "week_end": "2026-09-06",
       "planned_km": 0.0,
-      "actual_km": 22.6,
-      "total_relative_effort": 384.1,
+      "actual_km": 35.4,
+      "total_relative_effort": 538.2,
       "total_planned_tss": 0.0,
-      "avg_sleep_hours": 8.24,
+      "avg_sleep_hours": 7.8,
       "days": [
         "2026-08-31",
         "2026-09-01",
@@ -1768,30 +1768,65 @@
       "date": "2026-09-03",
       "days_to_race": 24,
       "plan": null,
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
-      "session_type": "rest",
+      "activities": [
+        {
+          "id": 24224361207,
+          "name": "Miguel Hidalgo - Intervalo Largo",
+          "description": "",
+          "sport_type": "Run",
+          "start_date_local": "2026-09-03T08:03:55",
+          "distance_km": 12.75,
+          "moving_time_min": 72.4,
+          "elapsed_time_min": 72.5,
+          "pace_min_per_km": 5.68,
+          "avg_speed_mps": 2.93,
+          "relative_effort": 154.08
+        }
+      ],
+      "primary_activity": {
+        "id": 24224361207,
+        "name": "Miguel Hidalgo - Intervalo Largo",
+        "description": "",
+        "sport_type": "Run",
+        "start_date_local": "2026-09-03T08:03:55",
+        "distance_km": 12.75,
+        "moving_time_min": 72.4,
+        "elapsed_time_min": 72.5,
+        "pace_min_per_km": 5.68,
+        "avg_speed_mps": 2.93,
+        "relative_effort": 154.08
+      },
+      "completed": true,
+      "session_type": "quality",
       "garmin": {
-        "sleep_hours": null,
-        "sleep_score": null,
-        "hrv": null,
-        "body_battery": 16.0,
-        "stress_avg": 28.0,
+        "sleep_hours": 6.47,
+        "sleep_score": 74.0,
+        "hrv": 52.0,
+        "body_battery": 15.0,
+        "stress_avg": 20.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 54.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
-        "recommendation": "sauna_o_contrast",
+        "recommendation": "contrast",
         "timing": "manana",
-        "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).",
+        "detail": "Sesion de calidad/larga: contrast therapy (sauna 10-20 min + cold plunge 1-5 min, 2-4 ciclos terminando en frio) o cold plunge solo ayudan a acelerar la recuperacion antes de la siguiente sesion importante.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
     }
   },
   "recent_sessions": [
+    {
+      "date": "2026-09-03",
+      "session_type": "quality",
+      "name": "Miguel Hidalgo - Intervalo Largo",
+      "sport_type": "Run",
+      "distance_km": 12.75,
+      "pace_min_per_km": 5.68,
+      "relative_effort": 154.08
+    },
     {
       "date": "2026-09-02",
       "session_type": "easy",
@@ -1962,15 +1997,6 @@
       "distance_km": 1.55,
       "pace_min_per_km": 10.71,
       "relative_effort": 6.91
-    },
-    {
-      "date": "2026-08-05",
-      "session_type": "strength",
-      "name": "Strength",
-      "sport_type": "WeightTraining",
-      "distance_km": 0.0,
-      "pace_min_per_km": null,
-      "relative_effort": 9.67
     }
   ]
 }
