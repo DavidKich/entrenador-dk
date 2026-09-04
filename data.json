@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-04T02:52:07",
+  "generated_at": "2026-09-04T10:34:14",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -110,7 +110,7 @@
       "week_end": "2026-09-06",
       "planned_km": 0.0,
       "actual_km": 35.4,
-      "total_relative_effort": 538.2,
+      "total_relative_effort": 548.7,
       "total_planned_tss": 0.0,
       "avg_sleep_hours": 7.8,
       "days": [
@@ -1718,6 +1718,19 @@
       "plan": null,
       "activities": [
         {
+          "id": 24230307166,
+          "name": "Strength",
+          "description": "",
+          "sport_type": "WeightTraining",
+          "start_date_local": "2026-09-03T19:38:58",
+          "distance_km": 0.0,
+          "moving_time_min": 97.3,
+          "elapsed_time_min": 102.2,
+          "pace_min_per_km": null,
+          "avg_speed_mps": 0.0,
+          "relative_effort": 10.54
+        },
+        {
           "id": 24224361207,
           "name": "Miguel Hidalgo - Intervalo Largo",
           "description": "",
@@ -1732,34 +1745,34 @@
         }
       ],
       "primary_activity": {
-        "id": 24224361207,
-        "name": "Miguel Hidalgo - Intervalo Largo",
+        "id": 24230307166,
+        "name": "Strength",
         "description": "",
-        "sport_type": "Run",
-        "start_date_local": "2026-09-03T08:03:55",
-        "distance_km": 12.75,
-        "moving_time_min": 72.4,
-        "elapsed_time_min": 72.5,
-        "pace_min_per_km": 5.68,
-        "avg_speed_mps": 2.93,
-        "relative_effort": 154.08
+        "sport_type": "WeightTraining",
+        "start_date_local": "2026-09-03T19:38:58",
+        "distance_km": 0.0,
+        "moving_time_min": 97.3,
+        "elapsed_time_min": 102.2,
+        "pace_min_per_km": null,
+        "avg_speed_mps": 0.0,
+        "relative_effort": 10.54
       },
       "completed": true,
-      "session_type": "quality",
+      "session_type": "strength",
       "garmin": {
         "sleep_hours": 6.47,
         "sleep_score": 74.0,
         "hrv": 52.0,
         "body_battery": 15.0,
-        "stress_avg": 28.0,
+        "stress_avg": 40.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 54.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
-        "recommendation": "contrast",
+        "recommendation": "sauna_hoy",
         "timing": "manana",
-        "detail": "Sesion de calidad/larga: contrast therapy (sauna 10-20 min + cold plunge 1-5 min, 2-4 ciclos terminando en frio) o cold plunge solo ayudan a acelerar la recuperacion antes de la siguiente sesion importante.",
+        "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
@@ -1776,8 +1789,8 @@
         "sleep_hours": null,
         "sleep_score": null,
         "hrv": null,
-        "body_battery": null,
-        "stress_avg": null,
+        "body_battery": 5.0,
+        "stress_avg": 44.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 54.3,
@@ -1794,7 +1807,16 @@
   "recent_sessions": [
     {
       "date": "2026-09-03",
-      "session_type": "quality",
+      "session_type": "strength",
+      "name": "Strength",
+      "sport_type": "WeightTraining",
+      "distance_km": 0.0,
+      "pace_min_per_km": null,
+      "relative_effort": 10.54
+    },
+    {
+      "date": "2026-09-03",
+      "session_type": "strength",
       "name": "Miguel Hidalgo - Intervalo Largo",
       "sport_type": "Run",
       "distance_km": 12.75,
@@ -1962,15 +1984,6 @@
       "distance_km": 5.73,
       "pace_min_per_km": 6.37,
       "relative_effort": 40.01
-    },
-    {
-      "date": "2026-08-07",
-      "session_type": "easy",
-      "name": "Badung Surfing",
-      "sport_type": "Surfing_V2",
-      "distance_km": 1.55,
-      "pace_min_per_km": 10.71,
-      "relative_effort": 6.91
     }
   ]
 }
