@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-05T09:56:32",
+  "generated_at": "2026-09-05T14:33:47",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -11,7 +11,7 @@
     "semaforo": "en_linea",
     "planned_km": 0.0,
     "actual_km": 35.4,
-    "avg_sleep_hours": 7.82,
+    "avg_sleep_hours": 7.9,
     "sleep_goal": [
       7,
       8
@@ -111,7 +111,7 @@
       "actual_km": 35.4,
       "total_relative_effort": 548.7,
       "total_planned_tss": 0.0,
-      "avg_sleep_hours": 7.82,
+      "avg_sleep_hours": 7.9,
       "days": [
         "2026-08-31",
         "2026-09-01",
@@ -1786,11 +1786,11 @@
       "completed": false,
       "session_type": "rest",
       "garmin": {
-        "sleep_hours": null,
-        "sleep_score": null,
-        "hrv": null,
+        "sleep_hours": 8.3,
+        "sleep_score": 87.0,
+        "hrv": 51.0,
         "body_battery": 15.0,
-        "stress_avg": 17.0,
+        "stress_avg": 16.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 52.6,
