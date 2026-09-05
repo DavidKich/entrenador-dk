@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-05T14:33:47",
+  "generated_at": "2026-09-05T19:55:30",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -10,7 +10,7 @@
     "days_to_race": 22,
     "semaforo": "en_linea",
     "planned_km": 0.0,
-    "actual_km": 35.4,
+    "actual_km": 65.4,
     "avg_sleep_hours": 7.9,
     "sleep_goal": [
       7,
@@ -108,8 +108,8 @@
       "week_start": "2026-08-31",
       "week_end": "2026-09-06",
       "planned_km": 0.0,
-      "actual_km": 35.4,
-      "total_relative_effort": 548.7,
+      "actual_km": 65.4,
+      "total_relative_effort": 911.5,
       "total_planned_tss": 0.0,
       "avg_sleep_hours": 7.9,
       "days": [
@@ -1781,16 +1781,42 @@
       "date": "2026-09-05",
       "days_to_race": 22,
       "plan": null,
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
-      "session_type": "rest",
+      "activities": [
+        {
+          "id": 24250977063,
+          "name": "Miguel Hidalgo - LONG RUN RACE SPECIFIC",
+          "description": "",
+          "sport_type": "Run",
+          "start_date_local": "2026-09-05T09:22:38",
+          "distance_km": 30.01,
+          "moving_time_min": 159.0,
+          "elapsed_time_min": 168.9,
+          "pace_min_per_km": 5.3,
+          "avg_speed_mps": 3.14,
+          "relative_effort": 362.8
+        }
+      ],
+      "primary_activity": {
+        "id": 24250977063,
+        "name": "Miguel Hidalgo - LONG RUN RACE SPECIFIC",
+        "description": "",
+        "sport_type": "Run",
+        "start_date_local": "2026-09-05T09:22:38",
+        "distance_km": 30.01,
+        "moving_time_min": 159.0,
+        "elapsed_time_min": 168.9,
+        "pace_min_per_km": 5.3,
+        "avg_speed_mps": 3.14,
+        "relative_effort": 362.8
+      },
+      "completed": true,
+      "session_type": "long_run",
       "garmin": {
         "sleep_hours": 8.3,
         "sleep_score": 87.0,
         "hrv": 51.0,
         "body_battery": 15.0,
-        "stress_avg": 16.0,
+        "stress_avg": 18.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 52.6,
@@ -1798,13 +1824,22 @@
       "recovery_suggestion": {
         "recommendation": "ninguna",
         "timing": null,
-        "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — dia libre de protocolo.",
+        "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — sin necesidad de mas hoy.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
     }
   },
   "recent_sessions": [
+    {
+      "date": "2026-09-05",
+      "session_type": "long_run",
+      "name": "Miguel Hidalgo - LONG RUN RACE SPECIFIC",
+      "sport_type": "Run",
+      "distance_km": 30.01,
+      "pace_min_per_km": 5.3,
+      "relative_effort": 362.8
+    },
     {
       "date": "2026-09-03",
       "session_type": "strength",
@@ -1975,15 +2010,6 @@
       "distance_km": 0.0,
       "pace_min_per_km": null,
       "relative_effort": 76.52
-    },
-    {
-      "date": "2026-08-12",
-      "session_type": "quality",
-      "name": "Miguel Hidalgo - Fartlek 2",
-      "sport_type": "Run",
-      "distance_km": 5.73,
-      "pace_min_per_km": 6.37,
-      "relative_effort": 40.01
     }
   ]
 }
