@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-04T20:15:35",
+  "generated_at": "2026-09-05T02:54:12",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -7,7 +7,7 @@
     8
   ],
   "week_summary": {
-    "days_to_race": 23,
+    "days_to_race": 22,
     "semaforo": "en_linea",
     "planned_km": 0.0,
     "actual_km": 35.4,
@@ -26,9 +26,8 @@
       "actual_km": 0.5,
       "total_relative_effort": 8.1,
       "total_planned_tss": 0.0,
-      "avg_sleep_hours": 5.49,
+      "avg_sleep_hours": 5.54,
       "days": [
-        "2026-07-31",
         "2026-08-01",
         "2026-08-02"
       ]
@@ -118,37 +117,12 @@
         "2026-09-01",
         "2026-09-02",
         "2026-09-03",
-        "2026-09-04"
+        "2026-09-04",
+        "2026-09-05"
       ]
     }
   ],
   "days": {
-    "2026-07-31": {
-      "date": "2026-07-31",
-      "days_to_race": 58,
-      "plan": null,
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
-      "session_type": "rest",
-      "garmin": {
-        "sleep_hours": 5.37,
-        "sleep_score": 53.0,
-        "hrv": 46.0,
-        "body_battery": 47.0,
-        "stress_avg": 47.0,
-        "symptoms": ""
-      },
-      "hrv_7d_avg": null,
-      "fatigue_flag": false,
-      "recovery_suggestion": {
-        "recommendation": "sauna_o_contrast",
-        "timing": "manana",
-        "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).",
-        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
-      },
-      "recommendations_log": []
-    },
     "2026-08-01": {
       "date": "2026-08-01",
       "days_to_race": 57,
@@ -165,8 +139,8 @@
         "stress_avg": 66.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 46.0,
-      "fatigue_flag": true,
+      "hrv_7d_avg": null,
+      "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
         "timing": "manana",
@@ -217,7 +191,7 @@
         "stress_avg": 62.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 34.5,
+      "hrv_7d_avg": 23.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -269,7 +243,7 @@
         "stress_avg": 43.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 35.7,
+      "hrv_7d_avg": 30.5,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -295,7 +269,7 @@
         "stress_avg": 55.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 42.8,
+      "hrv_7d_avg": 41.7,
       "fatigue_flag": true,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -347,7 +321,7 @@
         "stress_avg": 68.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 40.8,
+      "hrv_7d_avg": 39.5,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
@@ -380,7 +354,7 @@
         "stress_avg": 48.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 40.8,
+      "hrv_7d_avg": 39.5,
       "fatigue_flag": true,
       "recovery_suggestion": {
         "recommendation": "contrast",
@@ -439,7 +413,7 @@
         "stress_avg": 36.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 39.2,
+      "hrv_7d_avg": 37.8,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -1795,6 +1769,32 @@
       },
       "hrv_7d_avg": 54.3,
       "fatigue_flag": true,
+      "recovery_suggestion": {
+        "recommendation": "ninguna",
+        "timing": null,
+        "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — dia libre de protocolo.",
+        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
+      },
+      "recommendations_log": []
+    },
+    "2026-09-05": {
+      "date": "2026-09-05",
+      "days_to_race": 22,
+      "plan": null,
+      "activities": [],
+      "primary_activity": null,
+      "completed": false,
+      "session_type": "rest",
+      "garmin": {
+        "sleep_hours": null,
+        "sleep_score": null,
+        "hrv": null,
+        "body_battery": null,
+        "stress_avg": null,
+        "symptoms": ""
+      },
+      "hrv_7d_avg": 52.6,
+      "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
         "timing": null,
