@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T21:05:59",
+  "generated_at": "2026-09-08T02:59:57",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -7,7 +7,7 @@
     8
   ],
   "week_summary": {
-    "days_to_race": 20,
+    "days_to_race": 19,
     "semaforo": "en_linea",
     "planned_km": 0.0,
     "actual_km": 0.0,
@@ -23,12 +23,11 @@
       "week_start": "2026-08-03",
       "week_end": "2026-08-09",
       "planned_km": 0.0,
-      "actual_km": 6.4,
-      "total_relative_effort": 29.8,
+      "actual_km": 1.6,
+      "total_relative_effort": 16.6,
       "total_planned_tss": 0.0,
-      "avg_sleep_hours": 6.47,
+      "avg_sleep_hours": 6.27,
       "days": [
-        "2026-08-03",
         "2026-08-04",
         "2026-08-05",
         "2026-08-06",
@@ -114,67 +113,16 @@
       "week_end": "2026-09-13",
       "planned_km": 0.0,
       "actual_km": 0.0,
-      "total_relative_effort": 0.0,
+      "total_relative_effort": 5.2,
       "total_planned_tss": 0.0,
       "avg_sleep_hours": 8.86,
       "days": [
-        "2026-09-07"
+        "2026-09-07",
+        "2026-09-08"
       ]
     }
   ],
   "days": {
-    "2026-08-03": {
-      "date": "2026-08-03",
-      "days_to_race": 55,
-      "plan": null,
-      "activities": [
-        {
-          "id": 23831450253,
-          "name": "Lombok Tengah Surfing",
-          "description": "",
-          "sport_type": "Surfing_V2",
-          "start_date_local": "2026-08-03T09:51:48",
-          "distance_km": 4.84,
-          "moving_time_min": 48.4,
-          "elapsed_time_min": 103.3,
-          "pace_min_per_km": 10.0,
-          "avg_speed_mps": 0.78,
-          "relative_effort": 13.21
-        }
-      ],
-      "primary_activity": {
-        "id": 23831450253,
-        "name": "Lombok Tengah Surfing",
-        "description": "",
-        "sport_type": "Surfing_V2",
-        "start_date_local": "2026-08-03T09:51:48",
-        "distance_km": 4.84,
-        "moving_time_min": 48.4,
-        "elapsed_time_min": 103.3,
-        "pace_min_per_km": 10.0,
-        "avg_speed_mps": 0.78,
-        "relative_effort": 13.21
-      },
-      "completed": true,
-      "session_type": "other",
-      "garmin": {
-        "sleep_hours": 7.25,
-        "sleep_score": 84.0,
-        "hrv": 64.0,
-        "body_battery": 5.0,
-        "stress_avg": 43.0,
-        "symptoms": ""
-      },
-      "hrv_7d_avg": null,
-      "fatigue_flag": false,
-      "recovery_suggestion": {
-        "recommendation": "ninguna",
-        "timing": null,
-        "detail": "Sin sesion clasificada hoy — sin sugerencia especifica.",
-        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
-      },
-      "recommendations_log": []
-    },
     "2026-08-04": {
       "date": "2026-08-04",
       "days_to_race": 54,
@@ -191,8 +139,8 @@
         "stress_avg": 55.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 64.0,
-      "fatigue_flag": true,
+      "hrv_7d_avg": null,
+      "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
         "timing": "manana",
@@ -243,7 +191,7 @@
         "stress_avg": 68.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 48.5,
+      "hrv_7d_avg": 33.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
@@ -276,8 +224,8 @@
         "stress_avg": 48.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 48.5,
-      "fatigue_flag": true,
+      "hrv_7d_avg": 33.0,
+      "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "contrast",
         "timing": "manana",
@@ -335,7 +283,7 @@
         "stress_avg": 36.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 42.7,
+      "hrv_7d_avg": 32.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -368,7 +316,7 @@
         "stress_avg": 71.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 49.2,
+      "hrv_7d_avg": 44.3,
       "fatigue_flag": true,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -401,7 +349,7 @@
         "stress_avg": null,
         "symptoms": ""
       },
-      "hrv_7d_avg": 43.2,
+      "hrv_7d_avg": 38.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -427,7 +375,7 @@
         "stress_avg": null,
         "symptoms": ""
       },
-      "hrv_7d_avg": 43.2,
+      "hrv_7d_avg": 38.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -1781,19 +1729,71 @@
       "date": "2026-09-07",
       "days_to_race": 20,
       "plan": null,
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
-      "session_type": "rest",
+      "activities": [
+        {
+          "id": 24278365586,
+          "name": "Strength",
+          "description": "",
+          "sport_type": "WeightTraining",
+          "start_date_local": "2026-09-07T19:26:35",
+          "distance_km": 0.0,
+          "moving_time_min": 30.4,
+          "elapsed_time_min": 30.4,
+          "pace_min_per_km": null,
+          "avg_speed_mps": 0.0,
+          "relative_effort": 5.16
+        }
+      ],
+      "primary_activity": {
+        "id": 24278365586,
+        "name": "Strength",
+        "description": "",
+        "sport_type": "WeightTraining",
+        "start_date_local": "2026-09-07T19:26:35",
+        "distance_km": 0.0,
+        "moving_time_min": 30.4,
+        "elapsed_time_min": 30.4,
+        "pace_min_per_km": null,
+        "avg_speed_mps": 0.0,
+        "relative_effort": 5.16
+      },
+      "completed": true,
+      "session_type": "strength",
       "garmin": {
         "sleep_hours": 8.86,
         "sleep_score": 90.0,
         "hrv": 57.0,
         "body_battery": 5.0,
-        "stress_avg": 13.0,
+        "stress_avg": 18.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 52.7,
+      "fatigue_flag": false,
+      "recovery_suggestion": {
+        "recommendation": "sauna_hoy",
+        "timing": "manana",
+        "detail": "Dia de fuerza: cold plunge inmediato puede atenuar la adaptacion de hipertrofia — mas conservador dejarlo para manana. Si quieres, sauna sola hoy esta bien para relajar.",
+        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
+      },
+      "recommendations_log": []
+    },
+    "2026-09-08": {
+      "date": "2026-09-08",
+      "days_to_race": 19,
+      "plan": null,
+      "activities": [],
+      "primary_activity": null,
+      "completed": false,
+      "session_type": "rest",
+      "garmin": {
+        "sleep_hours": null,
+        "sleep_score": null,
+        "hrv": null,
+        "body_battery": null,
+        "stress_avg": null,
+        "symptoms": ""
+      },
+      "hrv_7d_avg": 51.4,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -1805,6 +1805,15 @@
     }
   },
   "recent_sessions": [
+    {
+      "date": "2026-09-07",
+      "session_type": "strength",
+      "name": "Strength",
+      "sport_type": "WeightTraining",
+      "distance_km": 0.0,
+      "pace_min_per_km": null,
+      "relative_effort": 5.16
+    },
     {
       "date": "2026-09-05",
       "session_type": "long_run",
@@ -1975,15 +1984,6 @@
       "distance_km": 0.0,
       "pace_min_per_km": null,
       "relative_effort": 18.22
-    },
-    {
-      "date": "2026-08-13",
-      "session_type": "quality",
-      "name": "Strength",
-      "sport_type": "WeightTraining",
-      "distance_km": 0.0,
-      "pace_min_per_km": null,
-      "relative_effort": 76.52
     }
   ]
 }
