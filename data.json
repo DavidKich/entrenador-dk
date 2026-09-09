@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-09T10:44:56",
+  "generated_at": "2026-09-09T15:54:40",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -10,8 +10,8 @@
     "days_to_race": 18,
     "semaforo": "en_linea",
     "planned_km": 0.0,
-    "actual_km": 0.0,
-    "avg_sleep_hours": 8.73,
+    "actual_km": 10.0,
+    "avg_sleep_hours": 8.03,
     "sleep_goal": [
       7,
       8
@@ -111,10 +111,10 @@
       "week_start": "2026-09-07",
       "week_end": "2026-09-13",
       "planned_km": 0.0,
-      "actual_km": 0.0,
-      "total_relative_effort": 12.8,
+      "actual_km": 10.0,
+      "total_relative_effort": 75.8,
       "total_planned_tss": 0.0,
-      "avg_sleep_hours": 8.73,
+      "avg_sleep_hours": 8.03,
       "days": [
         "2026-09-07",
         "2026-09-08",
@@ -1807,16 +1807,42 @@
       "date": "2026-09-09",
       "days_to_race": 18,
       "plan": null,
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
-      "session_type": "rest",
+      "activities": [
+        {
+          "id": 24296759279,
+          "name": "Cuajimalpa de Morelos treadmill run",
+          "description": "",
+          "sport_type": "Run",
+          "start_date_local": "2026-09-09T06:06:13",
+          "distance_km": 10.0,
+          "moving_time_min": 38.4,
+          "elapsed_time_min": 57.7,
+          "pace_min_per_km": 3.84,
+          "avg_speed_mps": 2.89,
+          "relative_effort": 62.99
+        }
+      ],
+      "primary_activity": {
+        "id": 24296759279,
+        "name": "Cuajimalpa de Morelos treadmill run",
+        "description": "",
+        "sport_type": "Run",
+        "start_date_local": "2026-09-09T06:06:13",
+        "distance_km": 10.0,
+        "moving_time_min": 38.4,
+        "elapsed_time_min": 57.7,
+        "pace_min_per_km": 3.84,
+        "avg_speed_mps": 2.89,
+        "relative_effort": 62.99
+      },
+      "completed": true,
+      "session_type": "easy",
       "garmin": {
-        "sleep_hours": null,
-        "sleep_score": null,
-        "hrv": null,
-        "body_battery": null,
-        "stress_avg": null,
+        "sleep_hours": 6.63,
+        "sleep_score": 78.0,
+        "hrv": 55.0,
+        "body_battery": 29.0,
+        "stress_avg": 24.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 49.9,
@@ -1831,6 +1857,15 @@
     }
   },
   "recent_sessions": [
+    {
+      "date": "2026-09-09",
+      "session_type": "easy",
+      "name": "Cuajimalpa de Morelos treadmill run",
+      "sport_type": "Run",
+      "distance_km": 10.0,
+      "pace_min_per_km": 3.84,
+      "relative_effort": 62.99
+    },
     {
       "date": "2026-09-08",
       "session_type": "strength",
@@ -2001,15 +2036,6 @@
       "distance_km": 0.0,
       "pace_min_per_km": null,
       "relative_effort": 3.43
-    },
-    {
-      "date": "2026-08-16",
-      "session_type": "easy",
-      "name": "Aerobic Endurance Run",
-      "sport_type": "Run",
-      "distance_km": 8.5,
-      "pace_min_per_km": 5.8,
-      "relative_effort": 190.86
     }
   ]
 }
