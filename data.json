@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:24:39",
+  "generated_at": "2026-09-11T02:57:10",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -7,10 +7,10 @@
     8
   ],
   "week_summary": {
-    "days_to_race": 17,
+    "days_to_race": 16,
     "semaforo": "en_linea",
     "planned_km": 0.0,
-    "actual_km": 10.0,
+    "actual_km": 22.2,
     "avg_sleep_hours": 7.95,
     "sleep_goal": [
       7,
@@ -26,7 +26,7 @@
       "actual_km": 1.6,
       "total_relative_effort": 6.9,
       "total_planned_tss": 0.0,
-      "avg_sleep_hours": 6.59,
+      "avg_sleep_hours": 6.65,
       "days": [
         "2026-08-06",
         "2026-08-07",
@@ -110,15 +110,16 @@
       "week_start": "2026-09-07",
       "week_end": "2026-09-13",
       "planned_km": 0.0,
-      "actual_km": 10.0,
-      "total_relative_effort": 75.8,
+      "actual_km": 22.2,
+      "total_relative_effort": 256.7,
       "total_planned_tss": 0.0,
       "avg_sleep_hours": 7.95,
       "days": [
         "2026-09-07",
         "2026-09-08",
         "2026-09-09",
-        "2026-09-10"
+        "2026-09-10",
+        "2026-09-11"
       ]
     }
   ],
@@ -138,14 +139,7 @@
       "primary_activity": null,
       "completed": false,
       "session_type": "long_run",
-      "garmin": {
-        "sleep_hours": 6.48,
-        "sleep_score": 50.0,
-        "hrv": 31.0,
-        "body_battery": 5.0,
-        "stress_avg": 48.0,
-        "symptoms": ""
-      },
+      "garmin": null,
       "hrv_7d_avg": null,
       "fatigue_flag": false,
       "recovery_suggestion": {
@@ -205,7 +199,7 @@
         "stress_avg": 36.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 31.0,
+      "hrv_7d_avg": null,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -238,7 +232,7 @@
         "stress_avg": 71.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 50.0,
+      "hrv_7d_avg": 69.0,
       "fatigue_flag": true,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -271,7 +265,7 @@
         "stress_avg": null,
         "symptoms": ""
       },
-      "hrv_7d_avg": 39.7,
+      "hrv_7d_avg": 44.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -297,7 +291,7 @@
         "stress_avg": null,
         "symptoms": ""
       },
-      "hrv_7d_avg": 39.7,
+      "hrv_7d_avg": 44.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -323,7 +317,7 @@
         "stress_avg": 22.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 39.7,
+      "hrv_7d_avg": 44.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -382,7 +376,7 @@
         "stress_avg": 27.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 45.2,
+      "hrv_7d_avg": 50.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "contrast",
@@ -441,7 +435,7 @@
         "stress_avg": 34.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 48.2,
+      "hrv_7d_avg": 52.5,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "contrast",
@@ -1807,16 +1801,42 @@
       "date": "2026-09-10",
       "days_to_race": 17,
       "plan": null,
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
-      "session_type": "rest",
+      "activities": [
+        {
+          "id": 24316542697,
+          "name": "Kenyan Run",
+          "description": "",
+          "sport_type": "Run",
+          "start_date_local": "2026-09-10T19:15:41",
+          "distance_km": 12.19,
+          "moving_time_min": 68.0,
+          "elapsed_time_min": 73.1,
+          "pace_min_per_km": 5.58,
+          "avg_speed_mps": 2.84,
+          "relative_effort": 180.89
+        }
+      ],
+      "primary_activity": {
+        "id": 24316542697,
+        "name": "Kenyan Run",
+        "description": "",
+        "sport_type": "Run",
+        "start_date_local": "2026-09-10T19:15:41",
+        "distance_km": 12.19,
+        "moving_time_min": 68.0,
+        "elapsed_time_min": 73.1,
+        "pace_min_per_km": 5.58,
+        "avg_speed_mps": 2.84,
+        "relative_effort": 180.89
+      },
+      "completed": true,
+      "session_type": "easy",
       "garmin": {
         "sleep_hours": 7.69,
         "sleep_score": 71.0,
         "hrv": 51.0,
         "body_battery": 6.0,
-        "stress_avg": 25.0,
+        "stress_avg": 27.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 50.1,
@@ -1828,9 +1848,44 @@
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
+    },
+    "2026-09-11": {
+      "date": "2026-09-11",
+      "days_to_race": 16,
+      "plan": null,
+      "activities": [],
+      "primary_activity": null,
+      "completed": false,
+      "session_type": "rest",
+      "garmin": {
+        "sleep_hours": null,
+        "sleep_score": null,
+        "hrv": null,
+        "body_battery": null,
+        "stress_avg": null,
+        "symptoms": ""
+      },
+      "hrv_7d_avg": 50.0,
+      "fatigue_flag": false,
+      "recovery_suggestion": {
+        "recommendation": "ninguna",
+        "timing": null,
+        "detail": "Ya van 4 sesiones de recuperacion por calor/frio esta semana — dia libre de protocolo.",
+        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
+      },
+      "recommendations_log": []
     }
   },
   "recent_sessions": [
+    {
+      "date": "2026-09-10",
+      "session_type": "easy",
+      "name": "Kenyan Run",
+      "sport_type": "Run",
+      "distance_km": 12.19,
+      "pace_min_per_km": 5.58,
+      "relative_effort": 180.89
+    },
     {
       "date": "2026-09-09",
       "session_type": "easy",
@@ -2001,15 +2056,6 @@
       "distance_km": 1.43,
       "pace_min_per_km": 25.66,
       "relative_effort": 26.66
-    },
-    {
-      "date": "2026-08-17",
-      "session_type": "strength",
-      "name": "Strength",
-      "sport_type": "WeightTraining",
-      "distance_km": 0.0,
-      "pace_min_per_km": null,
-      "relative_effort": 3.43
     }
   ]
 }
