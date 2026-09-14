@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-13T20:18:15",
+  "generated_at": "2026-09-14T03:18:50",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -7,16 +7,16 @@
     8
   ],
   "week_summary": {
-    "days_to_race": 14,
+    "days_to_race": 13,
     "semaforo": "en_linea",
     "planned_km": 0.0,
-    "actual_km": 35.1,
-    "avg_sleep_hours": 7.96,
+    "actual_km": 0.0,
+    "avg_sleep_hours": null,
     "sleep_goal": [
       7,
       8
     ],
-    "week_start": "2026-09-07"
+    "week_start": "2026-09-14"
   },
   "weeks": [
     {
@@ -123,6 +123,18 @@
         "2026-09-12",
         "2026-09-13"
       ]
+    },
+    {
+      "week_start": "2026-09-14",
+      "week_end": "2026-09-20",
+      "planned_km": 0.0,
+      "actual_km": 0.0,
+      "total_relative_effort": 0.0,
+      "total_planned_tss": 0.0,
+      "avg_sleep_hours": null,
+      "days": [
+        "2026-09-14"
+      ]
     }
   ],
   "days": {
@@ -219,14 +231,7 @@
       "primary_activity": null,
       "completed": false,
       "session_type": "rest",
-      "garmin": {
-        "sleep_hours": null,
-        "sleep_score": null,
-        "hrv": null,
-        "body_battery": 55.0,
-        "stress_avg": null,
-        "symptoms": ""
-      },
+      "garmin": null,
       "hrv_7d_avg": null,
       "fatigue_flag": false,
       "recovery_suggestion": {
@@ -1902,10 +1907,36 @@
         "sleep_score": 75.0,
         "hrv": 48.0,
         "body_battery": 5.0,
-        "stress_avg": 25.0,
+        "stress_avg": 36.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 47.7,
+      "fatigue_flag": false,
+      "recovery_suggestion": {
+        "recommendation": "sauna",
+        "timing": "manana",
+        "detail": "Semana de taper: se reduce frecuencia de calor/frio. Sauna sola (10-20 min) por la manana, sin cold plunge, para no sumar fatiga por calor cerca de la carrera.",
+        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
+      },
+      "recommendations_log": []
+    },
+    "2026-09-14": {
+      "date": "2026-09-14",
+      "days_to_race": 13,
+      "plan": null,
+      "activities": [],
+      "primary_activity": null,
+      "completed": false,
+      "session_type": "rest",
+      "garmin": {
+        "sleep_hours": null,
+        "sleep_score": null,
+        "hrv": null,
+        "body_battery": null,
+        "stress_avg": null,
+        "symptoms": ""
+      },
+      "hrv_7d_avg": 50.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna",
