@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T11:45:55",
+  "generated_at": "2026-09-14T17:39:41",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -10,8 +10,8 @@
     "days_to_race": 13,
     "semaforo": "en_linea",
     "planned_km": 0.0,
-    "actual_km": 0.0,
-    "avg_sleep_hours": null,
+    "actual_km": 26.0,
+    "avg_sleep_hours": 7.47,
     "sleep_goal": [
       7,
       8
@@ -128,10 +128,10 @@
       "week_start": "2026-09-14",
       "week_end": "2026-09-20",
       "planned_km": 0.0,
-      "actual_km": 0.0,
-      "total_relative_effort": 0.0,
+      "actual_km": 26.0,
+      "total_relative_effort": 305.2,
       "total_planned_tss": 0.0,
-      "avg_sleep_hours": null,
+      "avg_sleep_hours": 7.47,
       "days": [
         "2026-09-14"
       ]
@@ -1924,30 +1924,65 @@
       "date": "2026-09-14",
       "days_to_race": 13,
       "plan": null,
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
-      "session_type": "rest",
+      "activities": [
+        {
+          "id": 24359130965,
+          "name": "Miguel Hidalgo - LONG RUN RACE SPECIFIC",
+          "description": "",
+          "sport_type": "Run",
+          "start_date_local": "2026-09-14T07:14:36",
+          "distance_km": 26.01,
+          "moving_time_min": 136.7,
+          "elapsed_time_min": 159.0,
+          "pace_min_per_km": 5.26,
+          "avg_speed_mps": 3.16,
+          "relative_effort": 305.19
+        }
+      ],
+      "primary_activity": {
+        "id": 24359130965,
+        "name": "Miguel Hidalgo - LONG RUN RACE SPECIFIC",
+        "description": "",
+        "sport_type": "Run",
+        "start_date_local": "2026-09-14T07:14:36",
+        "distance_km": 26.01,
+        "moving_time_min": 136.7,
+        "elapsed_time_min": 159.0,
+        "pace_min_per_km": 5.26,
+        "avg_speed_mps": 3.16,
+        "relative_effort": 305.19
+      },
+      "completed": true,
+      "session_type": "long_run",
       "garmin": {
-        "sleep_hours": null,
-        "sleep_score": null,
-        "hrv": null,
+        "sleep_hours": 7.47,
+        "sleep_score": 87.0,
+        "hrv": 55.0,
         "body_battery": 30.0,
-        "stress_avg": 11.0,
+        "stress_avg": 16.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 50.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
-        "recommendation": "sauna",
-        "timing": "manana",
-        "detail": "Semana de taper: se reduce frecuencia de calor/frio. Sauna sola (10-20 min) por la manana, sin cold plunge, para no sumar fatiga por calor cerca de la carrera.",
+        "recommendation": "ninguna",
+        "timing": null,
+        "detail": "Semana de taper: se evita sauna/cold plunge hoy — el cuerpo esta en fase de afinar, no de generar mas estres.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
     }
   },
   "recent_sessions": [
+    {
+      "date": "2026-09-14",
+      "session_type": "long_run",
+      "name": "Miguel Hidalgo - LONG RUN RACE SPECIFIC",
+      "sport_type": "Run",
+      "distance_km": 26.01,
+      "pace_min_per_km": 5.26,
+      "relative_effort": 305.19
+    },
     {
       "date": "2026-09-11",
       "session_type": "quality",
@@ -2118,15 +2153,6 @@
       "distance_km": 11.05,
       "pace_min_per_km": 5.6,
       "relative_effort": 192.89
-    },
-    {
-      "date": "2026-08-19",
-      "session_type": "strength",
-      "name": "Strength",
-      "sport_type": "WeightTraining",
-      "distance_km": 0.0,
-      "pace_min_per_km": null,
-      "relative_effort": 61.41
     }
   ]
 }
