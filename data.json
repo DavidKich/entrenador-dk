@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-15T03:20:35",
+  "generated_at": "2026-09-15T11:02:52",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -1933,7 +1933,7 @@
         "sleep_score": 87.0,
         "hrv": 55.0,
         "body_battery": 30.0,
-        "stress_avg": 30.0,
+        "stress_avg": 34.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 50.0,
@@ -1958,8 +1958,8 @@
         "sleep_hours": null,
         "sleep_score": null,
         "hrv": null,
-        "body_battery": null,
-        "stress_avg": null,
+        "body_battery": 13.0,
+        "stress_avg": 24.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 49.7,
