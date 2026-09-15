@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T21:27:25",
+  "generated_at": "2026-09-15T03:20:35",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -7,7 +7,7 @@
     8
   ],
   "week_summary": {
-    "days_to_race": 13,
+    "days_to_race": 12,
     "semaforo": "en_linea",
     "planned_km": 0.0,
     "actual_km": 26.0,
@@ -43,7 +43,6 @@
       "total_planned_tss": 0.0,
       "avg_sleep_hours": 8.41,
       "days": [
-        "2026-08-10",
         "2026-08-11",
         "2026-08-12",
         "2026-08-13",
@@ -133,7 +132,8 @@
       "total_planned_tss": 0.0,
       "avg_sleep_hours": 7.47,
       "days": [
-        "2026-09-14"
+        "2026-09-14",
+        "2026-09-15"
       ]
     }
   ],
@@ -232,32 +232,6 @@
       "completed": false,
       "session_type": "rest",
       "garmin": null,
-      "hrv_7d_avg": null,
-      "fatigue_flag": false,
-      "recovery_suggestion": {
-        "recommendation": "sauna_o_contrast",
-        "timing": "manana",
-        "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).",
-        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
-      },
-      "recommendations_log": []
-    },
-    "2026-08-10": {
-      "date": "2026-08-10",
-      "days_to_race": 48,
-      "plan": null,
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
-      "session_type": "rest",
-      "garmin": {
-        "sleep_hours": null,
-        "sleep_score": null,
-        "hrv": null,
-        "body_battery": null,
-        "stress_avg": null,
-        "symptoms": ""
-      },
       "hrv_7d_avg": null,
       "fatigue_flag": false,
       "recovery_suggestion": {
@@ -1959,7 +1933,7 @@
         "sleep_score": 87.0,
         "hrv": 55.0,
         "body_battery": 30.0,
-        "stress_avg": 23.0,
+        "stress_avg": 30.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 50.0,
@@ -1968,6 +1942,32 @@
         "recommendation": "ninguna",
         "timing": null,
         "detail": "Semana de taper: se evita sauna/cold plunge hoy — el cuerpo esta en fase de afinar, no de generar mas estres.",
+        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
+      },
+      "recommendations_log": []
+    },
+    "2026-09-15": {
+      "date": "2026-09-15",
+      "days_to_race": 12,
+      "plan": null,
+      "activities": [],
+      "primary_activity": null,
+      "completed": false,
+      "session_type": "rest",
+      "garmin": {
+        "sleep_hours": null,
+        "sleep_score": null,
+        "hrv": null,
+        "body_battery": null,
+        "stress_avg": null,
+        "symptoms": ""
+      },
+      "hrv_7d_avg": 49.7,
+      "fatigue_flag": false,
+      "recovery_suggestion": {
+        "recommendation": "sauna",
+        "timing": "manana",
+        "detail": "Semana de taper: se reduce frecuencia de calor/frio. Sauna sola (10-20 min) por la manana, sin cold plunge, para no sumar fatiga por calor cerca de la carrera.",
         "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
       },
       "recommendations_log": []
