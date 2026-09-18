@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-17T20:56:24",
+  "generated_at": "2026-09-18T03:08:20",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -7,7 +7,7 @@
     8
   ],
   "week_summary": {
-    "days_to_race": 10,
+    "days_to_race": 9,
     "semaforo": "en_linea",
     "planned_km": 0.0,
     "actual_km": 26.0,
@@ -39,9 +39,9 @@
       "week_end": "2026-08-16",
       "planned_km": 10.6,
       "actual_km": 8.5,
-      "total_relative_effort": 285.6,
+      "total_relative_effort": 209.1,
       "total_planned_tss": 0.0,
-      "avg_sleep_hours": 8.02,
+      "avg_sleep_hours": 7.57,
       "days": [
         "2026-08-12",
         "2026-08-13",
@@ -134,7 +134,8 @@
         "2026-09-14",
         "2026-09-15",
         "2026-09-16",
-        "2026-09-17"
+        "2026-09-17",
+        "2026-09-18"
       ]
     }
   ],
@@ -280,44 +281,11 @@
         "planned_tss": null,
         "notes": ""
       },
-      "activities": [
-        {
-          "id": 23962773343,
-          "name": "Strength",
-          "description": "",
-          "sport_type": "WeightTraining",
-          "start_date_local": "2026-08-13T07:25:21",
-          "distance_km": 0.0,
-          "moving_time_min": 42.2,
-          "elapsed_time_min": 42.2,
-          "pace_min_per_km": null,
-          "avg_speed_mps": 0.0,
-          "relative_effort": 76.52
-        }
-      ],
-      "primary_activity": {
-        "id": 23962773343,
-        "name": "Strength",
-        "description": "",
-        "sport_type": "WeightTraining",
-        "start_date_local": "2026-08-13T07:25:21",
-        "distance_km": 0.0,
-        "moving_time_min": 42.2,
-        "elapsed_time_min": 42.2,
-        "pace_min_per_km": null,
-        "avg_speed_mps": 0.0,
-        "relative_effort": 76.52
-      },
-      "completed": true,
+      "activities": [],
+      "primary_activity": null,
+      "completed": false,
       "session_type": "quality",
-      "garmin": {
-        "sleep_hours": 9.37,
-        "sleep_score": 85.0,
-        "hrv": 56.0,
-        "body_battery": 51.0,
-        "stress_avg": 34.0,
-        "symptoms": ""
-      },
+      "garmin": null,
       "hrv_7d_avg": null,
       "fatigue_flag": false,
       "recovery_suggestion": {
@@ -370,8 +338,8 @@
         "stress_avg": 34.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 56.0,
-      "fatigue_flag": true,
+      "hrv_7d_avg": null,
+      "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
         "timing": "manana",
@@ -396,7 +364,7 @@
         "stress_avg": 43.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 52.5,
+      "hrv_7d_avg": 49.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -455,7 +423,7 @@
         "stress_avg": 43.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 53.3,
+      "hrv_7d_avg": 52.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -507,7 +475,7 @@
         "stress_avg": 24.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 53.0,
+      "hrv_7d_avg": 52.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
@@ -566,7 +534,7 @@
         "stress_avg": 34.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 54.2,
+      "hrv_7d_avg": 53.8,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -677,7 +645,7 @@
         "stress_avg": 27.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 54.9,
+      "hrv_7d_avg": 54.7,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "contrast",
@@ -1953,10 +1921,36 @@
         "sleep_score": 76.0,
         "hrv": 54.0,
         "body_battery": 26.0,
-        "stress_avg": 21.0,
+        "stress_avg": 24.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 48.9,
+      "fatigue_flag": false,
+      "recovery_suggestion": {
+        "recommendation": "sauna",
+        "timing": "manana",
+        "detail": "Semana de taper: se reduce frecuencia de calor/frio. Sauna sola (10-20 min) por la manana, sin cold plunge, para no sumar fatiga por calor cerca de la carrera.",
+        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
+      },
+      "recommendations_log": []
+    },
+    "2026-09-18": {
+      "date": "2026-09-18",
+      "days_to_race": 9,
+      "plan": null,
+      "activities": [],
+      "primary_activity": null,
+      "completed": false,
+      "session_type": "rest",
+      "garmin": {
+        "sleep_hours": null,
+        "sleep_score": null,
+        "hrv": null,
+        "body_battery": null,
+        "stress_avg": null,
+        "symptoms": ""
+      },
+      "hrv_7d_avg": 49.3,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna",
