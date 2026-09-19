@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19T15:20:37",
+  "generated_at": "2026-09-19T20:01:18",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -10,7 +10,7 @@
     "days_to_race": 8,
     "semaforo": "en_linea",
     "planned_km": 0.0,
-    "actual_km": 26.0,
+    "actual_km": 26.4,
     "avg_sleep_hours": 7.2,
     "sleep_goal": [
       7,
@@ -125,8 +125,8 @@
       "week_start": "2026-09-14",
       "week_end": "2026-09-20",
       "planned_km": 0.0,
-      "actual_km": 26.0,
-      "total_relative_effort": 305.2,
+      "actual_km": 26.4,
+      "total_relative_effort": 312.1,
       "total_planned_tss": 0.0,
       "avg_sleep_hours": 7.2,
       "days": [
@@ -1912,10 +1912,36 @@
       "date": "2026-09-19",
       "days_to_race": 8,
       "plan": null,
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
-      "session_type": "rest",
+      "activities": [
+        {
+          "id": 24422192995,
+          "name": "Pool Swim",
+          "description": "",
+          "sport_type": "Swim",
+          "start_date_local": "2026-09-19T09:38:30",
+          "distance_km": 0.36,
+          "moving_time_min": 10.7,
+          "elapsed_time_min": 25.3,
+          "pace_min_per_km": 29.72,
+          "avg_speed_mps": 0.57,
+          "relative_effort": 6.92
+        }
+      ],
+      "primary_activity": {
+        "id": 24422192995,
+        "name": "Pool Swim",
+        "description": "",
+        "sport_type": "Swim",
+        "start_date_local": "2026-09-19T09:38:30",
+        "distance_km": 0.36,
+        "moving_time_min": 10.7,
+        "elapsed_time_min": 25.3,
+        "pace_min_per_km": 29.72,
+        "avg_speed_mps": 0.57,
+        "relative_effort": 6.92
+      },
+      "completed": true,
+      "session_type": "easy",
       "garmin": {
         "sleep_hours": 7.78,
         "sleep_score": 77.0,
@@ -1936,6 +1962,15 @@
     }
   },
   "recent_sessions": [
+    {
+      "date": "2026-09-19",
+      "session_type": "easy",
+      "name": "Pool Swim",
+      "sport_type": "Swim",
+      "distance_km": 0.36,
+      "pace_min_per_km": 29.72,
+      "relative_effort": 6.92
+    },
     {
       "date": "2026-09-14",
       "session_type": "long_run",
@@ -2106,15 +2141,6 @@
       "distance_km": 0.0,
       "pace_min_per_km": null,
       "relative_effort": null
-    },
-    {
-      "date": "2026-08-20",
-      "session_type": "quality",
-      "name": "Miguel Hidalgo - TEMPO",
-      "sport_type": "Run",
-      "distance_km": 11.05,
-      "pace_min_per_km": 5.6,
-      "relative_effort": 192.89
     }
   ]
 }
