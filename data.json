@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-20T10:36:21",
+  "generated_at": "2026-09-20T15:25:10",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -11,7 +11,7 @@
     "semaforo": "en_linea",
     "planned_km": 0.0,
     "actual_km": 26.4,
-    "avg_sleep_hours": 7.2,
+    "avg_sleep_hours": 6.81,
     "sleep_goal": [
       7,
       8
@@ -127,7 +127,7 @@
       "actual_km": 26.4,
       "total_relative_effort": 312.1,
       "total_planned_tss": 0.0,
-      "avg_sleep_hours": 7.2,
+      "avg_sleep_hours": 6.81,
       "days": [
         "2026-09-14",
         "2026-09-15",
@@ -1943,15 +1943,15 @@
       "completed": false,
       "session_type": "rest",
       "garmin": {
-        "sleep_hours": null,
-        "sleep_score": null,
-        "hrv": null,
+        "sleep_hours": 4.5,
+        "sleep_score": 43.0,
+        "hrv": 44.0,
         "body_battery": 16.0,
-        "stress_avg": 41.0,
+        "stress_avg": 30.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 52.4,
-      "fatigue_flag": false,
+      "fatigue_flag": true,
       "recovery_suggestion": {
         "recommendation": "sauna",
         "timing": "manana",
