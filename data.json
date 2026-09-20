@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19T20:01:18",
+  "generated_at": "2026-09-20T03:20:38",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -7,7 +7,7 @@
     8
   ],
   "week_summary": {
-    "days_to_race": 8,
+    "days_to_race": 7,
     "semaforo": "en_linea",
     "planned_km": 0.0,
     "actual_km": 26.4,
@@ -41,11 +41,10 @@
       "actual_km": 8.5,
       "total_relative_effort": 190.9,
       "total_planned_tss": 0.0,
-      "avg_sleep_hours": 7.69,
+      "avg_sleep_hours": 7.02,
       "days": [
         "2026-08-12",
         "2026-08-13",
-        "2026-08-15",
         "2026-08-16"
       ]
     },
@@ -135,7 +134,8 @@
         "2026-09-16",
         "2026-09-17",
         "2026-09-18",
-        "2026-09-19"
+        "2026-09-19",
+        "2026-09-20"
       ]
     }
   ],
@@ -296,32 +296,6 @@
       },
       "recommendations_log": []
     },
-    "2026-08-15": {
-      "date": "2026-08-15",
-      "days_to_race": 43,
-      "plan": null,
-      "activities": [],
-      "primary_activity": null,
-      "completed": false,
-      "session_type": "rest",
-      "garmin": {
-        "sleep_hours": 8.37,
-        "sleep_score": 78.0,
-        "hrv": 55.0,
-        "body_battery": 18.0,
-        "stress_avg": 43.0,
-        "symptoms": ""
-      },
-      "hrv_7d_avg": null,
-      "fatigue_flag": false,
-      "recovery_suggestion": {
-        "recommendation": "sauna_o_contrast",
-        "timing": "manana",
-        "detail": "Dia facil o de descanso: buen momento por defecto para sauna sola (relajacion/sueno) o contrast therapy completa, por la manana despues de entrenar (o en la manana si es descanso).",
-        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
-      },
-      "recommendations_log": []
-    },
     "2026-08-16": {
       "date": "2026-08-16",
       "days_to_race": 42,
@@ -371,7 +345,7 @@
         "stress_avg": 43.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 55.0,
+      "hrv_7d_avg": null,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -423,7 +397,7 @@
         "stress_avg": 24.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 53.5,
+      "hrv_7d_avg": 52.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
@@ -482,7 +456,7 @@
         "stress_avg": 34.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 55.3,
+      "hrv_7d_avg": 55.5,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -534,7 +508,7 @@
         "stress_avg": 32.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 57.5,
+      "hrv_7d_avg": 58.3,
       "fatigue_flag": true,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
@@ -593,7 +567,7 @@
         "stress_avg": 27.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 55.8,
+      "hrv_7d_avg": 56.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "contrast",
@@ -652,7 +626,7 @@
         "stress_avg": 46.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 56.2,
+      "hrv_7d_avg": 56.4,
       "fatigue_flag": true,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -685,7 +659,7 @@
         "stress_avg": 34.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 51.7,
+      "hrv_7d_avg": 51.2,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -1947,10 +1921,36 @@
         "sleep_score": 77.0,
         "hrv": 52.0,
         "body_battery": 17.0,
-        "stress_avg": 21.0,
+        "stress_avg": 30.0,
         "symptoms": ""
       },
       "hrv_7d_avg": 51.3,
+      "fatigue_flag": false,
+      "recovery_suggestion": {
+        "recommendation": "sauna",
+        "timing": "manana",
+        "detail": "Semana de taper: se reduce frecuencia de calor/frio. Sauna sola (10-20 min) por la manana, sin cold plunge, para no sumar fatiga por calor cerca de la carrera.",
+        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
+      },
+      "recommendations_log": []
+    },
+    "2026-09-20": {
+      "date": "2026-09-20",
+      "days_to_race": 7,
+      "plan": null,
+      "activities": [],
+      "primary_activity": null,
+      "completed": false,
+      "session_type": "rest",
+      "garmin": {
+        "sleep_hours": null,
+        "sleep_score": null,
+        "hrv": null,
+        "body_battery": null,
+        "stress_avg": null,
+        "symptoms": ""
+      },
+      "hrv_7d_avg": 52.4,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna",
