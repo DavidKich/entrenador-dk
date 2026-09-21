@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-20T20:18:53",
+  "generated_at": "2026-09-21T03:15:56",
   "race_date": "2026-09-27",
   "goal_time": "3:40:00",
   "sleep_goal_hours": [
@@ -7,16 +7,16 @@
     8
   ],
   "week_summary": {
-    "days_to_race": 7,
+    "days_to_race": 6,
     "semaforo": "en_linea",
     "planned_km": 0.0,
-    "actual_km": 26.4,
-    "avg_sleep_hours": 6.81,
+    "actual_km": 0.0,
+    "avg_sleep_hours": null,
     "sleep_goal": [
       7,
       8
     ],
-    "week_start": "2026-09-14"
+    "week_start": "2026-09-21"
   },
   "weeks": [
     {
@@ -38,10 +38,10 @@
       "week_start": "2026-08-10",
       "week_end": "2026-08-16",
       "planned_km": 10.6,
-      "actual_km": 8.5,
-      "total_relative_effort": 190.9,
+      "actual_km": 0.0,
+      "total_relative_effort": 0.0,
       "total_planned_tss": 0.0,
-      "avg_sleep_hours": 7.02,
+      "avg_sleep_hours": null,
       "days": [
         "2026-08-12",
         "2026-08-13",
@@ -136,6 +136,18 @@
         "2026-09-18",
         "2026-09-19",
         "2026-09-20"
+      ]
+    },
+    {
+      "week_start": "2026-09-21",
+      "week_end": "2026-09-27",
+      "planned_km": 0.0,
+      "actual_km": 0.0,
+      "total_relative_effort": 0.0,
+      "total_planned_tss": 0.0,
+      "avg_sleep_hours": null,
+      "days": [
+        "2026-09-21"
       ]
     }
   ],
@@ -307,44 +319,11 @@
         "planned_tss": null,
         "notes": "Nice steady run in Z1-Z2."
       },
-      "activities": [
-        {
-          "id": 24000612090,
-          "name": "Aerobic Endurance Run",
-          "description": "",
-          "sport_type": "Run",
-          "start_date_local": "2026-08-16T08:52:53",
-          "distance_km": 8.5,
-          "moving_time_min": 49.3,
-          "elapsed_time_min": 51.5,
-          "pace_min_per_km": 5.8,
-          "avg_speed_mps": 2.83,
-          "relative_effort": 190.86
-        }
-      ],
-      "primary_activity": {
-        "id": 24000612090,
-        "name": "Aerobic Endurance Run",
-        "description": "",
-        "sport_type": "Run",
-        "start_date_local": "2026-08-16T08:52:53",
-        "distance_km": 8.5,
-        "moving_time_min": 49.3,
-        "elapsed_time_min": 51.5,
-        "pace_min_per_km": 5.8,
-        "avg_speed_mps": 2.83,
-        "relative_effort": 190.86
-      },
-      "completed": true,
+      "activities": [],
+      "primary_activity": null,
+      "completed": false,
       "session_type": "easy",
-      "garmin": {
-        "sleep_hours": 7.02,
-        "sleep_score": 74.0,
-        "hrv": 52.0,
-        "body_battery": 5.0,
-        "stress_avg": 43.0,
-        "symptoms": ""
-      },
+      "garmin": null,
       "hrv_7d_avg": null,
       "fatigue_flag": false,
       "recovery_suggestion": {
@@ -397,7 +376,7 @@
         "stress_avg": 24.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 52.0,
+      "hrv_7d_avg": null,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
@@ -456,7 +435,7 @@
         "stress_avg": 34.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 55.5,
+      "hrv_7d_avg": 59.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna_o_contrast",
@@ -508,7 +487,7 @@
         "stress_avg": 32.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 58.3,
+      "hrv_7d_avg": 61.5,
       "fatigue_flag": true,
       "recovery_suggestion": {
         "recommendation": "sauna_hoy",
@@ -567,7 +546,7 @@
         "stress_avg": 27.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 56.0,
+      "hrv_7d_avg": 57.3,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "contrast",
@@ -626,7 +605,7 @@
         "stress_avg": 46.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 56.4,
+      "hrv_7d_avg": 57.5,
       "fatigue_flag": true,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -659,7 +638,7 @@
         "stress_avg": 34.0,
         "symptoms": ""
       },
-      "hrv_7d_avg": 51.2,
+      "hrv_7d_avg": 51.0,
       "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "ninguna",
@@ -1952,6 +1931,32 @@
       },
       "hrv_7d_avg": 52.4,
       "fatigue_flag": true,
+      "recovery_suggestion": {
+        "recommendation": "sauna",
+        "timing": "manana",
+        "detail": "Semana de taper: se reduce frecuencia de calor/frio. Sauna sola (10-20 min) por la manana, sin cold plunge, para no sumar fatiga por calor cerca de la carrera.",
+        "safety_note": "Orientacion general basada en literatura de recuperacion deportiva, no consejo medico. Si tienes mareo, sintomas de enfermedad, o alguna condicion cardiaca, de presion o circulatoria, consultalo con un profesional antes de sauna o cold plunge."
+      },
+      "recommendations_log": []
+    },
+    "2026-09-21": {
+      "date": "2026-09-21",
+      "days_to_race": 6,
+      "plan": null,
+      "activities": [],
+      "primary_activity": null,
+      "completed": false,
+      "session_type": "rest",
+      "garmin": {
+        "sleep_hours": null,
+        "sleep_score": null,
+        "hrv": null,
+        "body_battery": null,
+        "stress_avg": null,
+        "symptoms": ""
+      },
+      "hrv_7d_avg": 51.9,
+      "fatigue_flag": false,
       "recovery_suggestion": {
         "recommendation": "sauna",
         "timing": "manana",
